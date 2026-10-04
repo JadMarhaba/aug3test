@@ -12,7 +12,8 @@ Analyses (proposal 4.3 "Proposed Experimentation"):
   3. The same collapse search with records GM2 and GM3 for the no-deficiency reference and
      the all-four-deficiency variant (record-to-record variability)
   4. (step 2 doubles as the incremental dynamic analysis: SF vs peak drift up to collapse)
-  5. Sudden removal of lower core piers under gravity (scenarios S1-S5) for A-REF and
+  5. Pushdown (quasi-static withdrawal) of one core pier at a time + sudden removal of lower
+     core piers under gravity (scenarios S1-S5) for A-REF and
        A-D1D2D3D4 -> load redistribution to the column-slab system, punching cascade
 
 Results are written to results/<analysis>/A-*.json; re-running skips finished jobs.
@@ -22,7 +23,7 @@ import sys
 from sao import config as C
 from sao.ida import Hunt, run_all
 from sao.jobqueue import run_jobs
-from sao.runner import REMOVAL_SCENARIOS
+from sao.runner import REMOVAL_SCENARIOS, PUSHDOWN_SCENARIOS
 
 CONFIG = "A"
 
@@ -31,6 +32,13 @@ def removal_jobs(config=CONFIG):
     """Sudden removal of lower core piers under gravity (alternate load path)."""
     return [{"kind": "removal", "variant": f"{config}-{d}", "scenario": s}
             for d in ("D1D2D3D4", "REF") for s in REMOVAL_SCENARIOS]
+
+
+def pushdown_jobs(config=CONFIG):
+    """Quasi-static withdrawal of one core pier's support: how much of its load the rest of
+    the structure can pick up, and through which members (link beams vs floor framing)."""
+    return [{"kind": "pushdown", "variant": f"{config}-{d}", "scenario": s}
+            for d in ("REF", "D1D2D3D4") for s in PUSHDOWN_SCENARIOS]
 
 
 def pushover_jobs(config=CONFIG):
@@ -51,5 +59,5 @@ def hunts(config=CONFIG):
 
 if __name__ == "__main__":
     w = int(sys.argv[1]) if len(sys.argv) > 1 else 4
-    run_jobs(removal_jobs(), workers=w)
+    run_jobs(removal_jobs() + pushdown_jobs(), workers=w)
     run_all(hunts(), pushover_jobs(), workers=w)

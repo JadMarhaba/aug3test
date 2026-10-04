@@ -399,7 +399,9 @@ class SAOBuildingBase:
         residual (ASCE 41-17 shear-controlled walls).  Pinched hysteresis."""
         b = wall_shear_backbone(Vn, Acv, fc, axial_ratio)
         tag = self.mat()
-        env = [b["V1"], b["g1"], b["V2"], b["g2"], b["V2"], b["gd"], b["V3"], b["g3"]]
+        # 1 % hardening on the "plateau" keeps the tangent non-zero (a zero tangent makes the
+        # force-based element's section flexibility singular)
+        env = [b["V1"], b["g1"], b["V2"], b["g2"], 1.01 * b["V2"], b["gd"], b["V3"], b["g3"]]
         ops.uniaxialMaterial("HystereticSM", tag, "-posEnv", *env, "-negEnv", *[-x for x in env],
                              "-pinch", 0.4, 0.2, "-damage", 0.0, 0.0, "-beta", 0.3)
         return tag, b

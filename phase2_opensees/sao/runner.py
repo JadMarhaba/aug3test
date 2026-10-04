@@ -33,6 +33,13 @@ REMOVAL_SCENARIOS = {
     "S4_core_1-4": [("pier", (s, p)) for s in range(1, 5) for p in PIERS],  # whole core, storeys 1-4
     "S5_core_story1": [("pier", (1, p)) for p in PIERS],                   # whole core, ground storey
 }
+# Pushdown scenarios: one pier lost at a time (ground storey), and the front pier over storeys 1-4
+PUSHDOWN_SCENARIOS = {
+    "P1_F_story1": [("pier", (1, "F"))],
+    "P2_M_story1": [("pier", (1, "M"))],
+    "P3_R_story1": [("pier", (1, "R"))],
+    "P4_F_1-4": [("pier", (s, "F")) for s in range(1, 5)],
+}
 
 
 def variant_from_name(name):
@@ -57,6 +64,8 @@ def job_id(job):
         return f"nlth/{job['variant']}_{job['gm']}_sf{job['sf']:.2f}"
     if k == "removal":
         return f"removal/{job['variant']}_{job['scenario']}"
+    if k == "pushdown":
+        return f"pushdown/{job['variant']}_{job['scenario']}"
     if k == "modal":
         return f"modal/{job['variant']}"
     raise ValueError(k)
@@ -111,6 +120,9 @@ def run(job):
         res["pier_dcr"] = {f"{k[0]}-{k[1]}": v_ for k, v_ in a.pier_dcr.items()}
         res["cb_state"] = {f"{k[0]}-{k[1]}": v_ for k, v_ in a.cb_state.items()}
         res["conn_maxdrift"] = {f"{k[0]}-{k[1][0]}{k[1][1]}": v_ for k, v_ in a.conn_maxdrift.items()}
+    elif job["kind"] == "pushdown":
+        r = a.pushdown(PUSHDOWN_SCENARIOS[job["scenario"]])
+        res.update(r)
     elif job["kind"] == "removal":
         r = a.sudden_removal(REMOVAL_SCENARIOS[job["scenario"]], t_total=job.get("t_total", 6.0),
                              dt=job.get("dt", 0.005))

@@ -592,3 +592,180 @@ class Analyzer:
                     colP0={f"{k[0]}-{k[1]}": v for k, v in colP0.items()},
                     colP1={f"{k[0]}-{k[1]}": v for k, v in colP1.items()},
                     final_vz=vz, final_where=where, n_fail=self.n_fail, t_end=self.t)
+
+    # ------------------------------------------------------------------------------------
+    def _support_forces(self, pier):
+        """Vertical force (kN, + = upward on the pier) delivered to a core pier by the members
+        attached to its wall points, per floor: link beams vs floor framing (beams in the
+        beam-slab model, slab connections in the flat-slab model)."""
+        b = self.b
+        names = [n for n, (x, y, p) in b.cpts.items() if p == pier]
+        cb_tot = np.zeros(C.N_STORY + 1)
+        fl_tot = np.zeros(C.N_STORY + 1)
+        from .capacities import COUPLING_BEAMS
+        for i in range(1, C.N_STORY + 1):
+            wn = {b.W[(i, n)] for n in names}
+            for k, (a, c) in enumerate(COUPLING_BEAMS):
+                tag = b.cb_ele[(i, k)]
+                f = ops.eleForce(tag)
+                if b.W[(i, a)] in wn:
+                    cb_tot[i] -= f[2]
+                if b.W[(i, c)] in wn:
+                    cb_tot[i] -= f[8]
+            if b.conn:
+                for n in names:
+                    key = (i, ("core", n))
+                    if key in b.conn:
+                        c = b.conn[key]
+                        for t in (c["punch"], c["pp"]):
+                            if t is not None and t not in self.removed:
+                                # zeroLength i = wall node, j = slab node: + force (tension)
+                                # pulls the wall node up, i.e. the slab supports the pier
+                                fl_tot[i] += ops.eleResponse(t, "basicForce")[0]
+            else:
+                for (lev, sid), tag in b.floor_ele.items():
+                    if lev != i:
+                        continue
+                    sg = b.segments[sid]
+                    for end, off in ((sg["a"], 2), (sg["b"], 8)):
+                        if end[0] == "core" and end[1] in names:
+                            fl_tot[i] -= ops.eleForce(tag)[off]
+        return cb_tot, fl_tot
+
+    def pushdown(self, targets, max_drop=0.40, step=-0.001):
+        """Quasi-static alternate-load-path ("pushdown") analysis.
+
+        The target pier-storeys are replaced by the forces they carried; those forces are then
+        withdrawn gradually (load factor lambda 0 -> 1) under displacement control of the
+        pier node above the gap.  lambda at the peak = fraction of the lost member's load that
+        the rest of the structure can redistribute.  Returns lambda history, lambda_max and the
+        redistribution of the withdrawn load into columns / remaining core / link beams / floor
+        framing at the peak.
+        """
+        b = self.b
+        piers = sorted({key[1] for kind, key in targets})
+        top_story = {p: max(k[0] for kind, k in targets if k[1] == p) for p in piers}
+        R = {}
+        for kind, key in targets:
+            tag = b.pier_ele[key]
+            f = np.array(ops.eleForce(tag))
+            ni, nj = b.pier_info[key]["nodes"]
+            R[ni] = R.get(ni, np.zeros(6)) + f[:6]
+            R[nj] = R.get(nj, np.zeros(6)) + f[6:]
+        P_removed = sum(-ops.eleForce(b.pier_ele[(min(k[0] for kind, k in targets if k[1] == p), p)])[8]
+                        for p in piers)
+        core0, cols0 = self.gravity_paths()
+        sup0 = {p: self._support_forces(p) for p in piers}
+        colP0 = self.column_axial(range(1, 2))
+        for kind, key in targets:
+            self._remove(b.pier_ele[key])
+            self._event("removed", f"pier-{key}")
+        fixed = {n for (i, p), n in b.P.items() if i == 0}
+        # eleForce = element resisting force (R); the support the element gave its nodes is -R.
+        # Pattern 501 (constant) puts that support back as external load, pattern 502 (linear,
+        # factor lambda) withdraws it: net support = (1 - lambda) x original.
+        ops.timeSeries("Linear", 501)
+        ops.pattern("Plain", 501, 501)
+        for n, f in R.items():
+            if n not in fixed:
+                ops.load(n, *(-f).tolist())
+        self._setup(tol=1e-5, it=50)
+        ops.integrator("LoadControl", 1.0)
+        ops.analysis("Static")
+        ops.analyze(1)                       # replacement forces in place: same state as before
+        ops.loadConst("-time", 0.0)          # freeze them (and gravity) as constant loads
+        ops.timeSeries("Linear", 502)
+        ops.pattern("Plain", 502, 502)
+        for n, f in R.items():
+            if n not in fixed:
+                ops.load(n, *f.tolist())
+        # control node: a wall attachment point of the lost pier (rigidly tied to the pier, and
+        # not a diaphragm slave - displacement control on a constrained slave node is unreliable)
+        wname = [n for n, (x, y, p) in b.cpts.items() if p == piers[0]][0]
+        ctrl = b.W[(top_story[piers[0]], wname)]
+        self._setup(tol=1e-5, it=50)
+        ops.integrator("DisplacementControl", ctrl, 3, step)
+        ops.analysis("Static")
+        hist = []
+        status = "completed"
+        best = (-1.0, None)
+        at_full = None
+        uz_ref = ops.nodeDisp(ctrl, 3)
+        k = 0
+        def robust_step():
+            """One displacement increment; on failure try other algorithms, then split the
+            increment into 4 and 16 sub-steps with a relaxed tolerance."""
+            if ops.analyze(1) == 0:
+                return 0
+            for a in (("Newton",), ("NewtonLineSearch",), ("ModifiedNewton", "-initial")):
+                ops.algorithm(*a)
+                if ops.analyze(1) == 0:
+                    ops.algorithm("KrylovNewton")
+                    return 0
+            ops.algorithm("KrylovNewton")
+            for nsub, tol in ((4, 1e-5), (16, 1e-4)):
+                ops.test("NormDispIncr", tol, 100, 0)
+                ops.integrator("DisplacementControl", ctrl, 3, step / nsub)
+                good = True
+                for _ in range(nsub):
+                    ok_ = ops.analyze(1)
+                    if ok_ != 0:
+                        for a in (("Newton",), ("NewtonLineSearch",), ("ModifiedNewton", "-initial")):
+                            ops.algorithm(*a)
+                            ok_ = ops.analyze(1)
+                            if ok_ == 0:
+                                break
+                        ops.algorithm("KrylovNewton")
+                    if ok_ != 0:
+                        good = False
+                        break
+                ops.integrator("DisplacementControl", ctrl, 3, step)
+                ops.test("NormDispIncr", 1e-5, 50, 0)
+                if good:
+                    return 0
+            return -1
+
+        while True:
+            ok = robust_step()
+            if ok != 0:
+                status = "nonconverged"
+                break
+            k += 1
+            self.t = k
+            lam = ops.getLoadFactor(502)
+            drop = uz_ref - ops.nodeDisp(ctrl, 3)
+            nrem = self.check(self.floor_disp(), full=True)
+            hist.append([drop, lam, self.n_fail["punch"], self.n_fail["wall_axial"], self.n_fail["column"],
+                         sum(1 for s_ in self.cb_state.values() if s_ >= 2)])
+            def snapshot():
+                core1, cols1 = self.gravity_paths()
+                sup1 = {p: self._support_forces(p) for p in piers}
+                colP1 = self.column_axial(range(1, 2))
+                return dict(lam=lam, drop=drop, d_cols=float(cols1[0] - cols0[0]),
+                            d_core_other=float(core1[0] - (core0[0] - P_removed)),
+                            via_link_beams=float(sum((sup1[p][0] - sup0[p][0]).sum() for p in piers)),
+                            via_floor=float(sum((sup1[p][1] - sup0[p][1]).sum() for p in piers)),
+                            d_colP={f"{kk[0]}-{kk[1]}": colP1[kk] - colP0[kk] for kk in colP1},
+                            events_so_far=len(self.events))
+            if lam > best[0]:
+                best = (lam, snapshot())
+            if at_full is None and lam >= 1.0:
+                at_full = snapshot()          # the lost load fully carried by the rest
+            if drop >= max_drop:
+                status = "max_drop"
+                break
+            if len(hist) > 30 and lam < 0.5 * best[0]:
+                status = "unloading"
+                break
+        hist = np.array(hist)
+        # energy-based pseudo-static capacity (Izzuddin et al. 2008): the structure survives the
+        # SUDDEN loss of the member if the pseudo-static curve reaches lambda = 1
+        lam_ps = np.zeros(len(hist))
+        if len(hist) > 1:
+            u = hist[:, 0]
+            area = np.concatenate([[0.0], np.cumsum(0.5 * (hist[1:, 1] + hist[:-1, 1]) * np.diff(u))])
+            area += 0.5 * hist[0, 1] * u[0]
+            lam_ps = area / np.maximum(u, 1e-9)
+        return dict(status=status, lambda_max=best[0], at_peak=best[1], at_full=at_full, P_removed=P_removed,
+                    lambda_ps_max=float(lam_ps.max()) if len(lam_ps) else 0.0, lambda_ps=lam_ps,
+                    hist=hist, events=self.events, n_fail=self.n_fail)

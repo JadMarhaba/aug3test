@@ -16,7 +16,7 @@ import numpy as np
 
 from sao import config as C
 from sao import plotting as P
-from sao.runner import REMOVAL_SCENARIOS
+from sao.runner import REMOVAL_SCENARIOS, PUSHDOWN_SCENARIOS
 import matplotlib.pyplot as plt
 
 RES = "results"
@@ -377,6 +377,109 @@ def removal(rm):
     return redistribution
 
 
+def pushdown(pdn):
+    """Quasi-static withdrawal of one core pier: capacity and load paths."""
+    rows = []
+    scen = list(PUSHDOWN_SCENARIOS)
+    labels = {"P1_F_story1": "front pier F, storey 1", "P2_M_story1": "middle pier M, storey 1",
+              "P3_R_story1": "rear pier R, storey 1", "P4_F_1-4": "front pier F, storeys 1-4"}
+    fig, axs = plt.subplots(1, 2, figsize=(10, 4), sharey=True)
+    for j, d in enumerate(("REF", "D1D2D3D4")):
+        ax = axs[j]
+        for cfg in "AB":
+            for k, sc in enumerate(scen):
+                r = pdn.get(f"{cfg}-{d}_{sc}")
+                if not r or not r.get("hist"):
+                    continue
+                h = np.array(r["hist"])
+                if k in (0, 3):
+                    ax.plot(h[:, 0] * 1000, h[:, 1], color=COLOR[cfg], lw=2.0 if k == 0 else 1.3,
+                            ls="-" if k == 0 else "--",
+                            label=f"{FRAME[cfg].split(' (')[0]}: {labels[sc]}")
+        ax.axhline(1.0, color=P.INK, lw=1, ls=":")
+        ax.text(2, 1.02, "lost pier's full gravity load", fontsize=8)
+        ax.set_title("No deficiencies" if d == "REF" else "All four deficiencies")
+        ax.set_xlabel("Drop of the core above the lost pier (mm)")
+        ax.legend(fontsize=7)
+    axs[0].set_ylabel("Fraction of the lost pier's load carried by the rest (lambda)")
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIG, "fig08_pushdown_capacity.png"))
+    plt.close(fig)
+    # where does the load go?  stacked horizontal bars at the peak
+    bars, ypos, y = [], [], 0.0
+    for d in ("REF", "D1D2D3D4"):
+        for sc in scen:
+            for cfg in "AB":
+                r = pdn.get(f"{cfg}-{d}_{sc}")
+                if not r or not r.get("at_peak"):
+                    continue
+                pk, P0 = r["at_peak"], r["P_removed"]
+                bars.append((f"{'2A flat slab' if cfg == 'A' else '2B beam-slab'} | {labels[sc]} | "
+                             f"{'no deficiency' if d == 'REF' else 'all 4 deficiencies'}",
+                             pk["via_link_beams"] / P0, pk["via_floor"] / P0, r["lambda_max"], cfg))
+                ypos.append(y)
+                y += 1.0
+            y += 0.5
+    fig, ax = plt.subplots(figsize=(9.5, 0.32 * len(bars) + 1.6))
+    for (lab, a, b_, lam, cfg), yy in zip(bars, ypos):
+        ax.barh(yy, a, color=P.SERIES[2], height=0.75, edgecolor=P.SURFACE, lw=2)
+        ax.barh(yy, b_, left=a, color=COLOR[cfg], height=0.75, edgecolor=P.SURFACE, lw=2)
+        ax.text(max(a + b_, a, 0) + 0.02, yy, f"{lam:.2f}", va="center", fontsize=8, color=P.INK2)
+    ax.set_yticks(ypos)
+    ax.set_yticklabels([b[0] for b in bars], fontsize=7.5)
+    ax.invert_yaxis()
+    ax.axvline(1.0, color=P.INK, lw=1, ls=":")
+    ax.set_xlabel("Share of the lost pier's gravity load picked up at peak (number = lambda_max)")
+    h = [plt.Rectangle((0, 0), 1, 1, color=P.SERIES[2]), plt.Rectangle((0, 0), 1, 1, color=P.FLAT),
+         plt.Rectangle((0, 0), 1, 1, color=P.BEAM)]
+    ax.legend(h, ["through link beams to the other core piers", "through the flat slab to the columns",
+                  "through the beams to the columns"], fontsize=8, loc="lower right")
+    ax.set_title("Load redistribution after losing one core pier (quasi-static pushdown)")
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIG, "fig09_load_redistribution_paths.png"))
+    plt.close(fig)
+    for key, r in sorted(pdn.items()):
+        pk, fu = r.get("at_peak") or {}, r.get("at_full") or {}
+        ev = Counter(e["kind"] for e in r.get("events", []))
+        P0 = r["P_removed"]
+        rows.append([key, r["status"], f"{P0 / 1e3:.1f}", f"{r['lambda_max']:.3f}", f"{r['lambda_ps_max']:.3f}",
+                     "yes" if r["lambda_max"] >= 1 else "no", "yes" if r["lambda_ps_max"] >= 1 else "no",
+                     f"{pk.get('drop', 0) * 1000:.0f}", f"{pk.get('d_cols', 0) / 1e3:.1f}",
+                     f"{pk.get('d_core_other', 0) / 1e3:.1f}", f"{pk.get('via_link_beams', 0) / 1e3:.1f}",
+                     f"{pk.get('via_floor', 0) / 1e3:.1f}", f"{fu.get('drop', 0) * 1000:.0f}" if fu else "",
+                     ev.get("punching", 0), ev.get("cb_failure", 0), ev.get("wall_axial_failure", 0),
+                     ev.get("column_axial_failure", 0)])
+    write_csv("T6_pushdown_redistribution.csv",
+              ["run", "status", "lost_pier_load_MN", "lambda_max_static", "lambda_pseudostatic_dynamic",
+               "carries_full_load_statically", "survives_sudden_loss", "drop_at_peak_mm",
+               "extra_on_storey1_columns_MN", "extra_on_other_core_piers_MN", "via_link_beams_MN",
+               "via_floor_framing_MN", "drop_when_full_load_carried_mm", "punching", "link_beam_failures",
+               "wall_axial_failures", "column_failures"], rows)
+
+
+def torsion(nl):
+    fig, axs = plt.subplots(1, 2, figsize=(10, 3.8))
+    for cfg in "AB":
+        r = nl.get(f"{cfg}-D1D2D3D4_GM1_sf1.00")
+        if not r or not r.get("hist"):
+            continue
+        h = np.array(r["hist"])
+        axs[0].plot(h[:, 0], h[:, 3] * 1000, color=COLOR[cfg], lw=1.2, label=FRAME[cfg])
+        e = r["env"]
+        ratio = np.array(e["drift_corner"]) / np.maximum(np.array(e["drift_cm"]), 1e-9)
+        axs[1].plot(ratio, np.arange(1, C.N_STORY + 1), color=COLOR[cfg], label=FRAME[cfg])
+    axs[0].set_xlabel("Time (s)")
+    axs[0].set_ylabel("Roof twist (mrad)")
+    axs[0].set_title("Torsional response, all four deficiencies, SF = 1")
+    axs[0].legend(fontsize=8)
+    axs[1].set_xlabel("Peak corner drift / peak drift at the centre")
+    axs[1].set_ylabel("Storey")
+    axs[1].set_title("Torsional amplification of drift")
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIG, "fig10_torsion.png"))
+    plt.close(fig)
+
+
 def main():
     nl = load("nlth/*.json")
     po = load("pushover/*.json")
@@ -397,6 +500,8 @@ def main():
     fig_demand_profiles(nl, ["A-REF", "A-D1D2D3D4", "B-REF", "B-D1D2D3D4"], "fig05_core_demand_profiles.png")
     ida(nl)
     removal(rm)
+    pushdown(load("pushdown/*.json"))
+    torsion(nl)
 
 
 if __name__ == "__main__":
