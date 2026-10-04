@@ -61,7 +61,9 @@ def job_id(job):
     if k == "pushover":
         return f"pushover/{job['variant']}_dir{job['dir']}"
     if k == "nlth":
-        return f"nlth/{job['variant']}_{job['gm']}_sf{job['sf']:.2f}"
+        dt = job.get("dt", 0.025)
+        suf = "" if abs(dt - 0.025) < 1e-9 else f"_dt{dt:g}"
+        return f"nlth/{job['variant']}_{job['gm']}_sf{job['sf']:.2f}{suf}"
     if k == "removal":
         return f"removal/{job['variant']}_{job['scenario']}"
     if k == "pushdown":
@@ -113,7 +115,7 @@ def run(job):
         if job.get("swap"):
             ax_, ay_ = ay_, ax_
         r = a.nlth(ax_, ay_, float(gm["dt"]), job["sf"], t_extra=job.get("t_extra", 5.0),
-                   dt=job.get("dt", 0.02), max_wall=job.get("max_wall"))
+                   dt=job.get("dt", 0.025), max_wall=job.get("max_wall"))
         res.update(r)
         core1, cols1 = a.gravity_paths()
         res["final_core"], res["final_cols"] = core1.tolist(), cols1.tolist()

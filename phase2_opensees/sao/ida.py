@@ -22,7 +22,7 @@ from .runner import job_id, RES, ROOT
 
 LADDER = [1.0, 2.0, 3.0, 4.5, 6.0, 8.0]
 REL_TOL = 0.20
-COLLAPSED = ("collapse", "nonconverged")
+COLLAPSED = ("collapse", "nonconverged")   # non-convergence = dynamic instability
 
 
 def result(job):
@@ -39,22 +39,44 @@ class Hunt:
         self.variant, self.gm, self.dt = variant, gm, dt
         self.busy = False
 
-    def job(self, sf):
-        return {"kind": "nlth", "variant": self.variant, "gm": self.gm, "sf": round(sf, 2), "dt": self.dt}
+    def job(self, sf, dt=None):
+        return {"kind": "nlth", "variant": self.variant, "gm": self.gm, "sf": round(sf, 2),
+                "dt": dt or self.dt}
 
-    def known(self):
-        """SF -> collapsed? for every finished analysis of this variant / record."""
+    def _results(self):
+        """sf -> {dt: status} for every finished analysis of this variant / record."""
+        import re
         out = {}
         d = os.path.join(RES, "nlth")
         if not os.path.isdir(d):
             return out
-        pre = f"{self.variant}_{self.gm}_sf"
+        pat = re.compile(rf"^{re.escape(self.variant)}_{self.gm}_sf([0-9.]+?)(?:_dt([0-9.]+))?\.json$")
         for f in os.listdir(d):
-            if f.startswith(pre) and f.endswith(".json"):
-                sf = float(f[len(pre):-5])
-                st = json.load(open(os.path.join(d, f))).get("status")
-                out[sf] = st in COLLAPSED
+            m = pat.match(f)
+            if not m:
+                continue
+            sf = float(m.group(1))
+            dt = float(m.group(2)) if m.group(2) else 0.025
+            out.setdefault(sf, {})[dt] = json.load(open(os.path.join(d, f))).get("status")
         return out
+
+    def known(self):
+        """SF -> collapsed?  A run that stopped for numerical reasons is repeated with
+        dt = 0.01 s; if the repeat also fails to finish, it counts as collapse."""
+        out = {}
+        for sf, runs in self._results().items():
+            st = runs.get(0.01, runs.get(0.025))
+            if st == "numerical" and 0.01 not in runs:
+                continue                     # pending re-run
+            out[sf] = st in COLLAPSED or st == "numerical"
+        return out
+
+    def next_job(self):
+        for sf, runs in self._results().items():
+            if runs.get(0.025) == "numerical" and 0.01 not in runs:
+                return self.job(sf, dt=0.01)
+        sf = self.next_sf()
+        return None if sf is None else self.job(sf)
 
     def next_sf(self):
         k = self.known()
@@ -109,10 +131,9 @@ def run_all(hunts, static_jobs=(), workers=4):
                         break
                     if h.busy:
                         continue
-                    sf = h.next_sf()
-                    if sf is None:
+                    j = h.next_job()
+                    if j is None:
                         continue
-                    j = h.job(sf)
                     if result(j) is not None:
                         continue
                     h.busy = True

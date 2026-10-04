@@ -164,6 +164,27 @@ class Analyzer:
                 self.b.node_mass[n] = m
                 ops.mass(n, m, m, m, 0.0, 0.0, 0.0)
 
+    def _insane(self):
+        """True if any column or wall section holds a physically impossible state (|axial strain|
+        > 5 % or shear strain > 20 %).  Such states appear when an iteration that failed is
+        followed by a 'converged' retry from the corrupted trial state; the step is then
+        rejected instead of being treated as structural failure."""
+        b = self.b
+        for tag in b.col_ele.values():
+            if tag in self.removed:
+                continue
+            for ip in (1, 6):
+                if abs(ops.eleResponse(tag, "section", ip, "deformation")[0]) > 0.05:
+                    return True
+        for tag in b.pier_ele.values():
+            if tag in self.removed:
+                continue
+            for ip in (1, 2, 3):
+                d = ops.eleResponse(tag, "section", ip, "deformation")
+                if abs(d[0]) > 0.05 or abs(d[4]) > 0.2 or abs(d[5]) > 0.2:
+                    return True
+        return False
+
     def _orphan(self, i, p):
         """True if the floor-level core node of pier p at level i has lost the wall both below
         and above it (a loose wall fragment, not a supported part of the core)."""
@@ -391,33 +412,34 @@ class Analyzer:
 
     # ------------------------------------------------------------------------------------
     def _try_step(self, dt, mode="transient"):
-        """Advance one time step; returns 0 on success, -1 if every fallback failed."""
+        """Advance one time step.  Returns 0 on success, -1 if every fallback failed, -2 if a
+        fallback 'converged' to a numerically corrupted state (see _insane)."""
+        if ops.analyze(1, dt) == 0:
+            return 0
         # if a step fails to converge: try other solution algorithms, then sub-step
-        algos = [("KrylovNewton",), ("Newton",), ("NewtonLineSearch", "-type", "Bisection"),
-                 ("ModifiedNewton", "-initial")]
+        algos = [("Newton",), ("NewtonLineSearch", "-type", "Bisection"), ("ModifiedNewton", "-initial")]
         for a in algos:
             ops.algorithm(*a)
-            if ops.analyze(1, dt) == 0 if mode == "transient" else ops.analyze(1) == 0:
-                if a[0] != "KrylovNewton":
-                    ops.algorithm("KrylovNewton")
-                return 0
-        # sub-stepping
-        ops.algorithm("KrylovNewton")
+            ok = ops.analyze(1, dt)
+            ops.algorithm("KrylovNewton")
+            if ok == 0:
+                return -2 if self._insane() else 0
         for nsub in (4, 16):
             okall = True
             for _ in range(nsub):
-                ok = -1
-                for a in algos:
-                    ops.algorithm(*a)
-                    ok = ops.analyze(1, dt / nsub)
-                    if ok == 0:
-                        break
+                ok = ops.analyze(1, dt / nsub)
+                if ok != 0:
+                    for a in algos:
+                        ops.algorithm(*a)
+                        ok = ops.analyze(1, dt / nsub)
+                        ops.algorithm("KrylovNewton")
+                        if ok == 0:
+                            break
                 if ok != 0:
                     okall = False
                     break
-            ops.algorithm("KrylovNewton")
             if okall:
-                return 0
+                return -2 if self._insane() else 0
         return -1
 
     def nlth(self, acc_x, acc_y, dt_gm, sf, t_extra=5.0, dt=0.02, check_every=1, full_every=5,
@@ -447,7 +469,7 @@ class Analyzer:
         while self.t < t_end - 1e-9:
             ok = self._try_step(dt)
             if ok != 0:
-                status = "nonconverged"
+                status = "numerical" if ok == -2 else "nonconverged"
                 break
             self.t = ops.getTime()
             nstep += 1
@@ -520,8 +542,10 @@ class Analyzer:
                     if ok != 0:
                         break
                 ops.integrator("DisplacementControl", b.master[C.N_STORY], direction, dU)
+                if ok == 0 and self._insane():
+                    ok = -2
             if ok != 0:
-                status = "nonconverged"
+                status = "numerical" if ok == -2 else "nonconverged"
                 break
             self.t = k + 1
             fd = self.floor_disp()
@@ -571,7 +595,7 @@ class Analyzer:
         while self.t < t_total - 1e-9:
             ok = self._try_step(dt)
             if ok != 0:
-                status = "nonconverged"
+                status = "numerical" if ok == -2 else "nonconverged"
                 break
             nstep += 1
             self.t = ops.getTime()
@@ -701,7 +725,7 @@ class Analyzer:
                 ops.algorithm(*a)
                 if ops.analyze(1) == 0:
                     ops.algorithm("KrylovNewton")
-                    return 0
+                    return -1 if self._insane() else 0
             ops.algorithm("KrylovNewton")
             for nsub, tol in ((4, 1e-5), (16, 1e-4)):
                 ops.test("NormDispIncr", tol, 100, 0)
@@ -722,7 +746,7 @@ class Analyzer:
                 ops.integrator("DisplacementControl", ctrl, 3, step)
                 ops.test("NormDispIncr", 1e-5, 50, 0)
                 if good:
-                    return 0
+                    return -1 if self._insane() else 0
             return -1
 
         while True:
