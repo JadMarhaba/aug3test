@@ -414,17 +414,20 @@ def pushdown(pdn):
                 if not r or not r.get("at_peak"):
                     continue
                 pk, P0 = r["at_peak"], r["P_removed"]
+                h_ = np.array(r["hist"])
+                lower = int(np.argmax(h_[:, 1])) >= len(h_) - 1      # stopped while still rising
                 bars.append((f"{'2A flat slab' if cfg == 'A' else '2B beam-slab'} | {labels[sc]} | "
                              f"{'no deficiency' if d == 'REF' else 'all 4 deficiencies'}",
-                             pk["via_link_beams"] / P0, pk["via_floor"] / P0, r["lambda_max"], cfg))
+                             pk["via_link_beams"] / P0, pk["via_floor"] / P0,
+                             ("\u2265" if lower else "") + f"{r['lambda_max']:.2f}", cfg))
                 ypos.append(y)
                 y += 1.0
             y += 0.5
-    fig, ax = plt.subplots(figsize=(9.5, 0.32 * len(bars) + 1.6))
+    fig, ax = plt.subplots(figsize=(10.5, 0.32 * len(bars) + 1.8))
     for (lab, a, b_, lam, cfg), yy in zip(bars, ypos):
         ax.barh(yy, a, color=P.SERIES[2], height=0.75, edgecolor=P.SURFACE, lw=2)
         ax.barh(yy, b_, left=a, color=COLOR[cfg], height=0.75, edgecolor=P.SURFACE, lw=2)
-        ax.text(max(a + b_, a, 0) + 0.02, yy, f"{lam:.2f}", va="center", fontsize=8, color=P.INK2)
+        ax.text(max(a + b_, a, 0) + 0.02, yy, lam, va="center", fontsize=8, color=P.INK2)
     ax.set_yticks(ypos)
     ax.set_yticklabels([b[0] for b in bars], fontsize=7.5)
     ax.invert_yaxis()
@@ -433,8 +436,11 @@ def pushdown(pdn):
     h = [plt.Rectangle((0, 0), 1, 1, color=P.SERIES[2]), plt.Rectangle((0, 0), 1, 1, color=P.FLAT),
          plt.Rectangle((0, 0), 1, 1, color=P.BEAM)]
     ax.legend(h, ["through link beams to the other core piers", "through the flat slab to the columns",
-                  "through the beams to the columns"], fontsize=8, loc="lower right")
-    ax.set_title("Load redistribution after losing one core pier (quasi-static pushdown)")
+                  "through the beams to the columns"], fontsize=7.5, loc="upper center",
+              bbox_to_anchor=(0.35, -0.08), ncol=3)
+    ax.set_title("Load redistribution after losing one core pier (quasi-static pushdown)\n"
+                 "number = share carried at peak (lambda_max); \u2265 = analysis stopped while still rising",
+                 fontsize=9.5)
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "fig09_load_redistribution_paths.png"))
     plt.close(fig)
@@ -480,6 +486,83 @@ def torsion(nl):
     plt.close(fig)
 
 
+def collapse_intensity(nl):
+    """Collapse scale factor of every variant / record from the collapse searches."""
+    from sao.ida import Hunt
+    res = {}
+    rows = []
+    for cfg in "AB":
+        for v in C.all_deficiency_variants(cfg):
+            for gm in ("GM1", "GM2", "GM3"):
+                h = Hunt(v.name, gm)
+                k = h.known()
+                if not k:
+                    continue
+                coll = [x for x, c in k.items() if c]
+                surv = [x for x, c in k.items() if not c]
+                c = min(coll) if coll else None
+                sv = max([x for x in surv if c is None or x < c], default=None)
+                est = (np.sqrt(c * sv) if (c and sv) else c) if c else None
+                res[(v.name, gm)] = dict(collapse=c, survived=sv, estimate=est, runs=sorted(k.items()))
+                rows.append([v.name, gm, v.group, "+".join(v.deficiencies) or "none",
+                             sv if sv is not None else "-", c if c is not None else f">{max(surv)}",
+                             f"{est:.2f}" if est else "", " ".join(f"{x}:{'C' if cc else 'S'}" for x, cc in sorted(k.items()))])
+    write_csv("T7_collapse_intensity_all_variants.csv",
+              ["variant", "record", "group", "deficiencies", "highest_SF_survived", "lowest_SF_collapsed",
+               "collapse_SF_estimate_(geomean)", "runs_(SF:C=collapse,S=stood)"], rows)
+    # figure: dot plot of collapse SF, A vs B, 16 combos (GM1)
+    names = [v.name.split("-")[1] for v in C.all_deficiency_variants("A")]
+    fig, ax = plt.subplots(figsize=(7.8, 6.4))
+    for j, cfg in enumerate("AB"):
+        for i, n in enumerate(names):
+            r = res.get((f"{cfg}-{n}", "GM1"))
+            if not r:
+                continue
+            yy = i + (j - 0.5) * 0.32
+            if r["collapse"]:
+                lo = r["survived"] or r["collapse"] / 2
+                ax.plot([lo, r["collapse"]], [yy, yy], color=COLOR[cfg], lw=2.0, solid_capstyle="round")
+                ax.scatter(r["estimate"], yy, s=55, color=COLOR[cfg], zorder=3, edgecolor=P.SURFACE, lw=1.5)
+            else:
+                ax.scatter(r["survived"], yy, s=55, marker=">", color=COLOR[cfg], zorder=3,
+                           edgecolor=P.SURFACE, lw=1.5)
+    ax.axvline(1.0, color=P.INK, lw=1.2, ls=":")
+    ax.text(1.03, -0.9, "2025 event", fontsize=8, color=P.INK)
+    ax.set_yticks(range(len(names)))
+    ax.set_yticklabels(["no deficiency" if n == "REF" else "+".join(["D" + x for x in n.split("D")[1:]])
+                        for n in names])
+    ax.invert_yaxis()
+    ax.set_xscale("log")
+    ax.set_xticks([0.5, 1, 2, 3, 4.5, 6, 8])
+    ax.set_xticklabels(["0.5", "1", "2", "3", "4.5", "6", "8"])
+    ax.set_xlabel("Collapse intensity: scale factor on the 2025-event record GM1 (bar = bracket, dot = estimate)")
+    ax.set_title("How much stronger than the 2025 shaking must the record be to collapse the building?")
+    h = [plt.Line2D([], [], color=P.FLAT, marker="o", lw=2, label="As-built flat slab (2A)"),
+         plt.Line2D([], [], color=P.BEAM, marker="o", lw=2, label="Proposed beam-slab (2B)"),
+         plt.Line2D([], [], color=P.INK2, marker=">", ls="", label="no collapse up to this SF")]
+    ax.legend(handles=h, fontsize=8, loc="lower right")
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIG, "fig11_collapse_intensity_all_combinations.png"))
+    plt.close(fig)
+    # factorial effects on log(collapse SF)
+    for cfg in "AB":
+        data = {}
+        for v in C.all_deficiency_variants(cfg):
+            r = res.get((v.name, "GM1"))
+            if r and (r["estimate"] or r["survived"]):
+                data[tuple(int(getattr(v, d)) for d in DEFS)] = np.log(r["estimate"] or r["survived"] * 1.25)
+        if len(data) == 16:
+            eff = {}
+            for k in range(1, 5):
+                for combo in itertools.combinations(range(4), k):
+                    eff["x".join(DEFS[i] for i in combo)] = sum(
+                        np.prod([1 if key[i] else -1 for i in combo]) * y for key, y in data.items()) / 8.0
+            write_csv(f"T8_factorial_effects_logSFcollapse_{cfg}.csv", ["effect", "change_in_ln(SF_collapse)",
+                                                                        "factor_on_SF"],
+                      [(k, f"{v:.3f}", f"{np.exp(v):.2f}") for k, v in sorted(eff.items(), key=lambda kv: -abs(kv[1]))])
+    return res
+
+
 def main():
     nl = load("nlth/*.json")
     po = load("pushover/*.json")
@@ -502,6 +585,7 @@ def main():
     removal(rm)
     pushdown(load("pushdown/*.json"))
     torsion(nl)
+    collapse_intensity(nl)
 
 
 if __name__ == "__main__":

@@ -32,6 +32,8 @@ REMOVAL_SCENARIOS = {
     "S3_FM_1-4": [("pier", (s, p)) for s in range(1, 5) for p in ("F", "M")],
     "S4_core_1-4": [("pier", (s, p)) for s in range(1, 5) for p in PIERS],  # whole core, storeys 1-4
     "S5_core_story1": [("pier", (1, p)) for p in PIERS],                   # whole core, ground storey
+    "S6_M_story1": [("pier", (1, "M"))],                                   # middle pier, ground storey
+    "S7_R_story1": [("pier", (1, "R"))],                                   # rear pier, ground storey
 }
 # Pushdown scenarios: one pier lost at a time (ground storey), and the front pier over storeys 1-4
 PUSHDOWN_SCENARIOS = {
