@@ -556,6 +556,46 @@ class Analyzer:
                     wall_time=time.time() - wall0, nstep=nstep)
 
     # ------------------------------------------------------------------------------------
+    def _push_step(self, node, direction, dU):
+        """One displacement-controlled pushover step, with the same fallbacks as the response-
+        history step (other algorithms, then 10 and 100 sub-steps, then a relaxed tolerance).
+        Returns 0 on success, -1 if every fallback failed, -2 for a corrupted state."""
+        if ops.analyze(1) == 0:
+            return -2 if self._piers_insane() else 0
+        algos = [("Newton",), ("NewtonLineSearch", "-type", "Bisection"), ("ModifiedNewton", "-initial")]
+
+        def with_fallbacks():
+            ok = ops.analyze(1)
+            for a in algos:
+                if ok == 0:
+                    break
+                ops.algorithm(*a)
+                ok = ops.analyze(1)
+                ops.algorithm("KrylovNewton")
+            return ok
+
+        for a in algos:
+            ops.algorithm(*a)
+            ok = ops.analyze(1)
+            ops.algorithm("KrylovNewton")
+            if ok == 0:
+                self.log(f"  step {self.t}  solver fallback: {a[0]}")
+                return -2 if self._insane() else 0
+        for nsub, tol in ((10, 1e-5), (100, 1e-5), (100, 1e-4)):
+            ops.test("NormDispIncr", tol, 100, 0)
+            ops.integrator("DisplacementControl", node, direction, dU / nsub)
+            okall = True
+            for _ in range(nsub):
+                if with_fallbacks() != 0:
+                    okall = False
+                    break
+            ops.integrator("DisplacementControl", node, direction, dU)
+            ops.test("NormDispIncr", 1e-5, 50, 0)
+            if okall:
+                self.log(f"  step {self.t}  solver fallback: {nsub} sub-steps, tol {tol:g}")
+                return -2 if self._insane() else 0
+        return -1
+
     def pushover(self, direction=1, roof_drift=0.03, n_steps=300, k_exp=2.0, sign=1.0):
         b = self.b
         H = C.H_TOTAL
@@ -578,23 +618,7 @@ class Analyzer:
         curve = []
         status = "completed"
         for k in range(n_steps):
-            ok = ops.analyze(1)
-            if ok != 0:
-                for a in (("KrylovNewton",), ("NewtonLineSearch",), ("ModifiedNewton", "-initial")):
-                    ops.algorithm(*a)
-                    ok = ops.analyze(1)
-                    if ok == 0:
-                        ops.algorithm("KrylovNewton")
-                        break
-            if ok != 0:
-                ops.integrator("DisplacementControl", b.master[C.N_STORY], direction, dU / 10)
-                for _ in range(10):
-                    ok = ops.analyze(1)
-                    if ok != 0:
-                        break
-                ops.integrator("DisplacementControl", b.master[C.N_STORY], direction, dU)
-                if ok == 0 and self._insane():
-                    ok = -2
+            ok = self._push_step(b.master[C.N_STORY], direction, dU)
             if ok != 0:
                 status = "numerical" if ok == -2 else "nonconverged"
                 break
