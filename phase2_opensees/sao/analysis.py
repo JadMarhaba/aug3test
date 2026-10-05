@@ -29,7 +29,7 @@ import numpy as np
 import openseespy.opensees as ops
 
 from . import config as C
-from .capacities import PIERS, punching_drift_capacity, wall_axial_failure_drift
+from .capacities import PIERS, punching_drift_capacity, wall_axial_failure_drift, wall_flexure_limits
 from .registry import model_class
 
 SIDESWAY_DRIFT = 0.10        # collapse if any storey drift > 10 %
@@ -54,6 +54,7 @@ class Analyzer:
         self.cb_state = {k: 0 for k in b.cb_ele}
         self.pier_state = {k: 0 for k in b.pier_ele}
         self.pier_dcr = {}          # (storey, pier) -> [max Vx/Vn_x, max Vy/Vn_y, max P/(A fc)]
+        self.pier_rot = {}          # (storey, pier) -> [max plastic rotation, limit a, limit b]
         self.uz0 = {}
 
     # ------------------------------------------------------------------------------------
@@ -235,6 +236,35 @@ class Analyzer:
                 d = ops.eleResponse(tag, "section", ip, "deformation")
                 emin = min(emin, d[0])
                 gam = max(gam, abs(d[4]), abs(d[5]))
+            # --- flexure-compression: plastic hinge rotation vs ASCE 41-13 Table 10-19 -------
+            # curvature about local z = bending in X (depth lw_x), about local y = bending in Y
+            if full:
+                ey = C.FY_EXP / C.ES
+                kp_x = kp_y = 0.0
+                for ip in (1, 3):
+                    d = ops.eleResponse(tag, "section", ip, "deformation")
+                    kp_x = max(kp_x, abs(d[1]) - 2.0 * ey / info["lw_x"])
+                    kp_y = max(kp_y, abs(d[2]) - 2.0 * ey / info["lw_y"])
+                h = info["h"]
+                th = max(kp_x * min(0.5 * info["lw_x"], h), kp_y * min(0.5 * info["lw_y"], h), 0.0)
+                dcr = self.pier_dcr.get(k, [0.0, 0.0, 0.0])
+                v_ratio = max(dcr[0] * info["Vn_x"] / info["Acv_x"], dcr[1] * info["Vn_y"] / info["Acv_y"]) \
+                    / C.MPA / math.sqrt(info["fc"])
+                rho_term = info["rho_v"] * C.FY_EXP / info["fc"]
+                a_lim, b_lim = wall_flexure_limits(info["axial_ratio"] + rho_term, v_ratio, info["confined"])
+                cur = self.pier_rot.setdefault(k, [0.0, a_lim, b_lim])
+                cur[0], cur[1], cur[2] = max(cur[0], th), a_lim, b_lim
+                if cur[0] >= a_lim and not info.get("flex_a"):
+                    info["flex_a"] = True
+                    self._event("wall_flexure_strength_loss", f"S{k[0]}-{k[1]}", rot=round(cur[0], 5),
+                                a=round(a_lim, 4))
+                if cur[0] >= b_lim:
+                    self._remove_pier(k)
+                    self.n_fail["wall_axial"] += 1
+                    nrem += 1
+                    self._event("wall_axial_failure", f"S{k[0]}-{k[1]}", rot=round(cur[0], 5), b=round(b_lim, 4),
+                                cause="flexure-compression (ASCE 41 b)")
+                    continue
             st = self.pier_state[k]
             gp = min(info["back_x"]["gd"], info["back_y"]["gd"])     # end of strength plateau
             g3 = min(info["back_x"]["g3"], info["back_y"]["g3"])     # residual reached

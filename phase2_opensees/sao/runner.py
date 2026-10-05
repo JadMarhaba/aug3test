@@ -111,6 +111,8 @@ def run(job):
         r = a.pushover(direction=job["dir"], roof_drift=job.get("roof_drift", 0.025),
                        n_steps=job.get("n_steps", 250))
         res.update(r)
+        res["pier_rot"] = {f"{k[0]}-{k[1]}": v_ for k, v_ in a.pier_rot.items()}
+        res["pier_dcr"] = {f"{k[0]}-{k[1]}": v_ for k, v_ in a.pier_dcr.items()}
     elif job["kind"] == "nlth":
         gm = np.load(os.path.join(ROOT, "motions", job["gm"] + ".npz"))
         ax_, ay_ = gm["ax"], gm["ay"]
@@ -122,6 +124,7 @@ def run(job):
         core1, cols1 = a.gravity_paths()
         res["final_core"], res["final_cols"] = core1.tolist(), cols1.tolist()
         res["pier_dcr"] = {f"{k[0]}-{k[1]}": v_ for k, v_ in a.pier_dcr.items()}
+        res["pier_rot"] = {f"{k[0]}-{k[1]}": v_ for k, v_ in a.pier_rot.items()}
         res["cb_state"] = {f"{k[0]}-{k[1]}": v_ for k, v_ in a.cb_state.items()}
         res["conn_maxdrift"] = {f"{k[0]}-{k[1][0]}{k[1][1]}": v_ for k, v_ in a.conn_maxdrift.items()}
     elif job["kind"] == "pushdown":

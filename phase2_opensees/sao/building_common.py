@@ -48,7 +48,7 @@ import openseespy.opensees as ops
 
 from . import config as C
 from .capacities import (PIERS, pier_props, core_points, COUPLING_BEAMS, CONN_POINTS,
-                         wall_shear_strength, wall_shear_backbone, coupling_beam)
+                         wall_shear_strength, wall_shear_backbone, coupling_beam, pier_extents)
 
 E_RIGID = 1.0e9     # kPa  - modulus of the rigid arms (stiff but numerically well-conditioned)
 K_STIFF = 1.0e8     # kN/m - "rigid" zero-length springs
@@ -434,8 +434,9 @@ class SAOBuildingBase:
                                 self.tr_col)
                 self.pier_ele[(s, p)] = tag
                 w = pp["A"] * h * C.GAMMA_RC
+                lx, ly = pier_extents(p, self.v.wall_t)
                 self.pier_info[(s, p)] = dict(info, axial_ratio_est=ar, h=h, Acv_x=pp["Acv_x"],
-                                              Acv_y=pp["Acv_y"], w_self=w, nodes=(ni, nj))
+                                              Acv_y=pp["Acv_y"], w_self=w, nodes=(ni, nj), lw_x=lx, lw_y=ly)
                 self._add_load(ni, w / 2)
                 self._add_load(nj, w / 2)
         # rigid arms: pier centroid -> every attachment point on that pier's walls

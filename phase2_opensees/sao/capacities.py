@@ -273,3 +273,39 @@ def beam_section(As_top_mm2, As_bot_mm2, b=BEAM_B, h=BEAM_H, fc=FC_SLAB, ts=SLAB
     return dict(E=E, A=b * h + (bf - b) * ts, Iy=EI / E, Iz=h * b ** 3 / 12 + ts * (bf - b) ** 3 / 12,
                 J=0.2 * b ** 3 * h / 3, My_neg=My_neg, My_pos=My_pos, Vn=Vc + Vs, lp=0.5 * h,
                 th_p=0.025, th_pc=0.025, res=0.2)
+
+
+# ----------------------------------------------------------------------------------------
+# Flexure-compression (axial) failure of wall piers: ASCE/SEI 41-13 Table 10-19
+# ----------------------------------------------------------------------------------------
+# (axial term, shear term, confined boundary) -> (a, b) plastic hinge rotations (rad)
+#   axial term  = ((As - As') fy + P) / (tw lw f'c)       brackets <= 0.10 and >= 0.25
+#   shear term  = V / (tw lw sqrt(f'c))  [psi]            brackets <= 4 and >= 6
+#                 (= 0.332 and 0.498 sqrt(f'c) in MPa units)
+#   a = plastic rotation at significant strength loss, b = plastic rotation at the ONSET OF
+#   AXIAL FAILURE (loss of gravity-load capacity) - the criterion used to remove a pier.
+_T1019 = {
+    True: {(0, 0): (0.015, 0.020), (0, 1): (0.010, 0.015), (1, 0): (0.009, 0.012), (1, 1): (0.005, 0.010)},
+    False: {(0, 0): (0.008, 0.015), (0, 1): (0.006, 0.010), (1, 0): (0.003, 0.005), (1, 1): (0.002, 0.004)},
+}
+
+
+def wall_flexure_limits(axial_term, shear_ratio_mpa, confined):
+    """Bilinear interpolation of ASCE 41-13 Table 10-19 (walls controlled by flexure)."""
+    fa = min(max((axial_term - 0.10) / 0.15, 0.0), 1.0)
+    fv = min(max((shear_ratio_mpa - 0.332) / (0.498 - 0.332), 0.0), 1.0)
+    t = _T1019[bool(confined)]
+    out = []
+    for k in (0, 1):
+        v = ((1 - fa) * (1 - fv) * t[(0, 0)][k] + (1 - fa) * fv * t[(0, 1)][k]
+             + fa * (1 - fv) * t[(1, 0)][k] + fa * fv * t[(1, 1)][k])
+        out.append(v)
+    return tuple(out)
+
+
+def pier_extents(p, t):
+    """Plan depth of pier p in X and in Y (m) - the 'lw' for bending in each direction."""
+    segs = pier_segments(p, t)
+    xs = [c for s in segs for c in (s["a"][0], s["b"][0])]
+    ys = [c for s in segs for c in (s["a"][1], s["b"][1])]
+    return max(xs) - min(xs) + t, max(ys) - min(ys) + t
