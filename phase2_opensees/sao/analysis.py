@@ -448,11 +448,13 @@ class Analyzer:
             return 0
         # if a step fails to converge: try other solution algorithms, then sub-step
         algos = [("Newton",), ("NewtonLineSearch", "-type", "Bisection"), ("ModifiedNewton", "-initial")]
+        t0 = ops.getTime()
         for a in algos:
             ops.algorithm(*a)
             ok = ops.analyze(1, dt)
             ops.algorithm("KrylovNewton")
             if ok == 0:
+                self.log(f"  t={t0:7.3f}  solver fallback: {a[0]}")
                 return -2 if self._insane() else 0
         for nsub in (4, 16):
             okall = True
@@ -469,6 +471,7 @@ class Analyzer:
                     okall = False
                     break
             if okall:
+                self.log(f"  t={t0:7.3f}  solver fallback: {nsub} sub-steps")
                 return -2 if self._insane() else 0
         return -1
 
