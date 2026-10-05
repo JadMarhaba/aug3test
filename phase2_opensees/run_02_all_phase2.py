@@ -25,10 +25,14 @@ if __name__ == "__main__":
     ha, hb = A.hunts("A"), B.hunts("B")
     # collapse searches, most important first: all four deficiencies and no deficiencies for
     # both framings, then the same with D1/D2 intensified to 50 % / 30 % (identical inputs for
-    # both framings), then every other combination and the GM2 / GM3 records
+    # both framings), then records GM2 / GM3, then every other combination
     sev = [A.Hunt(C.Variant(config=c, D1=True, D2=True, D3=True, D4=True, fc_ratio=0.5, embed_ratio=0.3).name, "GM1")
            for c in "AB"]
-    order = zip_lists(ha[:2], hb[:2]) + sev + zip_lists(ha[2:], hb[2:])
+    # records GM2 / GM3 (record-to-record check of the key result) come before the remaining
+    # GM1 pairs and triples
+    gm23 = zip_lists([h for h in ha if h.gm != "GM1"], [h for h in hb if h.gm != "GM1"])
+    rest = zip_lists([h for h in ha[2:] if h.gm == "GM1"], [h for h in hb[2:] if h.gm == "GM1"])
+    order = zip_lists(ha[:2], hb[:2]) + sev + gm23 + rest
     # one worker is kept for the load-redistribution cases (sudden removal + pushdown), then
     # the severity ladder at the real 2025 shaking and the pushovers
     static = (zip_lists(A.removal_jobs("A") + A.pushdown_jobs("A"), B.removal_jobs("B") + B.pushdown_jobs("B"))

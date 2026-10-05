@@ -158,6 +158,21 @@ def factorial(summ, metric, cfg):
 
 
 # =========================================================================================
+def po_curve(r):
+    """Pushover curve up to (not including) the step at which the first core pier fails
+    axially and is removed: that step's base shear is a removal transient, not strength, and
+    the loss of a core pier ends the useful pushover.  Returns (curve, cut) - cut True if the
+    curve was ended by a pier failure."""
+    c = np.array(r.get("curve") or [])
+    fax = first_event(r.get("events", []), ("wall_axial_failure",))
+    if fax and len(c):
+        n = max(int(fax["t"]) - 1, 1)
+        if n < len(c):
+            return c[:n], True
+        return c, True
+    return c, False
+
+
 def fig_pushover(po):
     fig, axs = plt.subplots(1, 2, figsize=(10, 3.9), sharey=True)
     rows = []
@@ -167,20 +182,24 @@ def fig_pushover(po):
                 r = po.get(f"{name}_dir{d}")
                 if not r or not r.get("curve"):
                     continue
-                c = np.array(r["curve"])
+                c, cut = po_curve(r)
                 W = r["weight_kN"]
                 ax.plot(c[:, 0] * 100, (c[:, 1] + c[:, 2]) / W * 100, color=COLOR[cfg], ls=ls, lw=lw,
                         label=f"{FRAME[cfg].split(' (')[0]} - {'no deficiency' if 'REF' in name else 'all 4 deficiencies'}")
+                if cut:          # x = a core pier failed axially (loss of vertical support)
+                    ax.plot(c[-1, 0] * 100, (c[-1, 1] + c[-1, 2]) / W * 100, "x", color=COLOR[cfg], ms=9, mew=2)
         ax.set_title(f"Pushover in {'X' if d == 1 else 'Y'} (first-mode-like load pattern)")
         ax.set_xlabel("Roof drift (%)")
         ax.axhline(0, color=P.MUTED, lw=0.8)
     axs[0].set_ylabel("Base shear / building weight (%)")
     axs[1].legend(fontsize=7.5, loc="upper right")
+    axs[0].text(0.98, 0.04, "x = a core wall pier fails axially (curve ends)", transform=axs[0].transAxes, ha="right",
+                fontsize=7.5, va="bottom", color=P.MUTED)
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "fig02_pushover_curves.png"))
     plt.close(fig)
     for key, r in po.items():
-        c = np.array(r.get("curve") or [])
+        c, cut = po_curve(r)
         if not len(c):
             continue
         W = r["weight_kN"]
@@ -191,10 +210,12 @@ def fig_pushover(po):
         fws = first_event(ev, ("wall_shear_failure",))
         fpu = first_event(ev, ("punching",))
         fax = first_event(ev, ("wall_axial_failure",))
-        drift_at = lambda e: f"{c[min(int(e['t']) - 1, len(c) - 1), 0] * 100:.2f}" if e else ""
+        cf = np.array(r["curve"])                      # full curve, for event drifts
+        drift_at = lambda e: f"{cf[min(int(e['t']) - 1, len(cf) - 1), 0] * 100:.2f}" if e else ""
         rows.append([key, r["variant"]["config"], f"{V[i] / 1e3:.1f}", f"{V[i] / W * 100:.2f}",
                      f"{c[i, 0] * 100:.2f}", f"{c[i, 1] / V[i] * 100:.0f}", drift_at(fcb), drift_at(fws),
-                     drift_at(fax), drift_at(fpu), r["status"], f"{c[-1, 0] * 100:.2f}"])
+                     drift_at(fax), drift_at(fpu), "core pier axial failure" if cut else r["status"],
+                     f"{c[-1, 0] * 100:.2f}"])
     write_csv("T2_pushover_capacity.csv",
               ["run", "framing", "Vmax_MN", "Vmax_over_W_pct", "roof_drift_at_Vmax_pct", "core_share_at_Vmax_pct",
                "roof_drift_first_link_beam_failure_pct", "roof_drift_first_wall_shear_failure_pct",
