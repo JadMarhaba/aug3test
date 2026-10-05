@@ -40,6 +40,16 @@ def load(pattern):
     return out
 
 
+def supersede(nl):
+    """A response history that stopped on a corrupted numerical state is repeated with
+    dt = 0.01 s (sao/ida.py); keep only the repeat, under the original run's name."""
+    out = {k: r for k, r in nl.items() if not k.endswith("_dt0.01")}
+    for k, r in nl.items():
+        if k.endswith("_dt0.01"):
+            out[k[:-len("_dt0.01")]] = r
+    return out
+
+
 def variants(config):
     return [v.name for v in C.all_deficiency_variants(config)]
 
@@ -564,7 +574,7 @@ def collapse_intensity(nl):
 
 
 def main():
-    nl = load("nlth/*.json")
+    nl = supersede(load("nlth/*.json"))
     po = load("pushover/*.json")
     rm = load("removal/*.json")
     print(f"{len(nl)} response histories, {len(po)} pushovers, {len(rm)} removal analyses")

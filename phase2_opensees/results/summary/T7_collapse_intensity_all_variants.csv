@@ -1,0 +1,19 @@
+variant,record,group,deficiencies,highest_SF_survived,lowest_SF_collapsed,collapse_SF_estimate_(geomean),runs_(SF:C=collapse,S=stood)
+A-REF,GM1,reference,none,7.0,8.0,7.48,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 7.0:S 8.0:C
+A-D1,GM1,individual,D1,6.0,7.0,6.48,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 7.0:C 8.0:C
+A-D2,GM1,individual,D2,6.0,7.0,6.48,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 7.0:C 8.0:C
+A-D3,GM1,individual,D3,7.0,8.0,7.48,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 7.0:S 8.0:C
+A-D4,GM1,individual,D4,6.0,7.0,6.48,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 7.0:C 8.0:C
+A-D1D2,GM1,pair,D1+D2,6.0,7.0,6.48,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 7.0:C 8.0:C
+A-D1D3,GM1,pair,D1+D3,4.5,>4.5,,1.0:S 2.0:S 3.0:S 4.5:S
+A-D1D4,GM1,pair,D1+D4,3.0,>3.0,,1.0:S 2.0:S 3.0:S
+A-D1D2D3D4,GM1,all four,D1+D2+D3+D4,3.75,4.5,4.11,1.0:S 2.0:S 3.0:S 3.75:S 4.5:C
+B-REF,GM1,reference,none,8.0,>8.0,,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 8.0:S
+B-D1,GM1,individual,D1,7.0,8.0,7.48,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 7.0:S 8.0:C
+B-D2,GM1,individual,D2,8.0,>8.0,,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 8.0:S
+B-D3,GM1,individual,D3,8.0,>8.0,,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 8.0:S
+B-D4,GM1,individual,D4,3.75,4.5,4.11,1.0:S 2.0:S 3.0:S 3.75:S 4.5:C
+B-D1D2,GM1,pair,D1+D2,7.0,8.0,7.48,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 7.0:S 8.0:C
+B-D1D3,GM1,pair,D1+D3,6.0,8.0,6.93,1.0:S 2.0:S 3.0:S 4.5:S 6.0:S 8.0:C
+B-D1D4,GM1,pair,D1+D4,1.0,>1.0,,1.0:S
+B-D1D2D3D4,GM1,all four,D1+D2+D3+D4,3.0,3.75,3.35,1.0:S 2.0:S 3.0:S 3.75:C 4.5:C
