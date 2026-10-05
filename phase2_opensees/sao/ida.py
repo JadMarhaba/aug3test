@@ -120,15 +120,22 @@ def _run(job, timeout=5 * 3600):
     print(f"[{time.strftime('%H:%M:%S')}] {tail}  ({time.time() - t0:.0f}s)", flush=True)
 
 
-def run_all(hunts, static_jobs=(), workers=4):
+def run_all(hunts, static_jobs=(), workers=4, priority_jobs=()):
+    """priority_jobs run before any collapse-search step; static_jobs fill idle workers."""
+    prio = [j for j in priority_jobs if result(j) is None]
     static = [j for j in static_jobs if result(j) is None]
-    print(f"{len(hunts)} collapse searches, {len(static)} other jobs, {workers} workers", flush=True)
+    print(f"{len(prio)} priority jobs, {len(hunts)} collapse searches, {len(static)} other jobs, "
+          f"{workers} workers", flush=True)
     lock = threading.Lock()
     running = {}
     with ThreadPoolExecutor(workers) as ex:
         while True:
             with lock:
-                # fill free workers: searches first (in priority order), then static jobs
+                while len(running) < workers and prio:
+                    j = prio.pop(0)
+                    if result(j) is None:
+                        running[ex.submit(_run, j)] = None
+                # fill free workers: searches next (in priority order), then static jobs
                 for h in hunts:
                     if len(running) >= workers:
                         break

@@ -62,6 +62,19 @@ def calibration_hunts(config=CONFIG):
             for kw in CALIBRATION]
 
 
+# Severity ladder at the actual 2025 shaking (SF = 1): D1 and D2 are intensified together,
+# with identical values in both framings, to find the severity at which the as-built
+# collapses under the real event and what the beam-slab does at that same severity.
+SEVERITY_LADDER = [(0.60, 0.40), (0.50, 0.30), (0.40, 0.20), (0.35, 0.10)]   # (f'c ratio, le/ld)
+
+
+def severity_jobs(config=CONFIG, gms=("GM1",)):
+    return [{"kind": "nlth", "gm": g, "sf": 1.0, "dt": 0.025,
+             "variant": C.Variant(config=config, D1=True, D2=True, D3=True, D4=True,
+                                  fc_ratio=fc, embed_ratio=le).name}
+            for g in gms for fc, le in SEVERITY_LADDER]
+
+
 def hunts(config=CONFIG):
     """Collapse searches, most important first: all four deficiencies, reference, singles,
     pairs, triples (record GM1); then GM2 / GM3 for all-four and reference."""
@@ -76,5 +89,4 @@ def hunts(config=CONFIG):
 if __name__ == "__main__":
     w = int(sys.argv[1]) if len(sys.argv) > 1 else 4
     run_jobs(removal_jobs() + pushdown_jobs(), workers=w)
-    H = hunts()
-    run_all(H[:2] + calibration_hunts() + H[2:], pushover_jobs(), workers=w)
+    run_all(hunts(), pushover_jobs(), workers=w, priority_jobs=severity_jobs())
