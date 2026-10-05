@@ -1,3 +1,0 @@
-variant,framing,group,D1,D2,D3,D4,outcome,t_collapse_s,max_drift_corner,max_drift_cm,roof_rotation_rad,link_beams_failed,wall_shear_failures,wall_axial_failures,punching_failures,column_failures,t_first_link_beam_fail,t_first_wall_shear,first_wall_shear,t_first_wall_axial,first_wall_axial,t_first_punch,worst_wall_pier,worst_wall_shear_DCR
-B-REF,Proposed beam-slab (2B),reference,0,0,0,0,survived,,0.0031,0.0019,0.00732,0,0,0,0,0,,,,,,,2-F,0.46
-B-D1D2D3D4,Proposed beam-slab (2B),all four,1,1,1,1,survived,,0.0042,0.0028,0.00731,2,0,0,0,0,58.875,,,,,,4-F,0.64

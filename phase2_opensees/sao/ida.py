@@ -120,8 +120,10 @@ def _run(job, timeout=5 * 3600):
     print(f"[{time.strftime('%H:%M:%S')}] {tail}  ({time.time() - t0:.0f}s)", flush=True)
 
 
-def run_all(hunts, static_jobs=(), workers=4, priority_jobs=()):
-    """priority_jobs run before any collapse-search step; static_jobs fill idle workers."""
+def run_all(hunts, static_jobs=(), workers=4, priority_jobs=(), static_slots=0):
+    """priority_jobs run before any collapse-search step; static_jobs fill idle workers.
+    static_slots workers are kept for static jobs while any are left, so they are not
+    starved until every collapse search has finished."""
     prio = [j for j in priority_jobs if result(j) is None]
     static = [j for j in static_jobs if result(j) is None]
     print(f"{len(prio)} priority jobs, {len(hunts)} collapse searches, {len(static)} other jobs, "
@@ -136,8 +138,10 @@ def run_all(hunts, static_jobs=(), workers=4, priority_jobs=()):
                     if result(j) is None:
                         running[ex.submit(_run, j)] = None
                 # fill free workers: searches next (in priority order), then static jobs
+                n_hunt = sum(1 for v in running.values() if v is not None)
+                cap = workers - (min(static_slots, workers - 1) if static else 0)
                 for h in hunts:
-                    if len(running) >= workers:
+                    if len(running) >= workers or n_hunt >= cap:
                         break
                     if h.busy:
                         continue
@@ -148,6 +152,7 @@ def run_all(hunts, static_jobs=(), workers=4, priority_jobs=()):
                         continue
                     h.busy = True
                     running[ex.submit(_run, j)] = h
+                    n_hunt += 1
                 while len(running) < workers and static:
                     j = static.pop(0)
                     running[ex.submit(_run, j)] = None

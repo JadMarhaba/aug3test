@@ -54,7 +54,7 @@ class Analyzer:
         self.cb_state = {k: 0 for k in b.cb_ele}
         self.pier_state = {k: 0 for k in b.pier_ele}
         self.pier_dcr = {}          # (storey, pier) -> [max Vx/Vn_x, max Vy/Vn_y, max P/(A fc)]
-        self.pier_rot = {}          # (storey, pier) -> [max plastic rotation, limit a, limit b]
+        self.pier_rot = {}          # (storey, pier) -> [max rotation / limit b (X), same (Y), limit b X, limit b Y]
         self.uz0 = {}
 
     # ------------------------------------------------------------------------------------
