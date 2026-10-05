@@ -7,6 +7,7 @@ A-D4,As-built flat slab (2A),individual,0,0,0,1,survived,,0.0036,0.0025,0.01035,
 A-D1D2,As-built flat slab (2A),pair,1,1,0,0,survived,,0.0047,0.0025,0.01283,2,0,0,0,0,26.0,,,,,,5-F,0.45
 A-D1D3,As-built flat slab (2A),pair,1,0,1,0,survived,,0.0050,0.0030,0.01191,0,0,0,0,0,,,,,,,5-F,0.52
 A-D1D4,As-built flat slab (2A),pair,1,0,0,1,survived,,0.0047,0.0026,0.01246,0,0,0,0,0,,,,,,,5-F,0.62
+A-D2D3,As-built flat slab (2A),pair,0,1,1,0,survived,,0.0045,0.0026,0.01254,3,0,0,0,0,59.75,,,,,,5-F,0.44
 A-D1D2D3D4,As-built flat slab (2A),all four,1,1,1,1,survived,,0.0049,0.0029,0.01287,0,0,0,0,0,,,,,,,5-F,0.67
 B-REF,Proposed beam-slab (2B),reference,0,0,0,0,survived,,0.0025,0.0018,0.00660,0,0,0,0,0,,,,,,,2-F,0.42
 B-D1,Proposed beam-slab (2B),individual,1,0,0,0,survived,,0.0026,0.0022,0.00607,0,0,0,0,0,,,,,,,2-R,0.44
@@ -16,4 +17,5 @@ B-D4,Proposed beam-slab (2B),individual,0,0,0,1,survived,,0.0026,0.0019,0.00597,
 B-D1D2,Proposed beam-slab (2B),pair,1,1,0,0,survived,,0.0026,0.0021,0.00607,0,0,0,0,0,,,,,,,2-R,0.43
 B-D1D3,Proposed beam-slab (2B),pair,1,0,1,0,survived,,0.0033,0.0024,0.00620,0,0,0,0,0,,,,,,,2-F,0.51
 B-D1D4,Proposed beam-slab (2B),pair,1,0,0,1,survived,,0.0027,0.0021,0.00668,0,0,0,0,0,,,,,,,2-R,0.62
+B-D2D3,Proposed beam-slab (2B),pair,0,1,1,0,survived,,0.0027,0.0019,0.00682,0,0,0,0,0,,,,,,,2-F,0.43
 B-D1D2D3D4,Proposed beam-slab (2B),all four,1,1,1,1,survived,,0.0030,0.0022,0.00661,0,0,0,0,0,,,,,,,4-R,0.62
