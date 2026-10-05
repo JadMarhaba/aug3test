@@ -212,7 +212,15 @@ class Variant:
         frame = "As-built flat slab" if self.config == "A" else "Proposed beam-slab"
         if not self.deficiencies:
             return f"{frame}: no deficiencies (300 mm walls, specified concrete, full embedment, compliant design)"
-        return f"{frame}: " + "; ".join(DEFICIENCY_INFO[d] for d in self.deficiencies)
+        txt = []
+        for d in self.deficiencies:
+            t = DEFICIENCY_INFO[d]
+            if d == "D1":
+                t = t.replace("(f'c x 0.70)", f"(f'c x {self.fc_ratio:.2f})")
+            if d == "D2":
+                t = t.replace("(le/ld = 0.5)", f"(le/ld = {self.embed_ratio:.2f})")
+            txt.append(t)
+        return f"{frame}: " + "; ".join(txt)
 
     @property
     def label(self):

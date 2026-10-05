@@ -28,6 +28,9 @@ COLLAPSED = ("collapse", "nonconverged")   # non-convergence = dynamic instabili
 def result(job):
     p = os.path.join(RES, job_id(job) + ".json")
     if not os.path.exists(p):
+        lg = os.path.join(RES, job_id(job) + ".log")
+        if os.path.exists(lg) and time.time() - os.path.getmtime(lg) < 300:
+            return "running"          # being run by another process (e.g. before a restart)
         return None
     with open(p) as f:
         r = json.load(f)
@@ -142,8 +145,14 @@ def run_all(hunts, static_jobs=(), workers=4):
                     j = static.pop(0)
                     running[ex.submit(_run, j)] = None
             if not running:
+                external = any(result(h.next_job()) == "running" for h in hunts if h.next_job())
+                if external:
+                    time.sleep(30)                # wait for jobs started by an earlier scheduler
+                    continue
                 break
-            done, _ = wait(list(running), return_when=FIRST_COMPLETED)
+            done, _ = wait(list(running), return_when=FIRST_COMPLETED, timeout=60)
+            if not done:
+                continue
             with lock:
                 for f in done:
                     h = running.pop(f)

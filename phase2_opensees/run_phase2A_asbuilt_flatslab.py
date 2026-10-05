@@ -12,6 +12,9 @@ Analyses (proposal 4.3 "Proposed Experimentation"):
   3. The same collapse search with records GM2 and GM3 for the no-deficiency reference and
      the all-four-deficiency variant (record-to-record variability)
   4. (step 2 doubles as the incremental dynamic analysis: SF vs peak drift up to collapse)
+  4b. Severity calibration: the as-built condition (all four deficiencies) with weaker wall
+     concrete (f'c x 0.60 / 0.50) and shorter link-beam embedment (le/ld = 0.30), searched for
+     the intensity at which it collapses - same inputs for both framings
   5. Pushdown (quasi-static withdrawal) of one core pier at a time + sudden removal of lower
      core piers under gravity (scenarios S1-S5) for A-REF and
        A-D1D2D3D4 -> load redistribution to the column-slab system, punching cascade
@@ -46,6 +49,19 @@ def pushover_jobs(config=CONFIG):
             for d in (2, 1) for v in C.all_deficiency_variants(config)]
 
 
+# Severity calibration: the investigation confirmed D1 and D2 but did not publish how bad they
+# were.  These variants keep all four deficiencies and vary the two unknown severities; the
+# same values are applied to both framings.  Names: _fc = wall f'c / specified,
+# _le = provided / required link-beam bar embedment.
+CALIBRATION = [dict(fc_ratio=0.50, embed_ratio=0.30), dict(fc_ratio=0.50), dict(embed_ratio=0.30),
+               dict(fc_ratio=0.60)]
+
+
+def calibration_hunts(config=CONFIG):
+    return [Hunt(C.Variant(config=config, D1=True, D2=True, D3=True, D4=True, **kw).name, "GM1")
+            for kw in CALIBRATION]
+
+
 def hunts(config=CONFIG):
     """Collapse searches, most important first: all four deficiencies, reference, singles,
     pairs, triples (record GM1); then GM2 / GM3 for all-four and reference."""
@@ -60,4 +76,5 @@ def hunts(config=CONFIG):
 if __name__ == "__main__":
     w = int(sys.argv[1]) if len(sys.argv) > 1 else 4
     run_jobs(removal_jobs() + pushdown_jobs(), workers=w)
-    run_all(hunts(), pushover_jobs(), workers=w)
+    H = hunts()
+    run_all(H[:2] + calibration_hunts() + H[2:], pushover_jobs(), workers=w)
