@@ -186,6 +186,18 @@ class Analyzer:
                     return True
         return False
 
+    def _piers_insane(self):
+        """Cheap per-step screen of the wall piers: a single step that jumps to >2 % axial or
+        >3 % shear strain is treated as a corrupted (numerical) state."""
+        for k, tag in self.b.pier_ele.items():
+            if tag in self.removed:
+                continue
+            for ip in (1, 2, 3):
+                d = ops.eleResponse(tag, "section", ip, "deformation")
+                if abs(d[0]) > 0.02 or abs(d[4]) > 0.03 or abs(d[5]) > 0.03:
+                    return True
+        return False
+
     def _orphan(self, i, p):
         """True if the floor-level core node of pier p at level i has lost the wall both below
         and above it (a loose wall fragment, not a supported part of the core)."""
@@ -237,33 +249,38 @@ class Analyzer:
                 emin = min(emin, d[0])
                 gam = max(gam, abs(d[4]), abs(d[5]))
             # --- flexure-compression: plastic hinge rotation vs ASCE 41-13 Table 10-19 -------
-            # curvature about local z = bending in X (depth lw_x), about local y = bending in Y
+            # plastic rotation = sum over the 3 Lobatto points of weight x plastic curvature
+            # (weights h/6, 4h/6, h/6); curvature about local z = bending in X (depth lw_x),
+            # about local y = bending in Y (depth lw_y).  Each direction uses its own shear ratio.
             if full:
                 ey = C.FY_EXP / C.ES
-                kp_x = kp_y = 0.0
-                for ip in (1, 3):
-                    d = ops.eleResponse(tag, "section", ip, "deformation")
-                    kp_x = max(kp_x, abs(d[1]) - 2.0 * ey / info["lw_x"])
-                    kp_y = max(kp_y, abs(d[2]) - 2.0 * ey / info["lw_y"])
                 h = info["h"]
-                th = max(kp_x * min(0.5 * info["lw_x"], h), kp_y * min(0.5 * info["lw_y"], h), 0.0)
+                th_x = th_y = 0.0
+                for ip, w in ((1, h / 6), (2, 4 * h / 6), (3, h / 6)):
+                    d = ops.eleResponse(tag, "section", ip, "deformation")
+                    th_x += w * max(abs(d[1]) - 2.0 * ey / info["lw_x"], 0.0)
+                    th_y += w * max(abs(d[2]) - 2.0 * ey / info["lw_y"], 0.0)
                 dcr = self.pier_dcr.get(k, [0.0, 0.0, 0.0])
-                v_ratio = max(dcr[0] * info["Vn_x"] / info["Acv_x"], dcr[1] * info["Vn_y"] / info["Acv_y"]) \
-                    / C.MPA / math.sqrt(info["fc"])
-                rho_term = info["rho_v"] * C.FY_EXP / info["fc"]
-                a_lim, b_lim = wall_flexure_limits(info["axial_ratio"] + rho_term, v_ratio, info["confined"])
-                cur = self.pier_rot.setdefault(k, [0.0, a_lim, b_lim])
-                cur[0], cur[1], cur[2] = max(cur[0], th), a_lim, b_lim
-                if cur[0] >= a_lim and not info.get("flex_a"):
+                sq = math.sqrt(info["fc"]) * C.MPA
+                vx = dcr[0] * info["Vn_x"] / info["Acv_x"] / sq
+                vy = dcr[1] * info["Vn_y"] / info["Acv_y"] / sq
+                ax = info["axial_ratio"]        # symmetric distributed steel: (As - As') ~ 0
+                ax_a, ax_b = wall_flexure_limits(ax, vx, info["confined"])
+                ay_a, ay_b = wall_flexure_limits(ax, vy, info["confined"])
+                cur = self.pier_rot.setdefault(k, [0.0, 0.0, 0.0, 0.0])
+                cur[0] = max(cur[0], th_x / ax_b)          # demand / capacity, X bending
+                cur[1] = max(cur[1], th_y / ay_b)          # demand / capacity, Y bending
+                cur[2], cur[3] = ax_b, ay_b
+                if (th_x >= ax_a or th_y >= ay_a) and not info.get("flex_a"):
                     info["flex_a"] = True
-                    self._event("wall_flexure_strength_loss", f"S{k[0]}-{k[1]}", rot=round(cur[0], 5),
-                                a=round(a_lim, 4))
-                if cur[0] >= b_lim:
+                    self._event("wall_flexure_strength_loss", f"S{k[0]}-{k[1]}", rot_x=round(th_x, 5),
+                                rot_y=round(th_y, 5))
+                if th_x >= ax_b or th_y >= ay_b:
                     self._remove_pier(k)
                     self.n_fail["wall_axial"] += 1
                     nrem += 1
-                    self._event("wall_axial_failure", f"S{k[0]}-{k[1]}", rot=round(cur[0], 5), b=round(b_lim, 4),
-                                cause="flexure-compression (ASCE 41 b)")
+                    self._event("wall_axial_failure", f"S{k[0]}-{k[1]}", rot_x=round(th_x, 5), b_x=round(ax_b, 4),
+                                rot_y=round(th_y, 5), b_y=round(ay_b, 4), cause="flexure-compression (ASCE 41 b)")
                     continue
             st = self.pier_state[k]
             gp = min(info["back_x"]["gd"], info["back_y"]["gd"])     # end of strength plateau
@@ -298,7 +315,7 @@ class Analyzer:
                     continue
                 cb = b.cb_info[k]
                 rot = 0.0
-                for ip in (1, 4):
+                for ip in (1, 6):
                     try:
                         d = ops.eleResponse(tag, "section", ip, "deformation")
                         rot = max(rot, abs(d[2]) * cb["lp"])
@@ -437,7 +454,8 @@ class Analyzer:
         a1 = zeta * 2 / (w1 + w2)
         ops.rayleigh(a0, 0.0, 0.0, 0.0)
         eles = [e for e in self.b.all_frame_elements() if e not in self.removed]
-        ops.region(1, "-ele", *eles, "-rayleigh", 0.0, 0.0, 0.0, a1)
+        # '-eleOnly': setting '-ele' would also reset the nodal mass-proportional term a0 to zero
+        ops.region(1, "-eleOnly", *eles, "-rayleigh", 0.0, 0.0, 0.0, a1)
         self.damp = (a0, a1)
 
     # ------------------------------------------------------------------------------------
@@ -445,7 +463,7 @@ class Analyzer:
         """Advance one time step.  Returns 0 on success, -1 if every fallback failed, -2 if a
         fallback 'converged' to a numerically corrupted state (see _insane)."""
         if ops.analyze(1, dt) == 0:
-            return 0
+            return -2 if self._piers_insane() else 0
         # if a step fails to converge: try other solution algorithms, then sub-step
         algos = [("Newton",), ("NewtonLineSearch", "-type", "Bisection"), ("ModifiedNewton", "-initial")]
         t0 = ops.getTime()

@@ -246,8 +246,10 @@ class SAOBuildingBase:
         el = self.sec()
         ops.section("Elastic", el, E, A, Iz, Iy, G, J)
         mP, mZ, mT = self._elastic_mat(E * A), self._elastic_mat(E * Iz), self._elastic_mat(G * J)
-        hi = self._hinge_mat(E * Iy, lp, Mp_i, Mn_i, th_p, th_pc, res, pinch)
-        hj = self._hinge_mat(E * Iy, lp, Mp_j, Mn_j, th_p, th_pc, res, pinch)
+        # OpenSees sign: a positive section moment My (local z = up) puts the TOP in tension,
+        # i.e. it is HOGGING - so the hogging capacity goes on the positive branch
+        hi = self._hinge_mat(E * Iy, lp, Mn_i, Mp_i, th_p, th_pc, res, pinch)
+        hj = self._hinge_mat(E * Iy, lp, Mn_j, Mp_j, th_p, th_pc, res, pinch)
         si, sj = self.sec(), self.sec()
         # 'Aggregator' combines independent axial (P), in-plane (Mz), gravity-plane (My) and
         # torsion (T) responses into one section; only 'My' is nonlinear.
