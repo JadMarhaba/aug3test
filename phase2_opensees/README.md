@@ -7,6 +7,8 @@ This folder holds the Phase 2 work from the dissertation proposal: nonlinear mod
 
 Both models are run with the documented deficiencies, first one at a time and then in every combination (proposal Part 4). Phase 1 (ETABS elastic) and Phase 3 (recommendations and cost) are not part of this folder.
 
+**Results:** start with `REPORT_phase2_findings.md`. It answers each Phase 2A / 2B question and hypothesis from the proposal. Load redistribution is detailed in `REPORT_alp.md`, and the modelling and the corrections applied in `REPORT_methods.md`.
+
 ## Which file is which
 
 | File | Model | What it does |
@@ -18,7 +20,7 @@ Both models are run with the documented deficiencies, first one at a time and th
 | `run_00_design_basis.py` | shared | Sizes the reinforcement the proposal does not give, writing `results/design.json`. |
 | `run_01_ground_motions.py` | shared | Builds the 3 bidirectional records matched to the 2025-event spectrum in Bangkok. |
 | `run_02_all_phase2.py` | shared | Runs the 2A and 2B job lists together on all CPU cores. |
-| `run_03_postprocess.py` | shared | Produces the tables and figures in `figures/` and the numbers quoted in `REPORT.md`. |
+| `run_03_postprocess.py` | shared | Produces the tables and figures in `figures/` and the numbers quoted in `REPORT_phase2_findings.md`, `REPORT_alp.md` and `REPORT_methods.md`. |
 | `sao/config.py` | shared | All geometry, material and load values (proposal Sec. 3.2), the deficiency definitions D1–D4, and the `Variant` naming. |
 | `sao/building_common.py` | shared | Everything identical in both models: columns, the 3-pier core, link beams, diaphragms, loads and mass. |
 | `sao/capacities.py` | shared | Strength formulas: wall shear, link beams, punching, slab strips, beams. |

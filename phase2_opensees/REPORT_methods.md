@@ -81,3 +81,16 @@ Collapse is defined as any of:
 * loss of dynamic equilibrium (non-convergence).
 
 A run that stops because the solver landed in a corrupted state is labelled *numerical*, not collapse. It is repeated with a 0.01 s time step before it counts.
+
+### 2.5 Corrections and verification (applied before the final runs)
+
+All results in `REPORT_phase2_findings.md` and `REPORT_alp.md` come from the corrected code. Results from before the corrections are kept in `results/old/`.
+
+| Item | Problem found | Fix | Check |
+|---|---|---|---|
+| Rayleigh damping (`Analyzer.set_damping`) | Assigning stiffness damping to the element region also reset the mass-proportional term, giving about 0.3 % damping in mode 1 | `region(..., "-eleOnly", ...)` | Free-vibration log decrement (`verify_damping.py`): A-REF 2.6 %, B-REF 2.4 % (target 2.5 %) |
+| Beam / slab-strip hinges (`hinged_member`) | Hogging and sagging capacities were on the wrong branches of the moment–rotation law | Hogging capacity placed on the positive (top-in-tension) branch | – |
+| ASCE 41 wall rotation | Plastic rotation over-estimated | Σ (Lobatto weight × plastic curvature), with X and Y each checked against their own limit | – |
+| Corrupted solver states | A solver fallback could "converge" to a corrupted state | Per-step pier strain / shear sanity check; such runs are labelled *numerical* and repeated at dt = 0.01 s | – |
+| Pushover solver | Pushovers stopped early on non-convergence while still at peak strength | Same fallbacks as the response histories (other algorithms, 10 / 100 sub-steps, relaxed tolerance) | B-D1 in X now reaches 1.69 % roof drift (before: 0.80 %) |
+| Pushover curves (post-processing) | The step at which a core pier is removed, and diverging last steps, produced false strength spikes | Curves end at the first core-pier axial failure or at a core-shear reversal | – |
