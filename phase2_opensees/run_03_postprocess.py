@@ -164,12 +164,17 @@ def po_curve(r):
     the loss of a core pier ends the useful pushover.  Returns (curve, cut) - cut True if the
     curve was ended by a pier failure."""
     c = np.array(r.get("curve") or [])
+    if len(c) > 5:
+        # a core base shear that reverses sign under a monotonic push marks a diverging solution
+        # in the last steps before non-convergence: drop those steps (not strength)
+        neg = np.nonzero(c[5:, 1] * np.sign(c[5, 1]) < 0)[0]
+        if len(neg):
+            c = c[:5 + neg[0]]
     fax = first_event(r.get("events", []), ("wall_axial_failure",))
     if fax and len(c):
         n = max(int(fax["t"]) - 1, 1)
-        if n < len(c):
+        if n <= len(c):
             return c[:n], True
-        return c, True
     return c, False
 
 
