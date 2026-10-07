@@ -21,3 +21,6 @@
 [14:56:56] DONE pushdown/A-REF_P3_R_story1 nonconverged 236.6  (237s)
 [14:58:25] DONE pushdown/A-REF_P4_F_1-4 nonconverged 88.2  (89s)
 [15:02:12] DONE pushdown/A-D1D2D3D4_P1_F_story1 nonconverged 226.5  (227s)
+[15:03:58] DONE nlth/A-D1D2D3D4_fc0.50_le0.30_GM1_sf2.00 completed 1602.1  (1603s)
+[15:04:01] DONE nlth/A-D1D2D3D4_GM1_sf2.00 completed 1603.5  (1604s)
+[15:04:04] DONE nlth/A-REF_GM1_sf2.00 completed 1600.0  (1600s)
