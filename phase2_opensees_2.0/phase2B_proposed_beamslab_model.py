@@ -62,6 +62,8 @@ class ProposedBeamSlabModel(SAOBuildingBase):
     def _end_node(self, i, end):
         """Beams connect directly to the column nodes and to the core-wall attachment nodes."""
         kind, key = end
+        if kind == "corner":                 # version 2.0: free tip of a corner cantilever beam
+            return self.K[(i, key)]
         return self.Nc[(i, key)] if kind == "col" else self.W[(i, key)]
 
     def _floor_system(self):
@@ -72,12 +74,10 @@ class ProposedBeamSlabModel(SAOBuildingBase):
                 ni, nj = self._end_node(i, sg["a"]), self._end_node(i, sg["b"])
                 As_top, As_bot = self.design["beam_As"][zone]["perim" if sg["perim"] else "int"]
                 pr = beam_section(As_top, As_bot)
+                # version 2.0: every beam, including those framing into the core walls, is a
+                # normal moment-connected beam with its full hinge capacity at both ends
                 Mp_i = Mp_j = pr["My_pos"]
                 Mn_i = Mn_j = pr["My_neg"]
-                if sg["a"][0] == "core":            # beam end at a thin core wall
-                    Mp_i, Mn_i = 0.25 * Mp_i, 0.25 * Mn_i
-                if sg["b"][0] == "core":
-                    Mp_j, Mn_j = 0.25 * Mp_j, 0.25 * Mn_j
                 tag = self.ele()
                 self.hinged_member(tag, ni, nj, pr["E"], pr["A"], pr["Iy"], pr["Iz"], pr["J"], pr["lp"],
                                    Mp_i, Mn_i, Mp_j, Mn_j, pr["th_p"], pr["th_pc"], pr["res"], (0.8, 0.3))

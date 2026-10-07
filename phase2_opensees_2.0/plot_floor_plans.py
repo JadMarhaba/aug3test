@@ -1,4 +1,5 @@
 """
+VERSION 2.0 (corner cantilevers, all beams moment-connected, 250 mm slab in both models).
 BOTH MODELS - typical floor plans drawn directly from the OpenSees model data
 (column nodes, core wall segments, link beams, slab strips / beams), so the sketch shows
 exactly what is analysed.  Output: figures/fig00_floor_plans.png
@@ -10,6 +11,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 
 from sao import config as C
 from sao import plotting as P
+from sao.building_common import CORNERS
 from sao.capacities import pier_segments, core_points, COUPLING_BEAMS, CONN_POINTS, PIERS
 from sao.design import load_design
 from sao.registry import model_class
@@ -21,6 +23,8 @@ PIER_NAME = {"R": "R  rear pier (C)", "M": "M  middle pier (I)", "F": "F  front 
 
 def end_xy(b, end, cp):
     kind, ref = end
+    if kind == "corner":
+        return CORNERS[ref]
     if kind == "col":
         c = b.cols[ref]
         return c["x"], c["y"]
@@ -31,6 +35,10 @@ def draw(ax, cfg):
     b = model_class(cfg)(variant_from_name(f"{cfg}-REF"), load_design(), mode="elastic").build()
     cp = core_points()
     L = C.PLAN
+    # slab: covers the whole 39 x 39 m plate to the corners (both models), shafts excluded
+    ax.add_patch(Rectangle((0, 0), L, L, color="#e9eef3", lw=0, zorder=0))
+    cc = C.CORE
+    ax.add_patch(Rectangle((cc["x0"], cc["y0"]), cc["x1"] - cc["x0"], cc["y1"] - cc["y0"], color="white", lw=0, zorder=0))
     ax.add_patch(Rectangle((0, 0), L, L, fill=False, lw=1.2, ec=P.INK))
     for g in C.GRID:                                            # grid lines
         ax.plot([g, g], [-1.5, L + 1.5], color=P.MUTED, lw=0.5, ls=(0, (6, 4)), zorder=0)
@@ -51,9 +59,10 @@ def draw(ax, cfg):
                                        alpha=0.45, lw=0, zorder=1))
             ax.plot([xa, xb], [ya, yb], color="#4a8ac9", lw=0.8, zorder=2)
         else:
-            to_core = "core" in (sg["a"][0], sg["b"][0])
-            ax.plot([xa, xb], [ya, yb], color="#e07b39", lw=3.2 if not to_core else 2.4,
-                    ls="-" if not to_core else (0, (3, 1.5)), solid_capstyle="butt", zorder=2)
+            ax.plot([xa, xb], [ya, yb], color="#b5179e" if sg.get("cantilever") else "#e07b39", lw=3.2,
+                    solid_capstyle="butt", zorder=2)
+    for (cx, cy) in CORNERS:                                  # free corner nodes
+        ax.plot(cx, cy, "o", color="#b5179e" if cfg == "B" else "#4a8ac9", ms=4, zorder=8)
     # core walls
     for p in PIERS:
         t = b.pier_info[(1, p)]["t"]
@@ -90,15 +99,19 @@ def draw(ax, cfg):
     ax.set_ylabel("y (m)")
     if cfg == "A":
         ax.set_title(f"2A  As-built: {C.SLAB_T_FLAT * 1000:.0f} mm PT flat slab, no beams\n"
-                     f"{len(b.segments)} slab strips/floor, {len(b.cols)} columns, "
-                     f"{len(b.cols) + len(CONN_POINTS)} punching connections", fontsize=9.5)
+                     f"{len(b.segments)} slab strips/floor (incl. 8 corner cantilevers), {len(b.cols)} columns, "
+                     f"{len(b.cols) + len(CONN_POINTS)} punching connections\nslab cantilevers to the 4 corners (no corner columns)", fontsize=9.5)
     else:
         nc = sum(1 for sg in b.segments if "core" in (sg["a"][0], sg["b"][0]))
+        nk = sum(1 for sg in b.segments if sg.get("cantilever"))
         ax.set_title(f"2B  Proposed: {C.BEAM_B * 1000:.0f}x{C.BEAM_H * 1000:.0f} beams + "
-                     f"{C.SLAB_T_BEAM * 1000:.0f} mm slab\n{len(b.segments)} beams/floor "
-                     f"({len(b.segments) - nc} column-column, {nc} into core), {len(b.cols)} columns",
-                     fontsize=9.5)
+                     f"{C.SLAB_T_BEAM * 1000:.0f} mm slab\n{len(b.segments)} beams/floor"
+                     f"\n({len(b.segments) - nc - nk} column-column, {nc} column-core, {nk} corner cantilevers), "
+                     f"{len(b.cols)} columns", fontsize=9.5)
     return b
+
+
+OUT = 'figures/fig00_floor_plans.png'
 
 
 def main():
@@ -109,15 +122,16 @@ def main():
          plt.Line2D([], [], color="#4a8ac9", lw=4, alpha=0.6, label="flat-slab strip (effective width)"),
          plt.Line2D([], [], color="#d1495b", ls=(0, (2, 1.5)), marker="o", mfc="none", ms=9, lw=0,
                     label="punching connection (flat slab only)"),
-         plt.Line2D([], [], color="#e07b39", lw=3.2, label="beam 500x800, column to column"),
-         plt.Line2D([], [], color="#e07b39", lw=2.4, ls=(0, (3, 1.5)), label="beam 500x800 into core wall"),
+         plt.Line2D([], [], color="#e07b39", lw=3.2, label="beam 500x800 (column-column and column-core, moment connected)"),
+         plt.Line2D([], [], color="#b5179e", lw=3.2, label="cantilever beam 500x800 to the corner (5.5 m)"),
+         plt.Line2D([], [], color="#e9eef3", lw=8, label="slab (to the corners in both models)"),
          plt.Line2D([], [], color="#f2c14e", lw=3, label="link (coupling) beam 250x500, 4 per floor")]
     h += [plt.Line2D([], [], color=PIER_COL[p], lw=6, label=f"core wall - {PIER_NAME[p]}") for p in PIERS]
     fig.legend(handles=h, loc="lower center", ncol=3, fontsize=8, frameon=False)
-    fig.suptitle("Typical floor plan as modelled in OpenSees (same grid, columns and core in both; "
+    fig.suptitle("Version 2.0 - typical floor plan as modelled (same grid, columns and core in both; "
                  "only the floor framing differs)", fontsize=10.5, fontweight="bold")
     fig.tight_layout(rect=(0, 0.13, 1, 0.96))
-    fig.savefig("figures/fig00_floor_plans.png", dpi=150)
+    fig.savefig(OUT, dpi=150)
 
 
 if __name__ == "__main__":

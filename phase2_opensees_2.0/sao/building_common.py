@@ -38,6 +38,7 @@ Node-numbering scheme (level i = 0..33, 0 = base)
     300000 + 1000 i + k   core pier centroid, k = 0 R, 1 M, 2 F   (both)
     400000 + 1000 i + k   point on a core wall (rigid-arm end)    (both)
     500000 + 1000 i + k   slab node at a core-wall connection     (flat slab only)
+    600000 + 1000i + k    free corner node k of floor i (v2.0)     (both)
     900000 + i            diaphragm master node of floor i        (both)
 
 Units: kN, m, s, tonne.
@@ -63,6 +64,9 @@ class TagGen:
     def __call__(self):
         self.n += 1
         return self.n
+
+
+CORNERS = [(0.0, 0.0), (C.PLAN, 0.0), (0.0, C.PLAN), (C.PLAN, C.PLAN)]   # version 2.0
 
 
 class SAOBuildingBase:
@@ -91,6 +95,7 @@ class SAOBuildingBase:
         self.ncol = len(self.cols)
         # node dictionaries
         self.Nc, self.Ns, self.P, self.W, self.Nsc, self.master = {}, {}, {}, {}, {}, {}
+        self.K = {}               # version 2.0: free corner nodes (tips of the corner cantilevers)
         # element registries used by the analyses / failure monitors
         self.col_ele, self.pier_ele, self.pier_info = {}, {}, {}
         self.cb_ele, self.cb_info = {}, {}
@@ -154,6 +159,10 @@ class SAOBuildingBase:
                 n = 400000 + i * 1000 + k
                 ops.node(n, x, y, z)
                 self.W[(i, name)] = n
+            for k, (x, y) in enumerate(CORNERS):                # version 2.0: plan corners (no column)
+                n = 600000 + i * 1000 + k
+                ops.node(n, x, y, z)
+                self.K[(i, k)] = n
             self._floor_nodes(i)                                # extra nodes of the framing type
             m = 900000 + i                                      # diaphragm master node
             ops.node(m, C.PLAN / 2, C.PLAN / 2, z)
@@ -495,6 +504,12 @@ class SAOBuildingBase:
         pts.sort(key=lambda a: a[0])
         return pts
 
+    def _col_at(self, x, y):
+        for c, col in enumerate(self.cols):
+            if abs(col["x"] - x) < 1e-6 and abs(col["y"] - y) < 1e-6:
+                return c
+        raise ValueError(f"no column at ({x}, {y})")
+
     def _build_segments(self):
         """Spans along every column line between supports (columns or core walls).
 
@@ -513,6 +528,23 @@ class SAOBuildingBase:
                         continue                       # span inside the core: no member
                     segs.append(dict(dir=direction, coord=coord, s0=s0, s1=s1, a=a, b=b, L=s1 - s0,
                                      l2=0.5 * (lo + hi), perim=li in (0, len(g) - 1)))
+        # version 2.0: the plan corners have no columns; the floor (slab strip in the flat slab,
+        # 500 x 800 beam in the beam-slab) cantilevers from the nearest edge column to each corner
+        # along both edges (8 cantilevers per floor, 5.5 m each)
+        for k, (cx, cy) in enumerate(CORNERS):
+            for direction in ("x", "y"):
+                if direction == "x":
+                    coord, s_c = cy, cx
+                    s_col = g[1] if cx == 0 else g[-2]
+                    col = self._col_at(s_col, cy)
+                else:
+                    coord, s_c = cx, cy
+                    s_col = g[1] if cy == 0 else g[-2]
+                    col = self._col_at(cx, s_col)
+                ends = sorted([(s_c, ("corner", k)), (s_col, ("col", col))], key=lambda e: e[0])
+                segs.append(dict(dir=direction, coord=coord, s0=ends[0][0], s1=ends[1][0], a=ends[0][1],
+                                 b=ends[1][1], L=abs(s_col - s_c), l2=0.5 * (g[1] - g[0]), perim=True,
+                                 cantilever=True))
         for k, sgm in enumerate(segs):
             sgm["id"] = k
         self.segments = segs
@@ -538,6 +570,7 @@ class SAOBuildingBase:
         for i in range(1, C.N_STORY + 1):
             slaves = [self.Nc[(i, c)] for c in range(self.ncol)] + [self.P[(i, p)] for p in PIERS]
             slaves += self._diaphragm_extra_slaves(i)
+            slaves += [self.K[(i, k)] for k in range(len(CORNERS))]
             ops.rigidDiaphragm(3, self.master[i], *slaves)
 
     # ====================================================================================

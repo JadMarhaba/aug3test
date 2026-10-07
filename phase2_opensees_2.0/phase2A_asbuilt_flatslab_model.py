@@ -83,6 +83,8 @@ class AsBuiltFlatSlabModel(SAOBuildingBase):
     def _end_node(self, i, end):
         """Slab strips connect to the SLAB nodes (not directly to columns / walls)."""
         kind, key = end
+        if kind == "corner":                 # version 2.0: free tip of a corner cantilever strip
+            return self.K[(i, key)]
         return self.Ns[(i, key)] if kind == "col" else self.Nsc[(i, key)]
 
     def _diaphragm_extra_slaves(self, i):
