@@ -91,3 +91,7 @@
   t=  20.87  cb_yield           L33-CB1 {'rot': 0.00585}
   t=  21.00  cb_yield           L28-CB0 {'rot': 0.00579}
   t=  22.25  cb_yield           L2-CB1 {'rot': 0.00588}
+  t=  24.75  cb_yield           L12-CB2 {'rot': 0.00536}
+  t=  24.87  cb_yield           L14-CB2 {'rot': 0.00596}
+  t=  24.87  cb_yield           L15-CB2 {'rot': 0.00568}
+  t=  24.87  cb_yield           L16-CB2 {'rot': 0.00535}
