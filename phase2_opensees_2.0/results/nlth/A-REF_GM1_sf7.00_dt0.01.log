@@ -324,3 +324,16 @@
   t=  44.70  punching           L31-col20 {'drift': np.float64(0.0221), 'vg_vc': 0.362, 'conn': 'column'}
   t=  44.70  punching           L32-col9 {'drift': np.float64(0.0211), 'vg_vc': 0.379, 'conn': 'column'}
   t=  44.70  punching           L32-col20 {'drift': np.float64(0.0219), 'vg_vc': 0.381, 'conn': 'column'}
+  t=  44.75  punching           L33-col21 {'drift': np.float64(0.0231), 'vg_vc': 0.352, 'conn': 'column'}
+  t=  44.85  punching           L33-col20 {'drift': np.float64(0.0217), 'vg_vc': 0.378, 'conn': 'column'}
+  t=  44.90  punching           L24-col21 {'drift': np.float64(0.024), 'vg_vc': 0.33, 'conn': 'column'}
+  t=  44.90  punching           L25-col21 {'drift': np.float64(0.0241), 'vg_vc': 0.335, 'conn': 'column'}
+  t=  44.90  punching           L26-col21 {'drift': np.float64(0.0241), 'vg_vc': 0.329, 'conn': 'column'}
+  t=  44.90  punching           L27-col21 {'drift': np.float64(0.0241), 'vg_vc': 0.326, 'conn': 'column'}
+  t=  44.90  punching           L28-col21 {'drift': np.float64(0.024), 'vg_vc': 0.325, 'conn': 'column'}
+  t=  44.90  punching           L29-col21 {'drift': np.float64(0.024), 'vg_vc': 0.348, 'conn': 'column'}
+  t=  44.90  punching           L30-col21 {'drift': np.float64(0.0238), 'vg_vc': 0.35, 'conn': 'column'}
+  t=  44.90  punching           L33-col19 {'drift': np.float64(0.0202), 'vg_vc': 0.44, 'conn': 'column'}
+  t=  44.95  punching           L29-col23 {'drift': np.float64(0.0242), 'vg_vc': 0.324, 'conn': 'column'}
+  t=  44.97  punching           L29-col11 {'drift': np.float64(0.016), 'vg_vc': 0.48, 'conn': 'column'}
+  t=  44.97  punching           L30-col11 {'drift': np.float64(0.016), 'vg_vc': 0.482, 'conn': 'column'}
