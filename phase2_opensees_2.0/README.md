@@ -1,21 +1,23 @@
-# Phase 2 (version 2.0) – as-built flat slab thinned to 250 mm
+# Phase 2 (version 2.0) – revised floor framing, 250 mm slab in both models
 
-**Only change from `../phase2_opensees`:** the as-built post-tensioned flat slab is 250 mm thick instead of 300 mm, the same thickness as the slab in the beam-slab model (`sao/config.py`: `SLAB_T_FLAT = 0.25`). The thinner slab changes:
+Version 2.0 differs from `../phase2_opensees` (version 1) in three ways, agreed against the floor plan in `figures/fig00_floor_plans.png`:
 
-* the slab self-weight and mass;
-* the stiffness and strength of the slab strips;
-* the punching capacity.
+1. **250 mm slab in both models.** The as-built PT flat slab is thinned from 300 mm to 250 mm (`sao/config.py`: `SLAB_T_FLAT = 0.25`). The beam-slab slab was already 250 mm.
+2. **Corner cantilevers.** There are no columns at the four plan corners. In both models the floor cantilevers 5.5 m from the nearest edge column to each corner, along both edges: 8 cantilevers per floor. They are slab strips in the as-built and 500 × 800 beams in the beam-slab (`sao/building_common.py`, `_build_segments`, `CORNERS`).
+3. **All beams fully moment-connected.** In the beam-slab, the 8 beams per floor that frame into the core walls now keep their full hinge capacity at the wall end. In version 1 that end was capped at 25 %.
 
-Everything else is unchanged: the design basis (`results/design.json`, copied as is; no re-design or code check for the thinner slab), the ground motions, the deficiencies, and the analysis settings.
+The slab covers the whole 39 × 39 m plate to the corners, except inside the core. The link (coupling) beams join only the core piers to one another: 4 per floor, across 1.5 m openings (assumed).
 
-The proposed beam-slab model is identical to version 1, so its results (`results/*/B-*`) are copied from `../phase2_opensees` rather than re-run.
+Unchanged from version 1: the design basis (`results/design.json`, copied as is, with no re-design or code check), the ground motions, the deficiencies D1–D4, and all analysis settings.
 
-| Model | Weight | T1 / T2 / T3 (s) | Storey-1 front pier P/(A·f′c) |
-|---|---|---|---|
-| As-built, 300 mm (v1), no deficiency | 549 MN | 5.85 / 4.98 / 2.49 | 0.17 |
-| **As-built, 250 mm (v2.0), no deficiency** | **496 MN** | **6.13 / 4.98 / 2.50** | **0.15** |
-| As-built, 250 mm (v2.0), all four deficiencies | 484 MN | 6.90 / 5.78 / 2.85 | 0.23 (v1: 0.26) |
-| Beam-slab (unchanged) | 570 MN | 4.24 / 4.23 / 2.10 | 0.18 |
+| Model (version 2.0) | Weight | T1 / T2 / T3 (s) | Corner tip sag under gravity | Cantilever moment / capacity |
+|---|---|---|---|---|
+| As-built 250 mm, no deficiency | 496 MN | 6.11 / 4.98 / 2.51 | 25–40 mm | 0.50–0.52 |
+| As-built 250 mm, all four | 484 MN | 6.87 / 5.76 / 2.86 | 25–40 mm | 0.50–0.52 |
+| Beam-slab, no deficiency | 580 MN | 4.19 / 4.17 / 2.06 | 8–24 mm | 0.11–0.16 |
+| Beam-slab, all four | 568 MN | 4.51 / 4.39 / 2.22 | 8–24 mm | 0.12–0.16 |
+
+All analyses of version 1 are re-run here for both models. Results from an earlier 2.0 attempt with the version-1 floor layout are kept in `results/old/v2_before_corner_cantilevers/`.
 
 ---
 
