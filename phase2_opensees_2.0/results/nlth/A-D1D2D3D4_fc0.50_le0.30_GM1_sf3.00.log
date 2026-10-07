@@ -263,3 +263,6 @@
   progress t=  50.0s  max corner drift so far=0.0115  wall clock=815s
   progress t=  60.0s  max corner drift so far=0.0133  wall clock=983s
   progress t=  70.0s  max corner drift so far=0.0133  wall clock=1143s
+  progress t=  80.0s  max corner drift so far=0.0133  wall clock=1305s
+  progress t=  90.0s  max corner drift so far=0.0133  wall clock=1462s
+  progress t= 100.0s  max corner drift so far=0.0133  wall clock=1620s
