@@ -22,3 +22,7 @@
   t=  22.00  cb_yield           L12-CB3 {'rot': 0.0056}
   t=  23.00  cb_yield           L13-CB1 {'rot': 0.00551}
   t=  23.00  cb_yield           L13-CB3 {'rot': 0.00552}
+  t=  24.00  cb_yield           L1-CB1 {'rot': 0.01049}
+  t=  24.00  cb_yield           L1-CB3 {'rot': 0.00984}
+  t=  24.00  cb_yield           L14-CB1 {'rot': 0.00545}
+  t=  24.00  cb_yield           L14-CB3 {'rot': 0.00546}
