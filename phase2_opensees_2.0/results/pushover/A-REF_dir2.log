@@ -269,3 +269,16 @@
   t= 193.00  punching           L17-col14 {'drift': np.float64(0.0258), 'vg_vc': 0.286, 'conn': 'column'}
   t= 193.00  punching           L18-col14 {'drift': np.float64(0.0257), 'vg_vc': 0.286, 'conn': 'column'}
   t= 193.00  punching           L21-col11 {'drift': np.float64(0.0247), 'vg_vc': 0.317, 'conn': 'column'}
+  step 193  solver fallback: 100 sub-steps, tol 0.0001
+  t= 194.00  punching           L13-col11 {'drift': np.float64(0.0259), 'vg_vc': 0.293, 'conn': 'column'}
+  t= 194.00  punching           L14-col11 {'drift': np.float64(0.0261), 'vg_vc': 0.292, 'conn': 'column'}
+  t= 194.00  punching           L17-col11 {'drift': np.float64(0.0261), 'vg_vc': 0.292, 'conn': 'column'}
+  t= 194.00  punching           L18-col11 {'drift': np.float64(0.026), 'vg_vc': 0.292, 'conn': 'column'}
+  t= 194.00  punching           L19-col14 {'drift': np.float64(0.0258), 'vg_vc': 0.287, 'conn': 'column'}
+  step 194  solver fallback: 100 sub-steps, tol 1e-05
+  t= 195.00  punching           L19-col11 {'drift': np.float64(0.026), 'vg_vc': 0.291, 'conn': 'column'}
+  t= 195.00  punching           L22-col14 {'drift': np.float64(0.0244), 'vg_vc': 0.312, 'conn': 'column'}
+  step 195  solver fallback: 10 sub-steps, tol 1e-05
+  t= 196.00  punching           L20-col14 {'drift': np.float64(0.0258), 'vg_vc': 0.287, 'conn': 'column'}
+  t= 196.00  punching           L22-col11 {'drift': np.float64(0.0247), 'vg_vc': 0.317, 'conn': 'column'}
+  step 196  solver fallback: NewtonLineSearch
