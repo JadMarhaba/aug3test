@@ -261,3 +261,7 @@
   t=  43.25  cb_failure         L3-CB2 {'rot': 0.03299}
   progress t=  50.0s  max corner drift so far=0.0216  wall clock=793s
   progress t=  60.0s  max corner drift so far=0.0230  wall clock=966s
+  progress t=  70.0s  max corner drift so far=0.0230  wall clock=1122s
+  progress t=  80.0s  max corner drift so far=0.0230  wall clock=1256s
+  progress t=  90.0s  max corner drift so far=0.0230  wall clock=1383s
+  progress t= 100.0s  max corner drift so far=0.0230  wall clock=1512s
