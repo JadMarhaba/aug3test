@@ -1,0 +1,65 @@
+run,framing,Vmax_MN,Vmax_over_W_pct,roof_drift_at_Vmax_pct,core_share_at_Vmax_pct,roof_drift_first_link_beam_failure_pct,roof_drift_first_wall_shear_failure_pct,roof_drift_first_wall_axial_failure_pct,roof_drift_first_punching_pct,status,final_roof_drift_pct
+A-D1D2D3D4_dir1,A,16.1,3.33,0.96,62,0.52,,,0.96,collapse,0.98
+A-D1D2D3D4_dir2,A,6.1,1.25,1.05,48,0.22,,,,nonconverged,1.77
+A-D1D2D3_dir1,A,16.6,3.42,0.86,61,0.44,,,,numerical,0.87
+A-D1D2D3_dir2,A,5.8,1.20,1.02,50,0.21,,,1.79,nonconverged,1.79
+A-D1D2D4_dir1,A,17.3,3.49,0.74,65,0.44,,,,numerical,0.74
+A-D1D2D4_dir2,A,5.7,1.14,0.16,64,0.20,,,,numerical,0.41
+A-D1D2_dir1,A,17.6,3.54,0.93,61,0.42,,,,numerical,0.93
+A-D1D2_dir2,A,6.0,1.22,1.06,52,0.20,,,1.86,nonconverged,1.87
+A-D1D3D4_dir1,A,17.1,3.53,0.86,63,0.74,,,,numerical,0.86
+A-D1D3D4_dir2,A,7.9,1.64,0.30,56,0.36,,,,nonconverged,1.54
+A-D1D3_dir1,A,17.3,3.57,0.72,63,0.77,,,0.98,nonconverged,0.99
+A-D1D3_dir2,A,7.7,1.59,0.30,55,0.36,,,1.68,numerical,1.69
+A-D1D4_dir1,A,18.0,3.63,0.92,64,0.71,,,0.92,numerical,0.92
+A-D1D4_dir2,A,8.2,1.66,0.29,60,0.36,,,,numerical,1.63
+A-D1_dir1,A,17.9,3.60,0.67,65,0.74,,,1.02,nonconverged,1.02
+A-D1_dir2,A,8.0,1.61,0.28,59,0.35,,,1.79,nonconverged,1.79
+A-D2D3D4_dir1,A,16.7,3.45,0.99,63,0.46,,,0.99,nonconverged,0.99
+A-D2D3D4_dir2,A,6.7,1.38,1.11,47,0.21,,,,nonconverged,1.85
+A-D2D3_dir1,A,16.6,3.43,1.01,63,0.48,,,1.01,numerical,1.01
+A-D2D3_dir2,A,5.6,1.16,0.15,64,0.21,,,,numerical,0.43
+A-D2D4_dir1,A,17.5,3.52,1.02,62,0.44,,,1.02,numerical,1.02
+A-D2D4_dir2,A,7.0,1.41,1.11,49,0.21,,,1.88,numerical,1.88
+A-D2_dir1,A,17.8,3.59,0.81,64,0.42,,,,numerical,0.90
+A-D2_dir2,A,6.7,1.35,1.15,51,0.20,,,1.95,numerical,1.95
+A-D3D4_dir1,A,17.8,3.68,0.89,64,0.67,,,0.91,numerical,0.91
+A-D3D4_dir2,A,8.4,1.74,0.29,60,0.36,,,,nonconverged,1.86
+A-D3_dir1,A,17.5,3.62,0.64,64,0.69,,,1.02,nonconverged,1.02
+A-D3_dir2,A,8.2,1.68,0.28,59,0.35,,,,numerical,0.95
+A-D4_dir1,A,18.3,3.69,0.70,65,0.65,,,1.01,nonconverged,1.01
+A-D4_dir2,A,8.8,1.78,0.27,64,0.35,,,1.96,nonconverged,1.96
+A-REF_dir1,A,18.1,3.65,0.61,65,0.67,,,1.04,nonconverged,1.04
+A-REF_dir2,A,8.5,1.72,0.27,63,0.35,,,1.91,numerical,1.95
+B-D1D2D3D4_dir1,B,43.0,7.58,0.64,57,,,,,numerical,0.64
+B-D1D2D3D4_dir2,B,22.1,3.90,0.80,7,0.18,,1.01,,numerical,0.80
+B-D1D2D3_dir1,B,43.5,7.66,0.61,56,0.60,,0.62,,core pier axial failure,0.61
+B-D1D2D3_dir2,B,22.2,3.91,1.05,22,0.21,,1.86,,nonconverged,1.41
+B-D1D2D4_dir1,B,44.6,7.70,0.67,58,,,,,nonconverged,0.67
+B-D1D2D4_dir2,B,22.6,3.89,0.83,14,0.19,,1.02,,core pier axial failure,1.01
+B-D1D2_dir1,B,44.6,7.69,0.62,56,0.59,,0.64,,core pier axial failure,0.62
+B-D1D2_dir2,B,22.6,3.90,1.09,23,0.20,,,,numerical,1.43
+B-D1D3D4_dir1,B,43.0,7.58,0.64,57,,,0.65,,core pier axial failure,0.64
+B-D1D3D4_dir2,B,23.4,4.12,0.84,12,0.37,,,,numerical,0.85
+B-D1D3_dir1,B,43.7,7.71,0.61,56,,,,,numerical,0.61
+B-D1D3_dir2,B,23.3,4.10,1.01,26,0.36,,,,nonconverged,1.39
+B-D1D4_dir1,B,44.8,7.72,0.69,58,,,,,nonconverged,0.69
+B-D1D4_dir2,B,23.9,4.12,0.86,20,0.36,,0.87,,core pier axial failure,0.86
+B-D1_dir1,B,45.3,7.81,0.63,55,0.70,,0.68,,core pier axial failure,0.67
+B-D1_dir2,B,23.8,4.10,1.06,27,0.35,,,,numerical,1.42
+B-D2D3D4_dir1,B,44.9,7.92,0.72,57,,0.74,0.76,,core pier axial failure,0.75
+B-D2D3D4_dir2,B,23.1,4.06,0.92,16,0.18,,1.21,,core pier axial failure,1.20
+B-D2D3_dir1,B,46.2,8.15,0.76,52,0.57,,,,numerical,0.76
+B-D2D3_dir2,B,26.9,4.74,1.82,33,0.19,,,,numerical,1.82
+B-D2D4_dir1,B,46.7,8.06,0.80,54,0.60,0.81,0.84,,core pier axial failure,0.83
+B-D2D4_dir2,B,23.6,4.07,0.99,11,0.20,,1.33,,nonconverged,0.99
+B-D2_dir1,B,48.4,8.35,0.99,51,0.53,,,,numerical,1.84
+B-D2_dir2,B,23.5,4.04,1.20,21,0.20,,,,numerical,2.47
+B-D3D4_dir1,B,44.9,7.91,0.71,58,,0.73,0.75,,core pier axial failure,0.74
+B-D3D4_dir2,B,24.3,4.28,0.94,16,0.36,,,,numerical,0.94
+B-D3_dir1,B,47.0,8.29,0.79,51,,,,,numerical,0.79
+B-D3_dir2,B,24.1,4.25,1.11,23,0.36,,,,numerical,2.20
+B-D4_dir1,B,46.5,8.02,0.74,57,,0.76,0.79,,core pier axial failure,0.78
+B-D4_dir2,B,24.9,4.29,0.96,15,0.35,,,,numerical,0.96
+B-REF_dir1,B,48.8,8.42,0.89,50,0.85,,,,numerical,1.47
+B-REF_dir2,B,24.6,4.25,1.12,22,0.35,,,,completed,2.48

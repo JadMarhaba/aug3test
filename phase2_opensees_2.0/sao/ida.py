@@ -23,6 +23,21 @@ from .runner import job_id, RES, ROOT
 LADDER = [1.0, 2.0, 3.0, 4.5, 6.0, 8.0]
 REL_TOL = 0.20
 COLLAPSED = ("collapse", "nonconverged")   # non-convergence = dynamic instability
+SEVERE = ("wall_axial_failure", "wall_shear_failure", "wall_shear_strength_loss", "punching",
+          "column_axial_failure")
+
+
+def classify(r):
+    """Status used by the collapse search.  A run that stopped converging while nothing had
+    failed (no wall, column or punching failure) and the drift was still below 3 % is a
+    numerical stop, not dynamic instability: it is treated as 'numerical' and repeated at
+    dt = 0.01 s, like any other numerical stop."""
+    st = r.get("status")
+    if st == "nonconverged" and "env" in r:
+        severe = any(e.get("kind") in SEVERE for e in r.get("events", []))
+        if not severe and max(r["env"]["drift_corner"]) < 0.03:
+            return "numerical"
+    return st
 
 
 def result(job):
@@ -60,7 +75,7 @@ class Hunt:
                 continue
             sf = float(m.group(1))
             dt = float(m.group(2)) if m.group(2) else 0.025
-            out.setdefault(sf, {})[dt] = json.load(open(os.path.join(d, f))).get("status")
+            out.setdefault(sf, {})[dt] = classify(json.load(open(os.path.join(d, f))))
         return out
 
     def known(self):

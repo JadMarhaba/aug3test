@@ -1,0 +1,1314 @@
+[
+ {
+  "variant": "A-D1D2D3D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "B-D1D2D3D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "A-REF",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    true
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 7.0,
+  "sf_survived": 6.0
+ },
+ {
+  "variant": "B-REF",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    8.0,
+    false
+   ]
+  ],
+  "sf_collapse": null,
+  "sf_survived": 8.0
+ },
+ {
+  "variant": "A-D1D2D3D4_fc0.50_le0.30",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "B-D1D2D3D4_fc0.50_le0.30",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    true
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 3.75,
+  "sf_survived": 3.0
+ },
+ {
+  "variant": "A-D1D2D3D4",
+  "gm": "GM2",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "B-D1D2D3D4",
+  "gm": "GM2",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    2.5,
+    false
+   ],
+   [
+    3.0,
+    true
+   ]
+  ],
+  "sf_collapse": 3.0,
+  "sf_survived": 2.5
+ },
+ {
+  "variant": "A-REF",
+  "gm": "GM2",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    true
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 7.0,
+  "sf_survived": 6.0
+ },
+ {
+  "variant": "B-REF",
+  "gm": "GM2",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    false
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 8.0,
+  "sf_survived": 7.0
+ },
+ {
+  "variant": "A-D1D2D3D4",
+  "gm": "GM3",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    true
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 3.75,
+  "sf_survived": 3.0
+ },
+ {
+  "variant": "B-D1D2D3D4",
+  "gm": "GM3",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    true
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 3.75,
+  "sf_survived": 3.0
+ },
+ {
+  "variant": "A-REF",
+  "gm": "GM3",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    false
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 6.0,
+  "sf_survived": 5.25
+ },
+ {
+  "variant": "B-REF",
+  "gm": "GM3",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    8.0,
+    false
+   ]
+  ],
+  "sf_collapse": null,
+  "sf_survived": 8.0
+ },
+ {
+  "variant": "A-D1",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    true
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 7.0,
+  "sf_survived": 6.0
+ },
+ {
+  "variant": "B-D1",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    false
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 6.0,
+  "sf_survived": 5.25
+ },
+ {
+  "variant": "A-D2",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    true
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 5.25,
+  "sf_survived": 4.5
+ },
+ {
+  "variant": "B-D2",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    8.0,
+    false
+   ]
+  ],
+  "sf_collapse": null,
+  "sf_survived": 8.0
+ },
+ {
+  "variant": "A-D3",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    true
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 7.0,
+  "sf_survived": 6.0
+ },
+ {
+  "variant": "B-D3",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    false
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 8.0,
+  "sf_survived": 7.0
+ },
+ {
+  "variant": "A-D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    true
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 7.0,
+  "sf_survived": 6.0
+ },
+ {
+  "variant": "B-D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    true
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 5.25,
+  "sf_survived": 4.5
+ },
+ {
+  "variant": "A-D1D2",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    2.5,
+    false
+   ],
+   [
+    3.0,
+    true
+   ]
+  ],
+  "sf_collapse": 3.0,
+  "sf_survived": 2.5
+ },
+ {
+  "variant": "B-D1D2",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    false
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 8.0,
+  "sf_survived": 7.0
+ },
+ {
+  "variant": "A-D1D3",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    true
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 7.0,
+  "sf_survived": 6.0
+ },
+ {
+  "variant": "B-D1D3",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    false
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 6.0,
+  "sf_survived": 5.25
+ },
+ {
+  "variant": "A-D1D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    true
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 5.25,
+  "sf_survived": 4.5
+ },
+ {
+  "variant": "B-D1D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "A-D2D3",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    1.5,
+    false
+   ],
+   [
+    1.75,
+    false
+   ],
+   [
+    2.0,
+    true
+   ]
+  ],
+  "sf_collapse": 2.0,
+  "sf_survived": 1.75
+ },
+ {
+  "variant": "B-D2D3",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    8.0,
+    false
+   ]
+  ],
+  "sf_collapse": null,
+  "sf_survived": 8.0
+ },
+ {
+  "variant": "A-D2D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    false
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 6.0,
+  "sf_survived": 5.25
+ },
+ {
+  "variant": "B-D2D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "A-D3D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    true
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 7.0,
+  "sf_survived": 6.0
+ },
+ {
+  "variant": "B-D3D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    true
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 5.25,
+  "sf_survived": 4.5
+ },
+ {
+  "variant": "A-D1D2D3",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    true
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 5.25,
+  "sf_survived": 4.5
+ },
+ {
+  "variant": "B-D1D2D3",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    6.0,
+    false
+   ],
+   [
+    7.0,
+    true
+   ],
+   [
+    8.0,
+    true
+   ]
+  ],
+  "sf_collapse": 7.0,
+  "sf_survived": 6.0
+ },
+ {
+  "variant": "A-D1D2D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "B-D1D2D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "A-D1D3D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    true
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 5.25,
+  "sf_survived": 4.5
+ },
+ {
+  "variant": "B-D1D3D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ },
+ {
+  "variant": "A-D2D3D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    false
+   ],
+   [
+    6.0,
+    true
+   ]
+  ],
+  "sf_collapse": 6.0,
+  "sf_survived": 5.25
+ },
+ {
+  "variant": "B-D2D3D4",
+  "gm": "GM1",
+  "runs": [
+   [
+    1.0,
+    false
+   ],
+   [
+    2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    3.75,
+    false
+   ],
+   [
+    4.5,
+    true
+   ]
+  ],
+  "sf_collapse": 4.5,
+  "sf_survived": 3.75
+ }
+]

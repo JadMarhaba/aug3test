@@ -1,0 +1,16 @@
+effect,value
+D1,0.0
+D2,0.0
+D3,0.0
+D4,0.0
+D1xD2,0.0
+D1xD3,0.0
+D1xD4,0.0
+D2xD3,0.0
+D2xD4,0.0
+D3xD4,0.0
+D1xD2xD3,0.0
+D1xD2xD4,0.0
+D1xD3xD4,0.0
+D2xD3xD4,0.0
+D1xD2xD3xD4,0.0
