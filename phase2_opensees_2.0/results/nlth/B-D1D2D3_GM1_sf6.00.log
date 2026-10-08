@@ -273,3 +273,9 @@
   progress t=  40.0s  max corner drift so far=0.0193  wall clock=471s
   t=  49.00  cb_failure         L1-CB2 {'rot': 0.02199}
   progress t=  50.0s  max corner drift so far=0.0193  wall clock=594s
+  progress t=  60.0s  max corner drift so far=0.0193  wall clock=722s
+  t= 63.250  solver fallback: Newton
+  progress t=  70.0s  max corner drift so far=0.0193  wall clock=843s
+  progress t=  80.0s  max corner drift so far=0.0193  wall clock=946s
+  progress t=  90.0s  max corner drift so far=0.0193  wall clock=1048s
+  progress t= 100.0s  max corner drift so far=0.0193  wall clock=1149s
