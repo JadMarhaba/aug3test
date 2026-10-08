@@ -327,3 +327,11 @@
   t=  66.62  punching           L32-col24 {'drift': np.float64(0.0209), 'vg_vc': 0.392, 'conn': 'column'}
   t=  66.75  punching           L32-col19 {'drift': np.float64(0.0183), 'vg_vc': 0.446, 'conn': 'column'}
   t=  66.87  punching           L31-col19 {'drift': np.float64(0.0184), 'vg_vc': 0.478, 'conn': 'column'}
+  t=  69.12  punching           L29-col3 {'drift': np.float64(0.0222), 'vg_vc': 0.356, 'conn': 'column'}
+  t=  69.12  punching           L30-col3 {'drift': np.float64(0.0224), 'vg_vc': 0.356, 'conn': 'column'}
+  t=  69.12  punching           L31-col3 {'drift': np.float64(0.0224), 'vg_vc': 0.359, 'conn': 'column'}
+  t=  69.12  punching           L32-col3 {'drift': np.float64(0.0224), 'vg_vc': 0.356, 'conn': 'column'}
+  progress t=  70.0s  max corner drift so far=0.0236  wall clock=1379s
+  progress t=  80.0s  max corner drift so far=0.0236  wall clock=1544s
+  progress t=  90.0s  max corner drift so far=0.0236  wall clock=1699s
+  progress t= 100.0s  max corner drift so far=0.0236  wall clock=1850s
