@@ -264,3 +264,7 @@
   t=  51.35  cb_failure         L4-CB0 {'rot': 0.03071}
   t=  51.45  cb_failure         L3-CB0 {'rot': 0.02973}
   progress t=  60.0s  max corner drift so far=0.0216  wall clock=2092s
+  progress t=  70.0s  max corner drift so far=0.0216  wall clock=2457s
+  progress t=  80.0s  max corner drift so far=0.0216  wall clock=2812s
+  progress t=  90.0s  max corner drift so far=0.0216  wall clock=3153s
+  progress t= 100.0s  max corner drift so far=0.0216  wall clock=3508s
