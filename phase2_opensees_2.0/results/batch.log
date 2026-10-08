@@ -5,3 +5,7 @@
 [22:50:13] DONE nlth/A-D2D3_GM1_sf2.00_dt0.01 completed 3064.1  (3064s)
 [22:59:20] DONE nlth/A-D1D2_GM1_sf4.50 completed 1391.1  (1391s)
 [23:10:10] ? | DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 45.025 OpenSees > analyze failed, returned: -3 error flag free(): invalid size  (649s)
+[23:12:09] DONE nlth/A-D2D3_GM1_sf3.00 completed 1314.5  (1315s)
+[23:32:32] ? | DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 44.96 OpenSees > analyze failed, returned: -3 error flag free(): invalid size  (1341s)
+[23:35:37] DONE nlth/A-D2D3_GM1_sf4.50 completed 1407.6  (1408s)
+[23:43:27] DONE nlth/A-D1D2_GM1_sf5.25 numerical 653.7  (654s)
