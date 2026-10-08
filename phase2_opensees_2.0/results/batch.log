@@ -1,1 +1,6 @@
 0 priority jobs, 42 collapse searches, 0 other jobs, 3 workers
+[21:59:07] DONE nlth/B-D1D3_GM1_sf6.00_dt0.01 collapse 864.9  (865s)
+[22:00:01] DONE nlth/A-REF_GM1_sf8.00_dt0.01 numerical 919.3  (920s)
+[22:36:08] DONE nlth/A-D1D2_GM1_sf3.00_dt0.01 completed 3085.9  (3086s)
+[22:50:13] DONE nlth/A-D2D3_GM1_sf2.00_dt0.01 completed 3064.1  (3064s)
+[22:59:20] DONE nlth/A-D1D2_GM1_sf4.50 completed 1391.1  (1391s)
