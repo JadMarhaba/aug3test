@@ -227,3 +227,7 @@
   t=  38.25  cb_failure         L18-CB2 {'rot': 0.03237}
   t=  38.50  cb_failure         L19-CB2 {'rot': 0.0315}
   progress t=  40.0s  max corner drift so far=0.0196  wall clock=442s
+  t=  41.37  cb_failure         L28-CB3 {'rot': 0.0344}
+  t=  41.37  cb_failure         L29-CB3 {'rot': 0.03345}
+  t=  41.37  cb_failure         L30-CB3 {'rot': 0.03203}
+  t=  41.37  cb_failure         L31-CB3 {'rot': 0.03062}
