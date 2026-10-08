@@ -266,3 +266,6 @@
   t=  21.12  cb_failure         L1-CB3 {'rot': 0.01957}
   t=  21.25  cb_failure         L1-CB2 {'rot': 0.0191}
   t= 24.400  solver fallback: Newton
+  t=  27.37  cb_failure         L2-CB0 {'rot': 0.01911}
+  progress t=  30.0s  max corner drift so far=0.0221  wall clock=416s
+  t=  30.25  cb_failure         L1-CB0 {'rot': 0.01992}
