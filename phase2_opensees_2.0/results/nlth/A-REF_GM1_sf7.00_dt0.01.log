@@ -236,3 +236,7 @@
   t=  12.40  cb_failure         L29-CB2 {'rot': 0.03032}
   t=  12.40  cb_failure         L32-CB1 {'rot': 0.03137}
   t=  12.40  cb_failure         L33-CB1 {'rot': 0.03077}
+  t=  13.10  cb_failure         L5-CB0 {'rot': 0.02977}
+  t=  13.60  cb_failure         L4-CB2 {'rot': 0.02962}
+  t=  13.65  cb_failure         L4-CB3 {'rot': 0.02966}
+  t=  14.70  cb_failure         L30-CB2 {'rot': 0.03021}

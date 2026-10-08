@@ -600,7 +600,7 @@ def collapse_intensity(nl):
 
 
 def main():
-    nl = supersede(load("nlth/*.json"))
+    nl = {k: r for k, r in supersede(load("nlth/*.json")).items() if r.get("status") != "crashed"}
     po = load("pushover/*.json")
     rm = load("removal/*.json")
     print(f"{len(nl)} response histories, {len(po)} pushovers, {len(rm)} removal analyses")

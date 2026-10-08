@@ -69,14 +69,14 @@ class Hunt:
         out = {}
         for sf, runs in self._results().items():
             st = runs.get(0.01, runs.get(0.025))
-            if st == "numerical" and 0.01 not in runs:
+            if st in ("numerical", "crashed") and 0.01 not in runs:
                 continue                     # pending re-run
-            out[sf] = st in COLLAPSED or st == "numerical"
+            out[sf] = st in COLLAPSED or st in ("numerical", "crashed")
         return out
 
     def next_job(self):
         for sf, runs in self._results().items():
-            if runs.get(0.025) == "numerical" and 0.01 not in runs:
+            if runs.get(0.025) in ("numerical", "crashed") and 0.01 not in runs:
                 return self.job(sf, dt=0.01)
         sf = self.next_sf()
         return None if sf is None else self.job(sf)
@@ -107,6 +107,17 @@ class Hunt:
                     sf_collapse=min(coll) if coll else None, sf_survived=max(surv) if surv else None)
 
 
+def _mark_crashed(job, why):
+    """The OpenSees process died without saving a result (e.g. a memory error inside OpenSees
+    after the solver failed).  Record it as 'crashed' so the job is not repeated forever; for
+    the collapse search it is treated like 'numerical' (repeat at dt = 0.01, and a repeat
+    that also cannot finish counts as collapse)."""
+    path = os.path.join(RES, job_id(job) + ".json")
+    if not os.path.exists(path):
+        with open(path, "w") as f:
+            json.dump({"job": job, "status": "crashed", "note": why[-500:]}, f)
+
+
 def _run(job, timeout=5 * 3600):
     t0 = time.time()
     try:
@@ -115,6 +126,7 @@ def _run(job, timeout=5 * 3600):
         tail = (p.stdout.strip().splitlines() or ["?"])[-1]
         if p.returncode != 0:
             tail += " | " + " ".join(p.stderr.strip().splitlines()[-3:])
+            _mark_crashed(job, tail)
     except subprocess.TimeoutExpired:
         tail = "TIMEOUT " + job_id(job)
     print(f"[{time.strftime('%H:%M:%S')}] {tail}  ({time.time() - t0:.0f}s)", flush=True)
