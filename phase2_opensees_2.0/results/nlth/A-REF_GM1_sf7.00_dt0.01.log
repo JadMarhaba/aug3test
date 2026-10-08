@@ -193,7 +193,7 @@
   t=   9.80  cb_failure         L5-CB3 {'rot': 0.03022}
   t=   9.80  cb_failure         L6-CB2 {'rot': 0.02977}
   t=   9.90  cb_failure         L5-CB2 {'rot': 0.02989}
-  progress t=  10.0s  max corner drift so far=0.0080  wall clock=302s
+  progress t=  10.0s  max corner drift so far=0.0080  wall clock=312s
   t=  10.25  cb_failure         L19-CB0 {'rot': 0.03092}
   t=  10.25  cb_failure         L20-CB1 {'rot': 0.03015}
   t=  10.35  cb_failure         L20-CB0 {'rot': 0.03072}
@@ -252,3 +252,16 @@
   t=  17.60  cb_failure         L4-CB1 {'rot': 0.02971}
   t=  17.70  cb_failure         L3-CB1 {'rot': 0.03022}
   t=  17.85  cb_failure         L2-CB1 {'rot': 0.02999}
+  progress t=  20.0s  max corner drift so far=0.0191  wall clock=644s
+  t=  20.60  cb_failure         L3-CB3 {'rot': 0.02997}
+  t=  21.10  cb_failure         L3-CB2 {'rot': 0.02976}
+  t=  21.20  cb_failure         L2-CB3 {'rot': 0.03047}
+  t=  27.97  punching           L29-col3 {'drift': np.float64(0.0209), 'vg_vc': 0.383, 'conn': 'column'}
+  t=  27.97  punching           L30-col3 {'drift': np.float64(0.0209), 'vg_vc': 0.383, 'conn': 'column'}
+  t=  27.98  punching           L31-col3 {'drift': np.float64(0.0209), 'vg_vc': 0.383, 'conn': 'column'}
+  t=  28.00  punching           L32-col3 {'drift': np.float64(0.0209), 'vg_vc': 0.414, 'conn': 'column'}
+  t=  28.00  punching           L33-col3 {'drift': np.float64(0.0207), 'vg_vc': 0.403, 'conn': 'column'}
+  t=  30.00  cb_failure         L4-CB0 {'rot': 0.0303}
+  progress t=  30.0s  max corner drift so far=0.0228  wall clock=968s
+  t=  30.05  cb_failure         L3-CB0 {'rot': 0.0299}
+  t=  30.15  cb_failure         L2-CB0 {'rot': 0.02951}
