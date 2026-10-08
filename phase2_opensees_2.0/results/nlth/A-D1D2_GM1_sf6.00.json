@@ -1,0 +1,1 @@
+{"job": {"kind": "nlth", "variant": "A-D1D2", "gm": "GM1", "sf": 6.0, "dt": 0.025}, "status": "crashed", "note": "? | DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 45.025 OpenSees > analyze failed, returned: -3 error flag free(): invalid size"}
