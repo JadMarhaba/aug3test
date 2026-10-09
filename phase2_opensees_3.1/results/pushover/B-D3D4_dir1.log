@@ -1,0 +1,15 @@
+  t=  62.00  wall_shear_strength_loss S9-F {'gamma': 0.00518}
+  t=  62.00  wall_shear_strength_loss S10-F {'gamma': 0.00524}
+  t=  62.00  wall_shear_strength_loss S11-F {'gamma': 0.00517}
+  t=  62.00  wall_shear_strength_loss S12-F {'gamma': 0.00505}
+  t=  63.00  wall_shear_strength_loss S8-F {'gamma': 0.00539}
+  t=  63.00  wall_shear_strength_loss S13-F {'gamma': 0.00541}
+  t=  64.00  wall_shear_strength_loss S7-F {'gamma': 0.00524}
+  t=  64.00  wall_shear_strength_loss S14-F {'gamma': 0.00508}
+  t=  65.00  wall_shear_failure S10-F {'gamma': 0.0078}
+  t=  65.00  wall_shear_failure S11-F {'gamma': 0.00781}
+  t=  65.00  wall_shear_failure S12-F {'gamma': 0.00753}
+  t=  66.00  wall_shear_failure S9-F {'gamma': 0.00779}
+  t=  67.00  wall_shear_strength_loss S6-F {'gamma': 0.00514}
+  t=  68.00  wall_shear_failure S8-F {'gamma': 0.00773}
+  t=  68.00  wall_shear_failure S13-F {'gamma': 0.00771}

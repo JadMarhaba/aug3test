@@ -225,3 +225,7 @@
   t=  78.75  cb_failure         L21-CB2 {'rot': 0.02759}
   t=  78.75  cb_failure         L22-CB3 {'rot': 0.02717}
   progress t=  80.0s  max corner drift so far=0.0229  wall clock=1652s
+  t=  87.75  cb_failure         L22-CB2 {'rot': 0.0256}
+  progress t=  90.0s  max corner drift so far=0.0229  wall clock=1882s
+  progress t= 100.0s  max corner drift so far=0.0229  wall clock=2116s
+  t= 101.13  cb_failure         L23-CB0 {'rot': 0.02583}
