@@ -41,3 +41,5 @@
 [18:23:27] DONE pushover/B-D3D4_dir1 nonconverged 361.4  (362s)
 [18:23:49] DONE nlth/A-D1D2D3D4_GM2_sf2.50_dt0.01 nonconverged 1734.6  (1735s)
 [18:26:41] DONE nlth/A-REF_GM2_sf3.00 completed 2671.9  (2672s)
+[18:31:01] DONE pushover/A-D1D2D3_dir1 nonconverged 453.7  (454s)
+[18:32:33] DONE pushover/B-D1D2D3_dir1 numerical 91.4  (92s)
