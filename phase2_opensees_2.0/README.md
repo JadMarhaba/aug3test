@@ -17,6 +17,8 @@ Unchanged from version 1: the design basis (`results/design.json`, copied as is,
 | Beam-slab, no deficiency | 580 MN | 4.19 / 4.17 / 2.06 | 8–24 mm | 0.11–0.16 |
 | Beam-slab, all four | 568 MN | 4.51 / 4.39 / 2.22 | 8–24 mm | 0.12–0.16 |
 
+**Results: `REPORT_phase2_findings_v2.md`** (with a comparison to version 1). Floor plan: `figures/fig00_floor_plans.png`; core piers and pier-loss scenarios: `figures/fig00b_core_piers_and_removal_scenarios.png`.
+
 All analyses of version 1 are re-run here for both models. Results from an earlier 2.0 attempt with the version-1 floor layout are kept in `results/old/v2_before_corner_cantilevers/`.
 
 ---

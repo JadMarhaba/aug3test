@@ -713,11 +713,23 @@
    ],
    [
     3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    true
+   ],
+   [
+    6.0,
     true
    ]
   ],
-  "sf_collapse": 3.0,
-  "sf_survived": 2.5
+  "sf_collapse": 5.25,
+  "sf_survived": 4.5
  },
  {
   "variant": "B-D1D2",
@@ -901,11 +913,27 @@
    ],
    [
     2.0,
+    false
+   ],
+   [
+    3.0,
+    false
+   ],
+   [
+    4.5,
+    false
+   ],
+   [
+    5.25,
+    true
+   ],
+   [
+    6.0,
     true
    ]
   ],
-  "sf_collapse": 2.0,
-  "sf_survived": 1.75
+  "sf_collapse": 5.25,
+  "sf_survived": 4.5
  },
  {
   "variant": "B-D2D3",

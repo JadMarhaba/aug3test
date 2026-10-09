@@ -269,3 +269,32 @@
   t= 27.260  solver fallback: Newton
   t= 27.270  solver fallback: Newton
   progress t=  30.0s  max corner drift so far=0.0191  wall clock=896s
+  progress t=  40.0s  max corner drift so far=0.0191  wall clock=1199s
+  t=  43.10  cb_failure         L1-CB3 {'rot': 0.01898}
+  t=  43.15  cb_failure         L1-CB2 {'rot': 0.02021}
+  t=  43.30  cb_failure         L1-CB1 {'rot': 0.01915}
+  t=  44.75  punching           L29-col23 {'drift': np.float64(0.02), 'vg_vc': 0.401, 'conn': 'column'}
+  t=  44.76  punching           L30-col23 {'drift': np.float64(0.0201), 'vg_vc': 0.399, 'conn': 'column'}
+  t=  44.77  punching           L29-col22 {'drift': np.float64(0.0217), 'vg_vc': 0.367, 'conn': 'column'}
+  t=  44.78  punching           L30-col22 {'drift': np.float64(0.0218), 'vg_vc': 0.366, 'conn': 'column'}
+  t=  44.79  punching           L31-col23 {'drift': np.float64(0.0205), 'vg_vc': 0.393, 'conn': 'column'}
+  t=  44.80  punching           L29-col17 {'drift': np.float64(0.021), 'vg_vc': 0.4, 'conn': 'column'}
+  t=  44.80  punching           L29-col18 {'drift': np.float64(0.0198), 'vg_vc': 0.417, 'conn': 'column'}
+  t=  44.80  punching           L30-col17 {'drift': np.float64(0.0209), 'vg_vc': 0.442, 'conn': 'column'}
+  t=  44.80  punching           L31-col22 {'drift': np.float64(0.0219), 'vg_vc': 0.426, 'conn': 'column'}
+  t=  44.80  punching           L32-col22 {'drift': np.float64(0.0214), 'vg_vc': 0.396, 'conn': 'column'}
+  t=  44.80  punching           L32-col23 {'drift': np.float64(0.0203), 'vg_vc': 0.405, 'conn': 'column'}
+  t=  44.84  punching           L33-col22 {'drift': np.float64(0.0217), 'vg_vc': 0.368, 'conn': 'column'}
+  t=  44.85  punching           L29-col14 {'drift': np.float64(0.0195), 'vg_vc': 0.468, 'conn': 'column'}
+  t=  44.85  punching           L30-col14 {'drift': np.float64(0.0193), 'vg_vc': 0.455, 'conn': 'column'}
+  t=  44.85  punching           L30-col18 {'drift': np.float64(0.0204), 'vg_vc': 0.442, 'conn': 'column'}
+  t=  44.85  punching           L31-col17 {'drift': np.float64(0.0213), 'vg_vc': 0.468, 'conn': 'column'}
+  t=  44.85  punching           L32-col18 {'drift': np.float64(0.0196), 'vg_vc': 0.438, 'conn': 'column'}
+  t=  44.85  punching           L33-col14 {'drift': np.float64(0.0183), 'vg_vc': 0.435, 'conn': 'column'}
+  t=  44.86  punching           L29-col15 {'drift': np.float64(0.0181), 'vg_vc': 0.439, 'conn': 'column'}
+  t=  44.86  punching           L32-col17 {'drift': np.float64(0.021), 'vg_vc': 0.381, 'conn': 'column'}
+  t=  44.88  punching           L31-col18 {'drift': np.float64(0.0204), 'vg_vc': 0.393, 'conn': 'column'}
+  t=  44.90  punching           L29-col11 {'drift': np.float64(0.0176), 'vg_vc': 0.449, 'conn': 'column'}
+  t=  44.90  punching           L31-col14 {'drift': np.float64(0.0196), 'vg_vc': 0.442, 'conn': 'column'}
+  t=  44.90  punching           L33-col11 {'drift': np.float64(0.0167), 'vg_vc': 0.472, 'conn': 'column'}
+  t=  44.90  column_axial_failure S33-C14 {'eps': -0.34983}

@@ -11,3 +11,6 @@
 [23:43:27] DONE nlth/A-D1D2_GM1_sf5.25 numerical 653.7  (654s)
 [23:47:06] DONE nlth/A-D2D3_GM1_sf6.00 nonconverged 686.3  (687s)
 [23:58:26] DONE nlth/A-D2D3_GM1_sf5.25 numerical 678.6  (679s)
+[00:06:10] DONE nlth/A-D1D2_GM1_sf5.25_dt0.01 nonconverged 1362.1  (1362s)
+[00:21:20] DONE nlth/A-D2D3_GM1_sf5.25_dt0.01 nonconverged 1372.6  (1373s)
+Process 0 Terminating
