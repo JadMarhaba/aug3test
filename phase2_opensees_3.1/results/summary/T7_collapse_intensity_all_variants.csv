@@ -1,0 +1,5 @@
+variant,record,group,deficiencies,highest_SF_survived,lowest_SF_collapsed,collapse_SF_estimate_(geomean),runs_(SF:C=collapse,S=stood)
+A-REF,GM1,reference,none,4.5,5.25,4.86,0.5:S 1.0:S 1.5:S 2.0:S 3.0:S 4.5:S 5.25:C 6.0:C
+A-D1D2D3D4,GM1,all four,D1+D2+D3+D4,3.0,3.75,3.35,0.5:S 1.0:S 1.5:S 2.0:S 3.0:S 3.75:C 4.5:C
+B-REF,GM1,reference,none,3.0,4.5,3.67,0.5:S 1.0:S 1.5:S 2.0:S 3.0:S 4.5:C
+B-D1D2D3D4,GM1,all four,D1+D2+D3+D4,2.0,2.5,2.24,0.5:S 1.0:S 1.5:S 2.0:S 2.5:C 3.0:C

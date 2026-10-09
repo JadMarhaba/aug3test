@@ -1,0 +1,17 @@
+run,status,lost_pier_load_MN,lambda_max_static,lambda_pseudostatic_dynamic,carries_full_load_statically,survives_sudden_loss,drop_at_peak_mm,extra_on_storey1_columns_MN,extra_on_other_core_piers_MN,via_link_beams_MN,via_floor_framing_MN,drop_when_full_load_carried_mm,punching,link_beam_failures,wall_axial_failures,column_failures
+A-D1D2D3D4_P1_F_story1,max_drop,47.0,1.163,1.085,yes,yes,133,22.1,32.6,34.3,20.3,15,0,16,2,0
+A-D1D2D3D4_P2_M_story1,max_drop,50.0,1.264,1.100,yes,yes,8,5.3,58.0,61.2,2.1,5,0,4,1,0
+A-D1D2D3D4_P3_R_story1,nonconverged,33.1,1.365,1.200,yes,yes,41,7.0,38.1,41.0,4.2,13,0,24,0,0
+A-D1D2D3D4_P4_F_1-4,nonconverged,47.0,0.880,0.479,no,no,13,12.4,28.9,29.9,11.4,,0,0,0,0
+A-REF_P1_F_story1,max_drop,53.8,1.214,1.040,yes,yes,53,15.3,50.1,51.0,14.3,14,0,2,1,0
+A-REF_P2_M_story1,max_drop,56.1,1.349,1.213,yes,yes,16,4.4,71.2,73.8,1.9,4,0,4,1,0
+A-REF_P3_R_story1,max_drop,37.0,1.684,1.542,yes,yes,63,6.8,55.5,57.7,4.5,10,0,18,1,0
+A-REF_P4_F_1-4,nonconverged,53.8,0.978,0.554,no,no,14,13.4,39.3,40.0,12.6,,0,0,0,0
+B-D1D2D3D4_P1_F_story1,nonconverged,52.2,1.253,1.207,yes,yes,163,32.8,32.6,36.6,28.8,12,0,8,1,0
+B-D1D2D3D4_P2_M_story1,max_drop,56.0,1.240,1.056,yes,yes,8,12.9,56.6,64.7,4.8,6,0,4,1,0
+B-D1D2D3D4_P3_R_story1,nonconverged,37.7,1.643,1.470,yes,yes,143,31.2,30.7,36.9,25.0,11,0,26,0,0
+B-D1D2D3D4_P4_F_1-4,nonconverged,52.2,1.257,0.980,yes,no,34,31.0,34.6,38.7,26.9,12,0,0,1,0
+B-REF_P1_F_story1,max_drop,62.4,1.207,1.030,yes,yes,45,27.7,47.6,50.3,25.0,12,0,2,1,0
+B-REF_P2_M_story1,max_drop,64.6,1.290,1.159,yes,yes,14,11.4,71.8,78.7,4.6,5,0,4,1,0
+B-REF_P3_R_story1,nonconverged,42.2,1.794,1.670,yes,yes,78,23.9,51.9,56.5,19.3,9,0,18,2,0
+B-REF_P4_F_1-4,nonconverged,62.4,1.230,1.037,yes,yes,47,31.3,45.4,48.7,28.0,12,0,0,1,0
