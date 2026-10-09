@@ -1,0 +1,17 @@
+  t=   0.00  removed            pier-(1, 'F') 
+  t=   0.02  cb_yield           L1-CB1 {'rot': 0.00192}
+  t=   0.02  cb_yield           L1-CB3 {'rot': 0.00193}
+  t=   0.02  cb_yield           L2-CB1 {'rot': 0.00143}
+  t=   0.02  cb_yield           L2-CB3 {'rot': 0.00144}
+  t=   0.02  cb_yield           L3-CB1 {'rot': 0.00121}
+  t=   0.02  cb_yield           L3-CB3 {'rot': 0.00121}
+  t=   0.02  cb_yield           L4-CB1 {'rot': 0.00098}
+  t=   0.02  cb_yield           L4-CB3 {'rot': 0.00098}
+  t=   0.02  cb_yield           L5-CB1 {'rot': 0.00086}
+  t=   0.02  cb_yield           L5-CB3 {'rot': 0.00087}
+  t=   0.04  cb_yield           L6-CB1 {'rot': 0.00141}
+  t=   0.04  cb_yield           L6-CB3 {'rot': 0.00142}
+  t=   0.04  cb_yield           L7-CB1 {'rot': 0.00113}
+  t=   0.04  cb_yield           L7-CB3 {'rot': 0.00113}
+  t=   0.04  cb_yield           L8-CB1 {'rot': 0.00092}
+  t=   0.04  cb_yield           L8-CB3 {'rot': 0.00092}
