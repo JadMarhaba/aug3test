@@ -221,3 +221,5 @@
   progress t= 100.0s  max corner drift so far=0.0163  wall clock=1660s
   t= 103.50  cb_failure         L23-CB0 {'rot': 0.01556}
   t= 103.63  cb_failure         L23-CB1 {'rot': 0.01577}
+  progress t= 110.0s  max corner drift so far=0.0170  wall clock=1837s
+  progress t= 120.0s  max corner drift so far=0.0170  wall clock=2000s
