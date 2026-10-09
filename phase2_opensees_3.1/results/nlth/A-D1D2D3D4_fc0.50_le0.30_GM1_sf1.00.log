@@ -119,3 +119,64 @@
   t=  43.87  cb_yield           L30-CB1 {'rot': 0.00073}
   progress t=  50.0s  max corner drift so far=0.0040  wall clock=801s
   progress t=  60.0s  max corner drift so far=0.0040  wall clock=979s
+  progress t=  70.0s  max corner drift so far=0.0040  wall clock=1156s
+  t=  78.00  cb_yield           L28-CB2 {'rot': 0.00072}
+  t=  78.13  cb_yield           L30-CB3 {'rot': 0.00068}
+  t=  78.25  cb_failure         L10-CB3 {'rot': 0.01476}
+  t=  78.25  cb_failure         L11-CB3 {'rot': 0.01486}
+  t=  78.25  cb_failure         L12-CB3 {'rot': 0.01471}
+  t=  78.25  cb_yield           L29-CB2 {'rot': 0.00069}
+  t=  78.38  cb_failure         L9-CB3 {'rot': 0.01484}
+  t=  78.38  cb_failure         L13-CB3 {'rot': 0.01476}
+  t=  79.25  cb_yield           L31-CB3 {'rot': 0.00069}
+  t=  79.38  cb_yield           L30-CB2 {'rot': 0.00067}
+  progress t=  80.0s  max corner drift so far=0.0064  wall clock=1330s
+  t=  85.88  cb_failure         L9-CB2 {'rot': 0.01461}
+  t=  85.88  cb_failure         L10-CB2 {'rot': 0.01469}
+  progress t=  90.0s  max corner drift so far=0.0069  wall clock=1502s
+  t=  91.75  cb_failure         L8-CB3 {'rot': 0.01463}
+  t=  93.00  cb_failure         L9-CB1 {'rot': 0.01499}
+  t=  93.00  cb_failure         L10-CB1 {'rot': 0.01537}
+  t=  93.00  cb_failure         L11-CB1 {'rot': 0.01546}
+  t=  93.00  cb_failure         L12-CB1 {'rot': 0.01527}
+  t=  93.00  cb_failure         L13-CB1 {'rot': 0.01478}
+  t=  97.38  cb_failure         L7-CB3 {'rot': 0.01462}
+  t=  97.38  cb_failure         L14-CB3 {'rot': 0.01492}
+  t=  97.50  cb_failure         L6-CB3 {'rot': 0.01468}
+  t=  97.50  cb_failure         L8-CB2 {'rot': 0.01464}
+  t=  97.50  cb_failure         L11-CB2 {'rot': 0.01486}
+  t=  97.50  cb_failure         L15-CB3 {'rot': 0.01497}
+  t=  97.63  cb_failure         L7-CB2 {'rot': 0.01519}
+  t=  97.63  cb_failure         L12-CB2 {'rot': 0.01615}
+  t=  97.63  cb_failure         L13-CB2 {'rot': 0.01552}
+  t=  97.63  cb_failure         L14-CB2 {'rot': 0.01464}
+  t=  97.63  cb_failure         L16-CB3 {'rot': 0.01533}
+  t=  97.75  cb_failure         L6-CB2 {'rot': 0.01484}
+  t=  97.75  cb_failure         L8-CB1 {'rot': 0.01497}
+  t=  97.75  cb_failure         L15-CB2 {'rot': 0.01557}
+  t=  97.75  cb_failure         L17-CB3 {'rot': 0.01486}
+  t=  97.88  cb_failure         L5-CB3 {'rot': 0.01531}
+  t=  97.88  cb_failure         L7-CB1 {'rot': 0.01552}
+  t=  97.88  cb_failure         L8-CB0 {'rot': 0.01461}
+  t=  97.88  cb_failure         L9-CB0 {'rot': 0.01531}
+  t=  97.88  cb_failure         L10-CB0 {'rot': 0.01566}
+  t=  97.88  cb_failure         L11-CB0 {'rot': 0.01571}
+  t=  97.88  cb_failure         L12-CB0 {'rot': 0.01549}
+  t=  97.88  cb_failure         L13-CB0 {'rot': 0.01495}
+  t=  97.88  cb_failure         L14-CB1 {'rot': 0.01677}
+  t=  97.88  cb_failure         L15-CB1 {'rot': 0.0156}
+  t=  97.88  cb_failure         L16-CB2 {'rot': 0.01576}
+  t=  98.00  cb_failure         L5-CB2 {'rot': 0.01471}
+  t=  98.00  cb_failure         L6-CB1 {'rot': 0.01524}
+  t=  98.00  cb_failure         L7-CB0 {'rot': 0.01503}
+  t=  98.00  cb_failure         L14-CB0 {'rot': 0.01609}
+  t=  98.00  cb_failure         L15-CB0 {'rot': 0.01486}
+  t=  98.00  cb_failure         L16-CB1 {'rot': 0.01576}
+  t=  98.13  cb_failure         L6-CB0 {'rot': 0.01482}
+  t=  98.25  cb_failure         L5-CB1 {'rot': 0.01551}
+  t=  98.25  cb_failure         L16-CB0 {'rot': 0.01489}
+  t=  98.38  cb_failure         L17-CB1 {'rot': 0.01497}
+  t=  98.50  cb_failure         L5-CB0 {'rot': 0.01503}
+  progress t= 100.0s  max corner drift so far=0.0069  wall clock=1681s
+  progress t= 110.0s  max corner drift so far=0.0069  wall clock=1847s
+  progress t= 120.0s  max corner drift so far=0.0069  wall clock=2014s

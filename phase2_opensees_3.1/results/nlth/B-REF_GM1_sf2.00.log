@@ -132,3 +132,11 @@
   t=  59.25  cb_yield           L33-CB3 {'rot': 0.00079}
   progress t=  60.0s  max corner drift so far=0.0057  wall clock=869s
   progress t=  70.0s  max corner drift so far=0.0057  wall clock=1038s
+  t=  74.12  cb_yield           L32-CB0 {'rot': 0.00101}
+  t=  74.12  cb_yield           L33-CB0 {'rot': 0.00086}
+  progress t=  80.0s  max corner drift so far=0.0061  wall clock=1214s
+  progress t=  90.0s  max corner drift so far=0.0063  wall clock=1376s
+  t=  93.25  cb_yield           L31-CB2 {'rot': 0.00074}
+  progress t= 100.0s  max corner drift so far=0.0063  wall clock=1531s
+  progress t= 110.0s  max corner drift so far=0.0063  wall clock=1673s
+  progress t= 120.0s  max corner drift so far=0.0063  wall clock=1810s
