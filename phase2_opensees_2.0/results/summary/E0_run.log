@@ -1,0 +1,33 @@
+Using DomainModalProperties - Developed by: Massimo Petracca, Guido Camata, ASDEA Software Technology
+Using ResponseSpectrumAnalysis - Developed by: Massimo Petracca, Guido Camata, ASDEA Software Technology
+Seismic weight W (design loads) | MN | 631.8 | 715.2
+Mode 1: period | s | 7.65 | 4.96
+Mode 1: mass ratio UX / UY / RZ | % | 30 / 0 / 40 | 33 / 0 / 41
+Mode 2: period | s | 5.94 | 4.80
+Mode 2: mass ratio UX / UY / RZ | % | 0 / 72 / 0 | 0 / 74 / 0
+Mode 3: period | s | 3.82 | 2.72
+Mode 3: mass ratio UX / UY / RZ | % | 35 / 0 / 30 | 35 / 0 / 33
+Mode 4: period | s | 2.29 | 1.63
+Mode 4: mass ratio UX / UY / RZ | % | 7 / 0 / 7 | 7 / 0 / 5
+Mode 5: period | s | 1.84 | 1.56
+Mode 5: mass ratio UX / UY / RZ | % | 0 / 14 / 0 | 0 / 13 / 0
+Mode 6: period | s | 1.15 | 0.90
+Mode 6: mass ratio UX / UY / RZ | % | 2 / 0 / 4 | 1 / 0 / 4
+Cumulative mass ratio, 12 modes, UX / UY / RZ | % | 87 / 93 / 90 | 89 / 95 / 91
+ELF: Ta = 0.0488 H^0.75 / period used / Cs | s / s / - | 1.95 / 2.74 / 0.0335 | 1.95 / 2.74 / 0.0335
+ELF base shear V = Cs W | MN | 21.2 | 24.0
+RSA base shear X (unscaled) | MN | 7.2 | 10.7
+RSA base shear X / ELF | - | 0.34 | 0.44
+RSA X: share to core / columns | % | 77 / 23 | 74 / 26
+RSA X: roof displacement (elastic) | mm | 123 | 84
+RSA X: max storey drift at centre (elastic) | % | 0.116 | 0.076
+RSA X: max storey drift at corners (elastic) | % | 0.211 | 0.139
+RSA base shear Y (unscaled) | MN | 7.8 | 10.5
+RSA base shear Y / ELF | - | 0.37 | 0.44
+RSA Y: share to core / columns | % | 58 / 42 | 52 / 48
+RSA Y: roof displacement (elastic) | mm | 180 | 141
+RSA Y: max storey drift at centre (elastic) | % | 0.166 | 0.133
+RSA Y: max storey drift at corners (elastic) | % | 0.166 | 0.133
+Gravity: storey-1 axial, pier R / M / F | MN | 41.7 / 63.6 / 62.8 | 47.4 / 72.5 / 73.7
+Gravity: storey-1 axial, all core / all columns | MN | 168.0 / 463.8 | 193.6 / 521.6
+Process 0 Terminating

@@ -1,0 +1,31 @@
+quantity,unit,As-built flat slab (2A),Proposed beam-slab (2B)
+Seismic weight W (design loads),MN,684.0,705.6
+Mode 1: period,s,7.11,4.99
+Mode 1: mass ratio UX / UY / RZ,%,30 / 0 / 41,33 / 0 / 41
+Mode 2: period,s,5.82,4.79
+Mode 2: mass ratio UX / UY / RZ,%,0 / 72 / 0,0 / 74 / 0
+Mode 3: period,s,3.63,2.70
+Mode 3: mass ratio UX / UY / RZ,%,36 / 0 / 29,35 / 0 / 33
+Mode 4: period,s,2.19,1.63
+Mode 4: mass ratio UX / UY / RZ,%,6 / 0 / 6,7 / 0 / 5
+Mode 5: period,s,1.83,1.56
+Mode 5: mass ratio UX / UY / RZ,%,0 / 14 / 0,0 / 13 / 0
+Mode 6: period,s,1.13,0.91
+Mode 6: mass ratio UX / UY / RZ,%,2 / 0 / 4,1 / 0 / 4
+"Cumulative mass ratio, 12 modes, UX / UY / RZ",%,88 / 95 / 90,89 / 95 / 91
+ELF: Ta = 0.0488 H^0.75 / period used / Cs,s / s / -,1.95 / 2.74 / 0.0335,1.95 / 2.74 / 0.0335
+ELF base shear V = Cs W,MN,22.9,23.7
+RSA base shear X (unscaled),MN,8.2,10.5
+RSA base shear X / ELF,-,0.36,0.44
+RSA X: share to core / columns,%,77 / 23,74 / 26
+RSA X: roof displacement (elastic),mm,116,84
+RSA X: max storey drift at centre (elastic),%,0.108,0.076
+RSA X: max storey drift at corners (elastic),%,0.201,0.142
+RSA base shear Y (unscaled),MN,8.6,10.4
+RSA base shear Y / ELF,-,0.38,0.44
+RSA Y: share to core / columns,%,57 / 43,52 / 48
+RSA Y: roof displacement (elastic),mm,175,141
+RSA Y: max storey drift at centre (elastic),%,0.161,0.133
+RSA Y: max storey drift at corners (elastic),%,0.161,0.133
+"Gravity: storey-1 axial, pier R / M / F",MN,44.4 / 69.2 / 69.4,46.8 / 72.4 / 73.6
+"Gravity: storey-1 axial, all core / all columns",MN,183.0 / 501.0,192.8 / 512.8

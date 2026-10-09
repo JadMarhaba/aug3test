@@ -1,0 +1,9 @@
+version,framing,direction,weight_MN,Vmax_over_W_pct,Vmax_MN,roof_drift_at_Vmax_pct,core_share_at_Vmax_pct,initial_slope_pctW_per_pct_drift,end_roof_drift_pct,end,roof_drift_cb_yield_pct,roof_drift_cb_failure_pct,roof_drift_punching_pct,roof_drift_wall_shear_strength_loss_pct,roof_drift_wall_axial_failure_pct,roof_drift_column_axial_failure_pct
+v2.0,A,X,496,3.65,18.1,0.61,65,12.1,1.04,nonconverged,0.21,0.67,1.04,,,
+v2.0,B,X,580,8.42,48.8,0.89,50,24.6,1.47,numerical,0.28,0.85,,,,
+v1,A,X,549,4.10,22.5,0.62,64,13.3,1.12,numerical,0.21,0.67,1.08,,,
+v1,B,X,570,7.15,40.8,0.91,49,23.3,2.05,nonconverged,0.30,1.07,,,,
+v2.0,A,Y,496,1.72,8.5,0.27,63,9.9,1.95,numerical,0.10,0.35,1.91,,,
+v2.0,B,Y,580,4.25,24.6,1.12,22,14.6,2.48,completed,0.08,0.35,,,,
+v1,A,Y,549,1.83,10.0,0.74,57,10.0,1.85,nonconverged,0.10,0.35,1.85,,,
+v1,B,Y,570,3.85,22.0,0.95,28,13.7,2.49,completed,0.09,0.37,,,,
