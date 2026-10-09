@@ -50,3 +50,5 @@
   t=   5.00  cb_yield           L16-CB1 {'rot': 0.00067}
   t=   5.13  cb_yield           L17-CB1 {'rot': 0.00067}
   t=   5.25  cb_yield           L17-CB0 {'rot': 0.00074}
+  t=   5.38  cb_yield           L18-CB0 {'rot': 0.00067}
+  t=   5.38  cb_yield           L18-CB1 {'rot': 0.00068}
