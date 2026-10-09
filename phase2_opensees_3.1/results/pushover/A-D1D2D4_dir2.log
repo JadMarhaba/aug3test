@@ -52,3 +52,9 @@
   t=  31.00  cb_yield           L12-CB3 {'rot': 0.00071}
   t=  31.00  cb_yield           L19-CB0 {'rot': 0.0008}
   t=  31.00  cb_yield           L19-CB2 {'rot': 0.0008}
+  t=  33.00  cb_yield           L5-CB1 {'rot': 0.00081}
+  t=  33.00  cb_yield           L5-CB3 {'rot': 0.00081}
+  t=  33.00  cb_yield           L13-CB1 {'rot': 0.00073}
+  t=  33.00  cb_yield           L13-CB3 {'rot': 0.00073}
+  t=  33.00  cb_yield           L20-CB0 {'rot': 0.00095}
+  t=  33.00  cb_yield           L20-CB2 {'rot': 0.00095}
