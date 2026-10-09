@@ -56,3 +56,17 @@
   t=  29.00  cb_yield           L19-CB2 {'rot': 0.00079}
   t=  30.00  cb_yield           L10-CB1 {'rot': 0.0008}
   t=  30.00  cb_yield           L10-CB3 {'rot': 0.0008}
+  step 30  solver fallback: 10 sub-steps, tol 1e-05
+  t=  31.00  cb_yield           L11-CB1 {'rot': 0.00214}
+  t=  31.00  cb_yield           L11-CB3 {'rot': 0.00214}
+  t=  31.00  cb_yield           L12-CB1 {'rot': 0.00158}
+  t=  31.00  cb_yield           L12-CB3 {'rot': 0.00159}
+  t=  31.00  cb_yield           L13-CB1 {'rot': 0.00106}
+  t=  31.00  cb_yield           L13-CB3 {'rot': 0.00106}
+  t=  31.00  cb_yield           L14-CB1 {'rot': 0.00074}
+  t=  31.00  cb_yield           L14-CB3 {'rot': 0.00075}
+  t=  31.00  cb_yield           L20-CB0 {'rot': 0.00107}
+  t=  31.00  cb_yield           L20-CB2 {'rot': 0.00107}
+  t=  31.00  cb_yield           L21-CB0 {'rot': 0.0008}
+  t=  31.00  cb_yield           L21-CB2 {'rot': 0.00081}
+  step 31  solver fallback: 100 sub-steps, tol 0.0001

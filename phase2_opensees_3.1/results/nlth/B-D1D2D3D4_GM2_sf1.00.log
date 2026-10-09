@@ -27,3 +27,78 @@
   t=  12.50  cb_yield           L13-CB1 {'rot': 0.00098}
   t=  12.50  cb_yield           L14-CB1 {'rot': 0.00093}
   t=  12.50  cb_yield           L15-CB1 {'rot': 0.00088}
+  t=  12.75  cb_yield           L16-CB1 {'rot': 0.00087}
+  t=  14.38  cb_yield           L1-CB3 {'rot': 0.00089}
+  t=  14.38  cb_yield           L2-CB3 {'rot': 0.0009}
+  t=  14.38  cb_yield           L3-CB3 {'rot': 0.00089}
+  t=  14.38  cb_yield           L4-CB3 {'rot': 0.00085}
+  t=  15.13  cb_yield           L2-CB2 {'rot': 0.00088}
+  t=  15.13  cb_yield           L3-CB2 {'rot': 0.00089}
+  t=  15.13  cb_yield           L4-CB2 {'rot': 0.00088}
+  t=  15.13  cb_yield           L5-CB2 {'rot': 0.00086}
+  t=  15.13  cb_yield           L6-CB2 {'rot': 0.00085}
+  t=  15.25  cb_yield           L1-CB2 {'rot': 0.00091}
+  t=  16.13  cb_yield           L5-CB3 {'rot': 0.00085}
+  t=  16.13  cb_yield           L6-CB3 {'rot': 0.00087}
+  t=  16.13  cb_yield           L7-CB3 {'rot': 0.00087}
+  t=  16.13  cb_yield           L8-CB3 {'rot': 0.00085}
+  t=  19.25  cb_yield           L14-CB3 {'rot': 0.00085}
+  t=  19.25  cb_yield           L15-CB3 {'rot': 0.00085}
+  t=  19.25  cb_yield           L16-CB3 {'rot': 0.00085}
+  t=  19.37  cb_yield           L9-CB3 {'rot': 0.00091}
+  t=  19.37  cb_yield           L10-CB3 {'rot': 0.00092}
+  t=  19.37  cb_yield           L11-CB3 {'rot': 0.00094}
+  t=  19.37  cb_yield           L12-CB3 {'rot': 0.00095}
+  t=  19.37  cb_yield           L13-CB3 {'rot': 0.00095}
+  t=  19.37  cb_yield           L17-CB3 {'rot': 0.00098}
+  t=  19.37  cb_yield           L18-CB3 {'rot': 0.00097}
+  t=  19.37  cb_yield           L19-CB3 {'rot': 0.00095}
+  t=  19.50  cb_yield           L7-CB2 {'rot': 0.001}
+  t=  19.50  cb_yield           L8-CB2 {'rot': 0.00098}
+  t=  19.50  cb_yield           L9-CB2 {'rot': 0.00093}
+  t=  19.50  cb_yield           L10-CB2 {'rot': 0.00091}
+  t=  19.50  cb_yield           L11-CB2 {'rot': 0.0009}
+  t=  19.50  cb_yield           L12-CB2 {'rot': 0.00089}
+  t=  19.50  cb_yield           L13-CB2 {'rot': 0.00086}
+  t=  19.62  cb_yield           L14-CB2 {'rot': 0.001}
+  t=  19.62  cb_yield           L15-CB2 {'rot': 0.00092}
+  t=  19.62  cb_yield           L16-CB2 {'rot': 0.00086}
+  progress t=  20.0s  max corner drift so far=0.0018  wall clock=215s
+  t=  21.00  cb_yield           L17-CB2 {'rot': 0.00106}
+  t=  21.00  cb_yield           L18-CB2 {'rot': 0.00096}
+  t=  21.12  cb_yield           L19-CB2 {'rot': 0.001}
+  t=  29.87  cb_yield           L20-CB2 {'rot': 0.00097}
+  progress t=  30.0s  max corner drift so far=0.0028  wall clock=327s
+  t=  36.87  cb_yield           L21-CB2 {'rot': 0.00097}
+  t=  38.37  cb_yield           L20-CB3 {'rot': 0.00097}
+  t=  38.37  cb_yield           L21-CB3 {'rot': 0.00094}
+  t=  38.50  cb_yield           L22-CB2 {'rot': 0.00097}
+  t=  38.50  cb_yield           L22-CB3 {'rot': 0.00095}
+  progress t=  40.0s  max corner drift so far=0.0029  wall clock=440s
+  t=  47.12  cb_yield           L14-CB0 {'rot': 0.00106}
+  t=  47.12  cb_yield           L15-CB0 {'rot': 0.001}
+  t=  47.12  cb_yield           L16-CB0 {'rot': 0.00094}
+  t=  47.12  cb_yield           L17-CB0 {'rot': 0.00094}
+  t=  47.12  cb_yield           L17-CB1 {'rot': 0.00102}
+  t=  47.12  cb_yield           L18-CB1 {'rot': 0.00097}
+  t=  47.25  cb_yield           L19-CB1 {'rot': 0.00095}
+  progress t=  50.0s  max corner drift so far=0.0029  wall clock=563s
+  progress t=  60.0s  max corner drift so far=0.0029  wall clock=694s
+  progress t=  70.0s  max corner drift so far=0.0029  wall clock=814s
+  t=  73.62  cb_yield           L18-CB0 {'rot': 0.00095}
+  t=  77.50  cb_yield           L20-CB1 {'rot': 0.00097}
+  t=  77.63  cb_yield           L19-CB0 {'rot': 0.00095}
+  t=  77.63  cb_yield           L21-CB1 {'rot': 0.00097}
+  progress t=  80.0s  max corner drift so far=0.0029  wall clock=929s
+  t=  89.75  cb_yield           L20-CB0 {'rot': 0.001}
+  t=  89.75  cb_yield           L21-CB0 {'rot': 0.00096}
+  progress t=  90.0s  max corner drift so far=0.0029  wall clock=1047s
+  t=  91.38  cb_yield           L22-CB1 {'rot': 0.00098}
+  t=  99.63  cb_yield           L22-CB0 {'rot': 0.00094}
+  t=  99.63  cb_yield           L23-CB1 {'rot': 0.00101}
+  t=  99.75  cb_yield           L23-CB0 {'rot': 0.00096}
+  t=  99.75  cb_yield           L24-CB1 {'rot': 0.00107}
+  t=  99.88  cb_yield           L25-CB1 {'rot': 0.00105}
+  progress t= 100.0s  max corner drift so far=0.0035  wall clock=1172s
+  progress t= 110.0s  max corner drift so far=0.0035  wall clock=1296s
+  progress t= 120.0s  max corner drift so far=0.0035  wall clock=1410s
