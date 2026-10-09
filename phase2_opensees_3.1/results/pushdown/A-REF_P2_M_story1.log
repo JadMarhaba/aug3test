@@ -23,3 +23,9 @@
   t=   6.00  cb_yield           L6-CB1 {'rot': 0.0007}
   t=   6.00  cb_yield           L6-CB2 {'rot': 0.00076}
   t=   6.00  cb_yield           L6-CB3 {'rot': 0.0007}
+  t=  22.00  cb_failure         L1-CB1 {'rot': 0.03332}
+  t=  22.00  cb_failure         L1-CB3 {'rot': 0.03335}
+  t=  37.00  wall_flexure_strength_loss S2-M {'rot_x': 0.0, 'rot_y': 0.0147}
+  t=  43.00  wall_axial_failure S2-M {'rot_x': 0.0, 'b_x': 0.0189, 'rot_y': 0.01931, 'b_y': 0.0189, 'cause': 'flexure-compression (ASCE 41 b)'}
+  t=  45.00  cb_failure         L1-CB0 {'rot': 0.02492}
+  t=  45.00  cb_failure         L1-CB2 {'rot': 0.02494}
