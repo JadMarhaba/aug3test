@@ -45,3 +45,5 @@
 [12:16:55] DONE nlth/B-D1D2D3D4_fc0.50_le0.30_GM1_sf2.00 collapse 1364.1  (1364s)
 [12:22:37] DONE nlth/A-D1D2D3D4_fc0.50_le0.30_GM1_sf3.00 collapse 1673.8  (1674s)
 [12:30:52] DONE nlth/B-D1D2D3D4_fc0.50_le0.30_GM1_sf1.75 nonconverged 836.3  (837s)
+[12:41:58] DONE nlth/A-D1D2D3D4_fc0.50_le0.30_GM1_sf2.50 nonconverged 1161.1  (1161s)
+[12:46:43] DONE nlth/A-D1D2D3D4_fc0.35_le0.10_GM1_sf1.00 completed 2129.5  (2130s)
