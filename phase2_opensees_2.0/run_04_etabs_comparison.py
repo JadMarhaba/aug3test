@@ -20,7 +20,8 @@ ELASTIC response-spectrum drifts (multiply by Cd for the inelastic design drift)
 
 Output: results/summary/E1_etabs_comparison.csv, E2_storey_profiles.csv,
         figures/fig12_etabs_comparison_profiles.png and REPORT_etabs_comparison.md
-Usage:  python3 run_04_etabs_comparison.py
+Usage:  python3 run_04_etabs_comparison.py            (original models, no deficiencies)
+        python3 run_04_etabs_comparison.py D1D2D3D4   (documented as-built condition)
 """
 import csv
 import math
@@ -43,8 +44,8 @@ NMODES = 12
 NAME = {"A": "As-built flat slab (2A)", "B": "Proposed beam-slab (2B)"}
 
 
-def analyse(cfg):
-    v = C.Variant(config=cfg, load_state="design")
+def analyse(cfg, defs=""):
+    v = C.Variant(config=cfg, load_state="design", **{d: (d in defs) for d in ("D1", "D2", "D3", "D4")})
     design = load_design()
     Model = model_class(cfg)
     # ---- 1. gravity -------------------------------------------------------------------------
@@ -108,8 +109,24 @@ def analyse(cfg):
                 Ta=Ta, Tuse=Tuse, Cs=Cs, V_elf=Cs * W, b=b)
 
 
-def main():
-    res = {cfg: analyse(cfg) for cfg in "AB"}
+def main(defs=""):
+    tag = defs or "REF"
+    sfx = "" if tag == "REF" else f"_{tag}"
+    res = {cfg: analyse(cfg, defs) for cfg in "AB"}
+    # machine-readable copy for compare_with_etabs.py
+    dump = {}
+    for cfg, r in res.items():
+        dump[cfg] = dict(variant=f"{cfg}-{tag}", W_kN=r["W"], T=r["T"].tolist(), mx=r["mx"].tolist(),
+                         my=r["my"].tolist(), mrz=r["mrz"].tolist(), V_elf_kN=r["V_elf"],
+                         P_core_kN={p: r["P_core"][p] for p in PIERS}, P_cols_kN=r["P_cols"],
+                         rsa={dn: dict(V_kN=r["rsa"][d]["V"], V_core_kN=r["rsa"][d]["V_core"],
+                                       V_cols_kN=r["rsa"][d]["V_cols"], roof_m=r["rsa"][d]["roof"],
+                                       shear_kN=r["rsa"][d]["shear"].tolist(),
+                                       drift_centre=r["rsa"][d]["drift_cm"].tolist(),
+                                       drift_corner=r["rsa"][d]["drift_cor"].tolist())
+                              for d, dn in ((1, "X"), (2, "Y"))})
+    import json
+    json.dump(dump, open(os.path.join(OUT, f"E0_opensees_elastic{sfx}.json"), "w"), indent=1)
     os.makedirs(OUT, exist_ok=True)
     # ---------------- table E1 ---------------------------------------------------------------
     rows = []
@@ -141,12 +158,12 @@ def main():
         lambda r: " / ".join(f1(r["P_core"][p] / 1e3) for p in PIERS), None)
     add("Gravity: storey-1 axial, all core / all columns", "MN",
         lambda r: f"{sum(r['P_core'].values()) / 1e3:.1f} / {r['P_cols'] / 1e3:.1f}", None)
-    with open(os.path.join(OUT, "E1_etabs_comparison.csv"), "w", newline="") as f:
+    with open(os.path.join(OUT, f"E1_etabs_comparison{sfx}.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["quantity", "unit", NAME["A"], NAME["B"]])
         w.writerows(rows)
     # ---------------- table E2 (storey profiles) ----------------------------------------------
-    with open(os.path.join(OUT, "E2_storey_profiles.csv"), "w", newline="") as f:
+    with open(os.path.join(OUT, f"E2_storey_profiles{sfx}.csv"), "w", newline="") as f:
         w = csv.writer(f)
         hdr = ["storey"]
         for cfg in "AB":
@@ -180,11 +197,14 @@ def main():
     fig.suptitle("Elastic response-spectrum results of the original models (DPT spectrum, R = 5, I = 1.25, CQC) "
                  "- for comparison with ETABS", fontsize=10.5, fontweight="bold")
     fig.tight_layout(rect=(0, 0, 1, 0.94))
-    fig.savefig(os.path.join(FIG, "fig12_etabs_comparison_profiles.png"), dpi=140)
+    fig.savefig(os.path.join(FIG, f"fig12_etabs_comparison_profiles{sfx}.png"), dpi=140)
     plt.close(fig)
     for r in rows:
         print(" | ".join(str(x) for x in r))
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    # no argument: original models (no deficiencies); "D1D2D3D4": documented as-built condition
+    # (elastically only D1 = lower wall E and D3 = 250 mm walls change the stiffness)
+    main(sys.argv[1] if len(sys.argv) > 1 else "")
