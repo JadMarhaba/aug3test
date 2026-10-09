@@ -100,3 +100,29 @@
   t=  48.00  wall_shear_strength_loss S12-F {'gamma': 0.00505}
   t=  48.00  cb_yield           L25-CB1 {'rot': 0.00085}
   t=  48.00  cb_yield           L25-CB3 {'rot': 0.00085}
+  step 48  solver fallback: 100 sub-steps, tol 0.0001
+  t=  49.00  wall_shear_strength_loss S9-F {'gamma': 0.00628}
+  t=  49.00  wall_shear_failure S10-F {'gamma': 0.00793}
+  t=  49.00  wall_shear_failure S11-F {'gamma': 0.00823}
+  t=  49.00  wall_shear_failure S12-F {'gamma': 0.00818}
+  t=  49.00  wall_shear_strength_loss S13-F {'gamma': 0.00787}
+  t=  49.00  wall_shear_failure S13-F {'gamma': 0.00787}
+  t=  49.00  wall_shear_strength_loss S14-F {'gamma': 0.00688}
+  t=  49.00  wall_shear_strength_loss S15-F {'gamma': 0.00586}
+  t=  49.00  wall_shear_strength_loss S16-F {'gamma': 0.00516}
+  t=  49.00  cb_yield           L26-CB1 {'rot': 0.00098}
+  t=  49.00  cb_yield           L26-CB3 {'rot': 0.00098}
+  t=  49.00  cb_yield           L27-CB1 {'rot': 0.00089}
+  t=  49.00  cb_yield           L27-CB3 {'rot': 0.00089}
+  step 49  solver fallback: 10 sub-steps, tol 1e-05
+  t=  50.00  wall_shear_failure S14-F {'gamma': 0.0079}
+  t=  50.00  wall_shear_strength_loss S17-F {'gamma': 0.00529}
+  t=  50.00  cb_yield           L28-CB1 {'rot': 0.00089}
+  t=  50.00  cb_yield           L28-CB3 {'rot': 0.00089}
+  t=  51.00  wall_shear_failure S9-F {'gamma': 0.00775}
+  t=  51.00  wall_axial_failure S10-F {'gamma': 0.00927, 'eps': -4e-05, 'cause': 'shear'}
+  t=  51.00  wall_axial_failure S11-F {'gamma': 0.00959, 'eps': -4e-05, 'cause': 'shear'}
+  t=  51.00  wall_axial_failure S12-F {'gamma': 0.0096, 'eps': -3e-05, 'cause': 'shear'}
+  t=  51.00  wall_axial_failure S13-F {'gamma': 0.00943, 'eps': -3e-05, 'cause': 'shear'}
+  t=  51.00  wall_shear_failure S15-F {'gamma': 0.00774}
+  t=  51.00  wall_shear_strength_loss S18-F {'gamma': 0.0051}
