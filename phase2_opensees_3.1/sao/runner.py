@@ -61,8 +61,7 @@ def variant_from_name(name):
 def job_id(job):
     k = job["kind"]
     if k == "pushover":
-        n = job.get("n_steps", 250)
-        return f"pushover/{job['variant']}_dir{job['dir']}" + ("" if n == 250 else f"_n{n}")
+        return f"pushover/{job['variant']}_dir{job['dir']}"
     if k == "nlth":
         dt = job.get("dt", 0.025)
         suf = "" if abs(dt - 0.025) < 1e-9 else f"_dt{dt:g}"
