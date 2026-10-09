@@ -243,3 +243,28 @@
   t=  65.35  cb_failure         L33-CB3 {'rot': 0.01491}
   t=  65.40  cb_failure         L21-CB0 {'rot': 0.01527}
   t=  65.50  cb_failure         L33-CB1 {'rot': 0.01477}
+  progress t=  70.0s  max corner drift so far=0.0094  wall clock=2089s
+  t=  72.50  cb_yield           L33-CB2 {'rot': 0.00088}
+  t=  77.24  wall_axial_failure S1-F {'gamma': 0.00075, 'eps': -0.00678, 'cause': 'crushing'}
+  t=  77.85  cb_failure         L22-CB2 {'rot': 0.01488}
+  t=  77.95  cb_failure         L23-CB2 {'rot': 0.01497}
+  t=  78.10  cb_failure         L22-CB0 {'rot': 0.01473}
+  t=  78.10  cb_failure         L24-CB2 {'rot': 0.01564}
+  t=  78.15  cb_failure         L25-CB2 {'rot': 0.01496}
+  t=  78.20  cb_failure         L23-CB0 {'rot': 0.01593}
+  t=  78.25  cb_failure         L24-CB0 {'rot': 0.01533}
+  t=  78.25  cb_failure         L26-CB2 {'rot': 0.01632}
+  t=  78.50  cb_failure         L27-CB2 {'rot': 0.01521}
+  progress t=  80.0s  max corner drift so far=0.0149  wall clock=2431s
+  t=  86.10  wall_flexure_strength_loss S2-M {'rot_x': 0.0, 'rot_y': 0.00287}
+  t=  86.65  cb_failure         L25-CB0 {'rot': 0.01472}
+  t=  86.80  cb_failure         L26-CB0 {'rot': 0.01508}
+  t=  86.95  cb_failure         L27-CB0 {'rot': 0.01469}
+  t=  87.10  cb_failure         L28-CB0 {'rot': 0.01486}
+  t=  87.35  cb_failure         L29-CB0 {'rot': 0.01469}
+  progress t=  90.0s  max corner drift so far=0.0153  wall clock=2776s
+  t=  90.80  wall_flexure_strength_loss S17-F {'rot_x': 0.0, 'rot_y': 0.00558}
+  t=  90.80  wall_flexure_strength_loss S18-F {'rot_x': 0.0, 'rot_y': 0.00485}
+  t=  90.85  wall_axial_failure S17-F {'rot_x': 0.0, 'b_x': 0.0072, 'rot_y': 0.00818, 'b_y': 0.0075, 'cause': 'flexure-compression (ASCE 41 b)'}
+  t=  90.90  wall_axial_failure S18-F {'rot_x': 0.0, 'b_x': 0.008, 'rot_y': 0.01072, 'b_y': 0.0083, 'cause': 'flexure-compression (ASCE 41 b)'}
+  t=  90.90  wall_flexure_strength_loss S19-F {'rot_x': 0.0, 'rot_y': 0.00504}
