@@ -42,3 +42,5 @@
   t=  30.00  cb_yield           L22-CB0 {'rot': 0.00079}
   t=  31.00  cb_yield           L22-CB2 {'rot': 0.00079}
   t=  34.00  cb_yield           L23-CB0 {'rot': 0.0008}
+  t=  38.00  cb_yield           L24-CB0 {'rot': 0.0008}
+  t=  41.00  cb_yield           L25-CB0 {'rot': 0.0008}

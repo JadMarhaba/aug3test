@@ -204,3 +204,5 @@
   t=  20.50  cb_failure         L22-CB2 {'rot': 0.02528}
   t=  20.50  cb_failure         L22-CB3 {'rot': 0.02621}
   t=  20.62  cb_failure         L23-CB3 {'rot': 0.02482}
+  t=  20.75  cb_failure         L23-CB2 {'rot': 0.02814}
+  t=  20.87  cb_failure         L24-CB2 {'rot': 0.02555}
