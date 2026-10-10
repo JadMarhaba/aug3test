@@ -220,3 +220,15 @@
   t=  43.75  cb_failure         L22-CB1 {'rot': 0.02864}
   t=  46.62  cb_failure         L1-CB0 {'rot': 0.02471}
   t=  46.62  cb_failure         L1-CB1 {'rot': 0.02746}
+  progress t=  50.0s  max corner drift so far=0.0222  wall clock=681s
+  progress t=  60.0s  max corner drift so far=0.0222  wall clock=828s
+  progress t=  70.0s  max corner drift so far=0.0222  wall clock=965s
+  t=  74.50  cb_failure         L22-CB2 {'rot': 0.02545}
+  t=  74.50  cb_failure         L22-CB3 {'rot': 0.02527}
+  t=  79.63  wall_axial_failure S1-F {'gamma': 0.00107, 'eps': -0.00617, 'cause': 'crushing'}
+  t=  79.88  cb_failure         L23-CB1 {'rot': 0.03357}
+  t=  79.88  cb_failure         L24-CB1 {'rot': 0.0304}
+  t=  79.88  cb_failure         L25-CB1 {'rot': 0.02861}
+  t=  79.88  cb_failure         L26-CB1 {'rot': 0.02647}
+  progress t=  80.0s  max corner drift so far=0.0339  wall clock=1135s
+  t= 80.050  solver fallback: 4 sub-steps
