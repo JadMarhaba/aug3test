@@ -98,3 +98,7 @@
   t=  73.37  cb_yield           L24-CB3 {'rot': 0.00103}
   t=  73.50  cb_yield           L25-CB3 {'rot': 0.00096}
   progress t=  80.0s  max corner drift so far=0.0033  wall clock=720s
+  progress t=  90.0s  max corner drift so far=0.0033  wall clock=815s
+  progress t= 100.0s  max corner drift so far=0.0033  wall clock=908s
+  progress t= 110.0s  max corner drift so far=0.0033  wall clock=997s
+  progress t= 120.0s  max corner drift so far=0.0033  wall clock=1092s
