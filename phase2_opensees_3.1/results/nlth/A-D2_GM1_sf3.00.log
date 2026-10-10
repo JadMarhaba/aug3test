@@ -179,3 +179,12 @@
   t=  21.37  cb_failure         L25-CB1 {'rot': 0.01534}
   t=  21.37  cb_failure         L26-CB0 {'rot': 0.01529}
   t=  21.50  cb_failure         L27-CB0 {'rot': 0.01603}
+  t=  21.62  cb_failure         L26-CB1 {'rot': 0.01698}
+  t=  21.62  cb_failure         L28-CB0 {'rot': 0.01669}
+  t=  21.62  cb_failure         L29-CB0 {'rot': 0.01478}
+  t=  21.75  cb_failure         L27-CB1 {'rot': 0.016}
+  t=  21.75  cb_failure         L30-CB0 {'rot': 0.01614}
+  t=  21.75  cb_failure         L31-CB0 {'rot': 0.01546}
+  t=  21.75  cb_failure         L32-CB0 {'rot': 0.01512}
+  t=  21.75  cb_failure         L33-CB0 {'rot': 0.01503}
+  t=  21.87  cb_failure         L28-CB1 {'rot': 0.01498}
