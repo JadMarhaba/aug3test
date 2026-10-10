@@ -9,3 +9,8 @@
 [17:56:23] DONE nlth/A-D1D2D3D4_GM3_sf0.50 completed 1272.1  (1273s)
 [17:57:06] DONE pushover/A-D1D2D3D4_dir1 numerical 205.0  (205s)
 [18:04:33] DONE pushover/B-D1D2D3D4_dir1 nonconverged 447.2  (447s)
+[18:11:43] DONE nlth/B-REF_GM2_sf1.00 completed 1162.1  (1162s)
+[18:19:56] DONE nlth/A-D1D2D3D4_GM3_sf1.00 completed 1412.6  (1413s)
+[18:22:20] DONE nlth/B-D1D2D3D4_GM3_sf0.50 completed 1066.1  (1066s)
+[18:33:32] DONE nlth/A-REF_GM2_sf3.75 nonconverged 2377.7  (2378s)
+[18:34:28] DONE nlth/B-REF_GM2_sf1.50 completed 1364.7  (1365s)
