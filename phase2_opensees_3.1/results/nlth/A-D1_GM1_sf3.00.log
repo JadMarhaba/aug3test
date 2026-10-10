@@ -320,3 +320,5 @@
   t=  96.88  punching           L11-col24 {'drift': np.float64(0.0288), 'vg_vc': 0.232, 'conn': 'column'}
   t=  97.00  punching           L10-col24 {'drift': np.float64(0.0282), 'vg_vc': 0.237, 'conn': 'column'}
   progress t= 100.0s  max corner drift so far=0.0321  wall clock=1864s
+  progress t= 110.0s  max corner drift so far=0.0321  wall clock=2040s
+  progress t= 120.0s  max corner drift so far=0.0321  wall clock=2197s
