@@ -1,1 +1,11 @@
 0 priority jobs, 42 collapse searches, 7 other jobs, 4 workers
+[17:36:08] DONE pushover/B-D1D2D4_dir1 numerical 57.8  (58s)
+[17:39:44] DONE pushover/A-D1D3D4_dir1 nonconverged 215.2  (215s)
+[17:47:57] DONE pushover/B-D1D3D4_dir1 nonconverged 493.2  (493s)
+[17:49:25] DONE pushover/A-D2D3D4_dir1 numerical 87.3  (88s)
+[17:52:20] DONE nlth/B-REF_GM2_sf0.50 completed 1029.9  (1030s)
+[17:53:41] DONE pushover/B-D2D3D4_dir1 nonconverged 255.3  (256s)
+[17:53:54] DONE nlth/A-REF_GM2_sf4.50 nonconverged 1123.0  (1124s)
+[17:56:23] DONE nlth/A-D1D2D3D4_GM3_sf0.50 completed 1272.1  (1273s)
+[17:57:06] DONE pushover/A-D1D2D3D4_dir1 numerical 205.0  (205s)
+[18:04:33] DONE pushover/B-D1D2D3D4_dir1 nonconverged 447.2  (447s)

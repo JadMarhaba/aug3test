@@ -1,0 +1,21 @@
+  t=  53.00  cb_yield           L3-CB0 {'rot': 0.00071}
+  t=  57.00  cb_yield           L2-CB0 {'rot': 0.00072}
+  t=  61.00  wall_shear_strength_loss S9-F {'gamma': 0.00504}
+  t=  61.00  wall_shear_strength_loss S10-F {'gamma': 0.00509}
+  t=  61.00  wall_shear_strength_loss S11-F {'gamma': 0.00503}
+  t=  62.00  wall_shear_strength_loss S8-F {'gamma': 0.00521}
+  t=  62.00  wall_shear_strength_loss S12-F {'gamma': 0.00544}
+  t=  62.00  wall_shear_strength_loss S13-F {'gamma': 0.00521}
+  t=  63.00  wall_shear_strength_loss S7-F {'gamma': 0.00511}
+  t=  64.00  wall_shear_failure S10-F {'gamma': 0.00761}
+  t=  64.00  wall_shear_failure S11-F {'gamma': 0.00762}
+  t=  64.00  wall_shear_strength_loss S14-F {'gamma': 0.00528}
+  t=  65.00  wall_shear_failure S9-F {'gamma': 0.00766}
+  t=  65.00  wall_shear_failure S12-F {'gamma': 0.00773}
+  t=  66.00  wall_shear_strength_loss S6-F {'gamma': 0.00506}
+  t=  67.00  wall_shear_failure S8-F {'gamma': 0.00762}
+  t=  67.00  wall_axial_failure S9-F {'gamma': 0.0084, 'eps': -0.00019, 'cause': 'shear'}
+  t=  67.00  wall_axial_failure S10-F {'gamma': 0.00873, 'eps': -0.00018, 'cause': 'shear'}
+  t=  67.00  wall_axial_failure S11-F {'gamma': 0.00868, 'eps': -0.00018, 'cause': 'shear'}
+  t=  67.00  wall_shear_failure S13-F {'gamma': 0.00761}
+  step 67  solver fallback: NewtonLineSearch
