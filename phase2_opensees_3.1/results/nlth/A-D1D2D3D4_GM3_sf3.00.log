@@ -237,3 +237,4 @@
   progress t=  70.0s  max corner drift so far=0.0255  wall clock=1146s
   t=  72.12  cb_failure         L26-CB1 {'rot': 0.01673}
   t=  72.25  cb_failure         L26-CB0 {'rot': 0.01539}
+  t=  78.25  cb_failure         L27-CB1 {'rot': 0.01501}
