@@ -38,3 +38,8 @@
 [20:55:40] DONE nlth/A-REF_GM3_sf3.00 completed 2108.6  (2109s)
 [20:59:49] DONE nlth/A-REF_GM3_sf4.50 numerical 248.7  (249s)
 [21:05:00] DONE nlth/B-REF_GM3_sf1.50 completed 1265.6  (1266s)
+[21:07:27] DONE nlth/A-REF_GM3_sf4.50_dt0.01 numerical 457.4  (458s)
+[21:14:03] DONE nlth/A-D1D2D3D4_GM3_sf2.50_dt0.01 numerical 2207.1  (2207s)
+[21:14:06] DONE nlth/A-D1_GM1_sf0.50 completed 1316.0  (1316s)
+[21:28:32] DONE nlth/B-REF_GM3_sf2.00 completed 1412.0  (1412s)
+[21:31:00] DONE nlth/B-D1_GM1_sf0.50 completed 1016.4  (1017s)
