@@ -97,3 +97,14 @@
   progress t=  40.0s  max corner drift so far=0.0030  wall clock=327s
   progress t=  50.0s  max corner drift so far=0.0030  wall clock=412s
   progress t=  60.0s  max corner drift so far=0.0030  wall clock=500s
+  progress t=  70.0s  max corner drift so far=0.0030  wall clock=584s
+  progress t=  80.0s  max corner drift so far=0.0030  wall clock=668s
+  t=  80.13  cb_yield           L24-CB0 {'rot': 0.00074}
+  t=  83.25  cb_yield           L26-CB1 {'rot': 0.00075}
+  t=  83.38  cb_yield           L25-CB0 {'rot': 0.00078}
+  t=  85.00  cb_yield           L26-CB0 {'rot': 0.00077}
+  t=  86.63  cb_yield           L27-CB1 {'rot': 0.00076}
+  progress t=  90.0s  max corner drift so far=0.0030  wall clock=756s
+  progress t= 100.0s  max corner drift so far=0.0030  wall clock=843s
+  progress t= 110.0s  max corner drift so far=0.0030  wall clock=932s
+  progress t= 120.0s  max corner drift so far=0.0030  wall clock=1015s

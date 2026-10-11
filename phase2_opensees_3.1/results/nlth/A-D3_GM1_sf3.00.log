@@ -269,3 +269,12 @@
   t=  88.25  punching           L14-col18 {'drift': np.float64(0.0251), 'vg_vc': 0.301, 'conn': 'column'}
   t= 89.400  solver fallback: NewtonLineSearch
   progress t=  90.0s  max corner drift so far=0.0300  wall clock=1454s
+  t=  91.63  punching           L12-corecR24 {'drift': np.float64(0.0218), 'vg_vc': 0.372, 'conn': 'wall'}
+  t=  93.38  cb_failure         L25-CB0 {'rot': 0.02558}
+  t=  96.63  punching           L13-col24 {'drift': np.float64(0.0275), 'vg_vc': 0.253, 'conn': 'column'}
+  t=  96.63  punching           L14-col24 {'drift': np.float64(0.0275), 'vg_vc': 0.254, 'conn': 'column'}
+  t=  96.75  punching           L15-col24 {'drift': np.float64(0.0273), 'vg_vc': 0.264, 'conn': 'column'}
+  t=  96.75  punching           L16-col24 {'drift': np.float64(0.027), 'vg_vc': 0.263, 'conn': 'column'}
+  progress t= 100.0s  max corner drift so far=0.0300  wall clock=1666s
+  progress t= 110.0s  max corner drift so far=0.0300  wall clock=1839s
+  progress t= 120.0s  max corner drift so far=0.0300  wall clock=1977s
