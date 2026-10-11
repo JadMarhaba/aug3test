@@ -17,6 +17,8 @@ import numpy as np
 from sao import config as C
 from sao import plotting as P
 from sao.runner import REMOVAL_SCENARIOS, PUSHDOWN_SCENARIOS
+import matplotlib
+import matplotlib.ticker
 import matplotlib.pyplot as plt
 
 RES = "results"
@@ -256,12 +258,14 @@ def fig_matrix(summ):
                         for n in names])
     ax.invert_yaxis()
     ax.set_xscale("log")
+    ax.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter("%g"))
+    ax.xaxis.set_minor_formatter(matplotlib.ticker.FormatStrFormatter("%g"))
     ax.set_xlabel("Peak storey drift at building corners (%) - log scale, capped at 10 %")
     ax.set_title("2025-event level (SF = 1, GM1): every deficiency combination")
     h = [plt.Line2D([], [], color=P.FLAT, marker="o", ls="", label="As-built flat slab (2A) - stood"),
          plt.Line2D([], [], color=P.BEAM, marker="o", ls="", label="Proposed beam-slab (2B) - stood"),
          plt.Line2D([], [], color="#e34948", marker="X", ls="", label="Collapse / instability (either framing)")]
-    ax.legend(handles=h, fontsize=8, loc="lower right")
+    ax.legend(handles=h, fontsize=8, loc="center left")
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "fig03_deficiency_matrix_event_level.png"))
     plt.close(fig)
@@ -358,7 +362,8 @@ def ida(nl):
             out[name] = dict(collapse_sf=col_sf, max_survived_sf=surv)
             rows.append([name, " ".join(f"{p[0]}:{'C' if p[2] else round(p[1] * 100, 2)}" for p in pts),
                          col_sf if col_sf else f">{max(sfs)}", surv if surv else "-"])
-            xs = [min(p[1] * 100, 10) for p in pts]
+            stood = [p for p in pts if not p[2]]          # the curve joins only the runs that stood
+            xs, sfs = [min(p[1] * 100, 10) for p in stood], [p[0] for p in stood]
             ax.plot(xs, sfs, color=P.SERIES[k], lw=1.6, marker="o", ms=4,
                     label="no deficiency" if d == "REF" else ("all 4" if d == "D1D2D3D4" else d))
             for p in pts:
@@ -580,13 +585,15 @@ def collapse_intensity(nl):
     ax.invert_yaxis()
     ax.set_xscale("log")
     ax.set_xticks([0.5, 1, 2, 3, 4.5, 6, 8])
+    ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
+    ax.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter("%g"))
     ax.set_xticklabels(["0.5", "1", "2", "3", "4.5", "6", "8"])
     ax.set_xlabel("Collapse intensity: scale factor on the 2025-event record GM1 (bar = bracket, dot = estimate)")
-    ax.set_title("How much stronger than the 2025 shaking must the record be to collapse the building?")
+    ax.set_title("How much stronger than the 2025 shaking must the record be\nto collapse the building?")
     h = [plt.Line2D([], [], color=P.FLAT, marker="o", lw=2, label="As-built flat slab (2A)"),
          plt.Line2D([], [], color=P.BEAM, marker="o", lw=2, label="Proposed beam-slab (2B)"),
          plt.Line2D([], [], color=P.INK2, marker=">", ls="", label="no collapse up to this SF")]
-    ax.legend(handles=h, fontsize=8, loc="lower right")
+    ax.legend(handles=h, fontsize=8, loc="center left")
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "fig11_collapse_intensity_all_combinations.png"))
     plt.close(fig)
