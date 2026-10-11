@@ -139,3 +139,15 @@
   t=  50.50  cb_failure         L10-CB1 {'rot': 0.02818}
   t=  50.50  cb_failure         L11-CB1 {'rot': 0.02734}
   t=  50.50  cb_failure         L12-CB1 {'rot': 0.02626}
+  t=  50.62  cb_failure         L5-CB1 {'rot': 0.02746}
+  t=  50.62  cb_failure         L7-CB3 {'rot': 0.02546}
+  t=  50.62  cb_failure         L8-CB3 {'rot': 0.02587}
+  t=  50.62  cb_failure         L9-CB3 {'rot': 0.02562}
+  t=  50.62  cb_failure         L13-CB1 {'rot': 0.0278}
+  t=  50.62  cb_failure         L14-CB1 {'rot': 0.02572}
+  t=  50.75  cb_failure         L4-CB1 {'rot': 0.02612}
+  t=  50.75  cb_failure         L6-CB3 {'rot': 0.02639}
+  t=  50.75  cb_failure         L10-CB3 {'rot': 0.02645}
+  t=  50.75  cb_failure         L11-CB3 {'rot': 0.02493}
+  t=  50.87  cb_failure         L7-CB0 {'rot': 0.02562}
+  t=  50.87  cb_failure         L8-CB0 {'rot': 0.02544}
