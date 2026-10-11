@@ -266,3 +266,11 @@
   t=  60.00  cb_failure         L33-CB3 {'rot': 0.0183}
   progress t=  60.0s  max corner drift so far=0.0200  wall clock=1000s
   t= 60.300  solver fallback: ModifiedNewton
+  progress t=  70.0s  max corner drift so far=0.0200  wall clock=1218s
+  t=  79.63  cb_failure         L1-CB3 {'rot': 0.01683}
+  t=  79.88  cb_failure         L1-CB2 {'rot': 0.01642}
+  progress t=  80.0s  max corner drift so far=0.0200  wall clock=1411s
+  progress t=  90.0s  max corner drift so far=0.0212  wall clock=1616s
+  progress t= 100.0s  max corner drift so far=0.0212  wall clock=1809s
+  progress t= 110.0s  max corner drift so far=0.0212  wall clock=1969s
+  progress t= 120.0s  max corner drift so far=0.0212  wall clock=2114s
