@@ -258,3 +258,28 @@
   progress t=  60.0s  max corner drift so far=0.0301  wall clock=1191s
   t=  68.50  cb_failure         L25-CB0 {'rot': 0.02507}
   progress t=  70.0s  max corner drift so far=0.0301  wall clock=1415s
+  t=  75.38  punching           L13-col10 {'drift': np.float64(0.0241), 'vg_vc': 0.32, 'conn': 'column'}
+  t=  75.50  punching           L14-col10 {'drift': np.float64(0.0239), 'vg_vc': 0.325, 'conn': 'column'}
+  t=  76.25  cb_failure         L26-CB3 {'rot': 0.02676}
+  t=  76.50  cb_failure         L27-CB3 {'rot': 0.02644}
+  t= 77.975  solver fallback: NewtonLineSearch
+  t=  78.13  punching           L14-col24 {'drift': np.float64(0.0242), 'vg_vc': 0.317, 'conn': 'column'}
+  t=  78.13  punching           L15-col24 {'drift': np.float64(0.0242), 'vg_vc': 0.318, 'conn': 'column'}
+  t=  78.13  punching           L16-col24 {'drift': np.float64(0.0242), 'vg_vc': 0.318, 'conn': 'column'}
+  t= 78.150  solver fallback: 4 sub-steps
+  t=  78.25  punching           L13-col24 {'drift': np.float64(0.0241), 'vg_vc': 0.354, 'conn': 'column'}
+  t=  78.25  punching           L17-col24 {'drift': np.float64(0.0239), 'vg_vc': 0.343, 'conn': 'column'}
+  t=  78.25  punching           L18-col24 {'drift': np.float64(0.0235), 'vg_vc': 0.356, 'conn': 'column'}
+  t=  78.25  punching           L19-col24 {'drift': np.float64(0.0228), 'vg_vc': 0.347, 'conn': 'column'}
+  t=  78.25  punching           L20-corecL24 {'drift': np.float64(0.0165), 'vg_vc': 0.502, 'conn': 'wall'}
+  t= 78.275  solver fallback: 4 sub-steps
+  t=  78.38  punching           L11-corecL24 {'drift': np.float64(0.0211), 'vg_vc': 0.443, 'conn': 'wall'}
+  t=  78.38  punching           L15-col19 {'drift': np.float64(0.0227), 'vg_vc': 0.348, 'conn': 'column'}
+  t=  78.38  punching           L16-corecL24 {'drift': np.float64(0.0202), 'vg_vc': 0.692, 'conn': 'wall'}
+  t=  78.38  punching           L16-corecF14 {'drift': np.float64(0.0194), 'vg_vc': 0.556, 'conn': 'wall'}
+  t=  78.38  punching           L17-col19 {'drift': np.float64(0.0225), 'vg_vc': 0.355, 'conn': 'column'}
+  t=  78.38  punching           L23-corecL24 {'drift': np.float64(0.0133), 'vg_vc': 0.534, 'conn': 'wall'}
+  t=  78.38  punching           L26-corecL24 {'drift': np.float64(0.0095), 'vg_vc': 0.65, 'conn': 'wall'}
+  t=  78.38  punching           L27-corecL24 {'drift': np.float64(0.009), 'vg_vc': 1.344, 'conn': 'wall'}
+  t=  78.38  punching           L27-corecR24 {'drift': np.float64(0.0105), 'vg_vc': 1.288, 'conn': 'wall'}
+  t=  78.38  punching           L27-corecL33 {'drift': np.float64(0.0108), 'vg_vc': 0.893, 'conn': 'wall'}
