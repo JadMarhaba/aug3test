@@ -238,3 +238,29 @@
   t=  46.05  cb_failure         L32-CB1 {'rot': 0.02538}
   t=  47.65  cb_failure         L33-CB1 {'rot': 0.02588}
   t=  47.75  wall_flexure_strength_loss S33-F {'rot_x': 0.0, 'rot_y': 0.01426}
+  t=  48.30  cb_failure         L1-CB0 {'rot': 0.02519}
+  t=  48.45  cb_failure         L1-CB2 {'rot': 0.02546}
+  t=  48.75  cb_failure         L33-CB3 {'rot': 0.02486}
+  t=  49.00  cb_failure         L18-CB2 {'rot': 0.02529}
+  t=  49.15  cb_failure         L19-CB2 {'rot': 0.0261}
+  t=  49.25  cb_failure         L20-CB2 {'rot': 0.02683}
+  t=  49.30  cb_failure         L21-CB2 {'rot': 0.02519}
+  t=  49.35  cb_failure         L21-CB0 {'rot': 0.02544}
+  t=  49.40  cb_failure         L22-CB2 {'rot': 0.02495}
+  t=  49.65  cb_failure         L23-CB2 {'rot': 0.02493}
+  progress t=  50.0s  max corner drift so far=0.0213  wall clock=1197s
+  t=  53.80  wall_axial_failure S33-F {'rot_x': 0.0, 'b_x': 0.02, 'rot_y': 0.01914, 'b_y': 0.0191, 'cause': 'flexure-compression (ASCE 41 b)'}
+  t= 53.940  solver fallback: Newton
+  t= 55.620  solver fallback: Newton
+  t= 55.860  solver fallback: ModifiedNewton
+  t= 56.590  solver fallback: Newton
+  t= 57.110  solver fallback: ModifiedNewton
+  t= 59.060  solver fallback: ModifiedNewton
+  progress t=  60.0s  max corner drift so far=0.0213  wall clock=1597s
+  t= 61.800  solver fallback: Newton
+  t= 62.040  solver fallback: NewtonLineSearch
+  t= 63.670  solver fallback: Newton
+  t= 65.010  solver fallback: Newton
+  t= 65.950  solver fallback: Newton
+  t= 66.550  solver fallback: NewtonLineSearch
+  t= 67.510  solver fallback: NewtonLineSearch
