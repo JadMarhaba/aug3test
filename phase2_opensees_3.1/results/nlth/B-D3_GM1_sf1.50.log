@@ -125,3 +125,6 @@
   progress t=  80.0s  max corner drift so far=0.0045  wall clock=782s
   t=  87.13  cb_yield           L31-CB1 {'rot': 0.00091}
   progress t=  90.0s  max corner drift so far=0.0045  wall clock=883s
+  progress t= 100.0s  max corner drift so far=0.0045  wall clock=980s
+  progress t= 110.0s  max corner drift so far=0.0045  wall clock=1075s
+  progress t= 120.0s  max corner drift so far=0.0045  wall clock=1169s

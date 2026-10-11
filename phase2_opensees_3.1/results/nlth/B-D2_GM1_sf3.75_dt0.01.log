@@ -243,3 +243,33 @@
   t=  23.30  cb_failure         L22-CB2 {'rot': 0.01491}
   t=  23.40  cb_failure         L1-CB2 {'rot': 0.01496}
   t=  23.60  cb_failure         L23-CB3 {'rot': 0.0147}
+  t=  26.75  cb_failure         L23-CB2 {'rot': 0.01637}
+  t=  26.75  cb_failure         L24-CB3 {'rot': 0.01542}
+  t=  26.80  cb_failure         L24-CB2 {'rot': 0.01584}
+  t=  26.80  cb_failure         L25-CB3 {'rot': 0.01545}
+  t=  26.85  cb_failure         L25-CB2 {'rot': 0.01505}
+  t=  26.85  cb_failure         L26-CB3 {'rot': 0.0158}
+  t=  26.90  cb_failure         L27-CB3 {'rot': 0.01624}
+  t=  26.95  cb_failure         L26-CB2 {'rot': 0.01532}
+  t=  26.95  cb_failure         L28-CB3 {'rot': 0.01756}
+  t=  27.00  cb_failure         L29-CB3 {'rot': 0.0201}
+  t=  27.00  cb_failure         L30-CB3 {'rot': 0.01782}
+  t=  27.00  cb_failure         L31-CB3 {'rot': 0.01612}
+  t=  27.00  cb_failure         L32-CB3 {'rot': 0.01497}
+  t=  27.10  cb_failure         L27-CB2 {'rot': 0.01683}
+  t=  27.10  cb_failure         L28-CB2 {'rot': 0.01537}
+  t=  27.15  cb_failure         L29-CB2 {'rot': 0.01761}
+  t=  27.15  cb_failure         L30-CB2 {'rot': 0.01553}
+  t=  27.20  cb_failure         L31-CB2 {'rot': 0.0169}
+  t=  27.20  cb_failure         L32-CB2 {'rot': 0.01582}
+  t=  27.20  cb_failure         L33-CB2 {'rot': 0.01531}
+  progress t=  30.0s  max corner drift so far=0.0182  wall clock=644s
+  progress t=  40.0s  max corner drift so far=0.0182  wall clock=870s
+  t=  49.00  cb_failure         L33-CB3 {'rot': 0.01492}
+  progress t=  50.0s  max corner drift so far=0.0182  wall clock=1110s
+  progress t=  60.0s  max corner drift so far=0.0182  wall clock=1340s
+  t= 68.370  solver fallback: ModifiedNewton
+  progress t=  70.0s  max corner drift so far=0.0182  wall clock=1590s
+  progress t=  80.0s  max corner drift so far=0.0264  wall clock=1825s
+  t=  86.16  wall_axial_failure S1-F {'gamma': 0.00122, 'eps': -0.00602, 'cause': 'crushing'}
+  progress t=  90.0s  max corner drift so far=0.0294  wall clock=2081s

@@ -1,0 +1,32 @@
+  progress t=  10.0s  max corner drift so far=0.0005  wall clock=97s
+  t=  16.50  cb_yield           L4-CB1 {'rot': 0.0007}
+  t=  16.50  cb_yield           L5-CB0 {'rot': 0.0007}
+  t=  16.50  cb_yield           L5-CB1 {'rot': 0.00072}
+  t=  16.50  cb_yield           L6-CB0 {'rot': 0.00071}
+  t=  16.50  cb_yield           L6-CB1 {'rot': 0.00073}
+  t=  16.50  cb_yield           L7-CB0 {'rot': 0.00072}
+  t=  16.50  cb_yield           L7-CB1 {'rot': 0.00074}
+  t=  16.50  cb_yield           L8-CB0 {'rot': 0.00072}
+  t=  16.50  cb_yield           L8-CB1 {'rot': 0.00074}
+  t=  16.50  cb_yield           L9-CB0 {'rot': 0.00072}
+  t=  16.50  cb_yield           L9-CB1 {'rot': 0.00073}
+  t=  16.50  cb_yield           L10-CB0 {'rot': 0.00071}
+  t=  16.50  cb_yield           L10-CB1 {'rot': 0.00072}
+  t=  16.50  cb_yield           L11-CB0 {'rot': 0.0007}
+  t=  16.50  cb_yield           L11-CB1 {'rot': 0.0007}
+  t=  16.50  cb_yield           L12-CB0 {'rot': 0.0007}
+  t=  16.50  cb_yield           L12-CB1 {'rot': 0.0007}
+  t=  16.50  cb_yield           L13-CB0 {'rot': 0.00069}
+  t=  16.50  cb_yield           L13-CB1 {'rot': 0.00069}
+  t=  16.63  cb_yield           L2-CB0 {'rot': 0.0007}
+  t=  16.63  cb_yield           L2-CB1 {'rot': 0.00071}
+  t=  16.63  cb_yield           L3-CB0 {'rot': 0.0008}
+  t=  16.63  cb_yield           L3-CB1 {'rot': 0.00081}
+  t=  16.63  cb_yield           L4-CB0 {'rot': 0.00089}
+  t=  16.63  cb_yield           L14-CB0 {'rot': 0.0008}
+  t=  16.63  cb_yield           L14-CB1 {'rot': 0.00077}
+  t=  16.63  cb_yield           L15-CB0 {'rot': 0.00075}
+  t=  16.63  cb_yield           L15-CB1 {'rot': 0.00073}
+  t=  16.63  cb_yield           L16-CB0 {'rot': 0.00071}
+  t=  16.63  cb_yield           L16-CB1 {'rot': 0.00069}
+  progress t=  20.0s  max corner drift so far=0.0016  wall clock=198s
