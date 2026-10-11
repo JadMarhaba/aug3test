@@ -270,3 +270,11 @@
   t=  80.00  cb_failure         L1-CB2 {'rot': 0.01556}
   progress t=  80.0s  max corner drift so far=0.0179  wall clock=1412s
   t= 83.850  solver fallback: NewtonLineSearch
+  progress t=  90.0s  max corner drift so far=0.0193  wall clock=1663s
+  t= 91.100  solver fallback: NewtonLineSearch
+  t= 91.575  solver fallback: NewtonLineSearch
+  t= 91.675  solver fallback: ModifiedNewton
+  t= 97.075  solver fallback: NewtonLineSearch
+  progress t= 100.0s  max corner drift so far=0.0193  wall clock=1933s
+  progress t= 110.0s  max corner drift so far=0.0193  wall clock=2120s
+  progress t= 120.0s  max corner drift so far=0.0193  wall clock=2280s
