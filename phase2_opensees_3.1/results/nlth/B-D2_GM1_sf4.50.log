@@ -266,3 +266,9 @@
   progress t=  30.0s  max corner drift so far=0.0266  wall clock=362s
   t= 34.925  solver fallback: ModifiedNewton
   t=  36.20  wall_axial_failure S1-F {'gamma': 0.00067, 'eps': -0.00624, 'cause': 'crushing'}
+  t= 36.300  solver fallback: 4 sub-steps
+  t=  36.37  cb_failure         L33-CB3 {'rot': 0.02985}
+  t= 36.425  solver fallback: NewtonLineSearch
+  t= 36.450  solver fallback: 4 sub-steps
+  t= 36.475  solver fallback: 4 sub-steps
+  t= 36.500  solver fallback: Newton

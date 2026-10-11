@@ -292,3 +292,4 @@
   t=  85.75  punching           L25-col25 {'drift': np.float64(0.0236), 'vg_vc': 0.329, 'conn': 'column'}
   t=  85.88  punching           L29-col24 {'drift': np.float64(0.0181), 'vg_vc': 0.446, 'conn': 'column'}
   t= 86.075  solver fallback: NewtonLineSearch
+  t= 86.200  solver fallback: ModifiedNewton
