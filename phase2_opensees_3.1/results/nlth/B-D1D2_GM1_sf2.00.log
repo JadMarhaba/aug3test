@@ -253,3 +253,7 @@
   t=  93.00  cb_failure         L32-CB1 {'rot': 0.02023}
   t=  93.13  cb_failure         L31-CB3 {'rot': 0.01708}
   t=  93.13  cb_failure         L32-CB3 {'rot': 0.01591}
+  t=  98.88  cb_failure         L25-CB2 {'rot': 0.01488}
+  progress t= 100.0s  max corner drift so far=0.0111  wall clock=1120s
+  progress t= 110.0s  max corner drift so far=0.0111  wall clock=1232s
+  progress t= 120.0s  max corner drift so far=0.0111  wall clock=1336s
