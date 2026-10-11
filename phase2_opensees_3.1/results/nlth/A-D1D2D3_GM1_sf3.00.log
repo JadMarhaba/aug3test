@@ -211,3 +211,11 @@
   t=  26.75  cb_failure         L21-CB3 {'rot': 0.0224}
   t=  26.75  cb_failure         L22-CB2 {'rot': 0.01518}
   t=  26.75  cb_failure         L22-CB3 {'rot': 0.01739}
+  t=  26.87  cb_failure         L23-CB3 {'rot': 0.01542}
+  t=  27.12  cb_failure         L23-CB2 {'rot': 0.01837}
+  t=  27.12  cb_failure         L24-CB2 {'rot': 0.01598}
+  t=  27.12  cb_failure         L24-CB3 {'rot': 0.01846}
+  t=  27.12  cb_failure         L25-CB3 {'rot': 0.01507}
+  t=  27.25  cb_failure         L25-CB2 {'rot': 0.01946}
+  t=  27.25  cb_failure         L26-CB2 {'rot': 0.01577}
+  t=  27.25  cb_failure         L26-CB3 {'rot': 0.0175}
