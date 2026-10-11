@@ -311,3 +311,8 @@
   t=  23.50  cb_failure         L25-CB2 {'rot': 0.01506}
   t=  23.55  punching           L23-col1 {'drift': np.float64(0.0223), 'vg_vc': 0.359, 'conn': 'column'}
   t=  23.55  cb_failure         L28-CB3 {'rot': 0.01565}
+  t=  23.60  cb_failure         L29-CB3 {'rot': 0.01535}
+  t=  23.65  cb_failure         L30-CB3 {'rot': 0.01502}
+  t=  23.70  cb_failure         L31-CB3 {'rot': 0.01578}
+  t=  23.70  cb_failure         L32-CB3 {'rot': 0.01527}
+  t=  23.70  cb_failure         L33-CB3 {'rot': 0.0151}
