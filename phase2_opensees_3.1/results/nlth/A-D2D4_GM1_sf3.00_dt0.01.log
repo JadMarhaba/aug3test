@@ -240,3 +240,30 @@
   t=  31.55  cb_failure         L22-CB3 {'rot': 0.01481}
   t=  31.95  cb_failure         L22-CB2 {'rot': 0.01541}
   t=  31.95  cb_failure         L23-CB3 {'rot': 0.01474}
+  t=  34.85  cb_failure         L23-CB2 {'rot': 0.01521}
+  t=  38.70  cb_failure         L24-CB3 {'rot': 0.01614}
+  t=  38.80  cb_failure         L25-CB3 {'rot': 0.01565}
+  t=  38.85  cb_failure         L24-CB2 {'rot': 0.01563}
+  t=  39.20  cb_failure         L26-CB3 {'rot': 0.01487}
+  progress t=  40.0s  max corner drift so far=0.0176  wall clock=1233s
+  t=  46.95  cb_failure         L25-CB2 {'rot': 0.01645}
+  t=  49.50  cb_failure         L26-CB2 {'rot': 0.01717}
+  t=  49.55  cb_failure         L27-CB2 {'rot': 0.01619}
+  t=  49.60  cb_failure         L27-CB3 {'rot': 0.01546}
+  t=  49.65  cb_failure         L28-CB2 {'rot': 0.01618}
+  t=  49.70  cb_failure         L28-CB3 {'rot': 0.01833}
+  t=  49.75  cb_failure         L29-CB2 {'rot': 0.01554}
+  t=  49.75  cb_failure         L29-CB3 {'rot': 0.02056}
+  t=  49.75  cb_failure         L30-CB3 {'rot': 0.01817}
+  t=  49.75  cb_failure         L31-CB3 {'rot': 0.01648}
+  t=  49.75  cb_failure         L32-CB3 {'rot': 0.01536}
+  t=  49.80  cb_failure         L30-CB2 {'rot': 0.01761}
+  t=  49.80  cb_failure         L31-CB2 {'rot': 0.01623}
+  t=  49.80  cb_failure         L32-CB2 {'rot': 0.01534}
+  t=  49.80  cb_failure         L33-CB2 {'rot': 0.01498}
+  progress t=  50.0s  max corner drift so far=0.0176  wall clock=1564s
+  progress t=  60.0s  max corner drift so far=0.0176  wall clock=1896s
+  progress t=  70.0s  max corner drift so far=0.0176  wall clock=2245s
+  t=  78.60  cb_failure         L33-CB3 {'rot': 0.01594}
+  t= 79.310  solver fallback: Newton
+  t= 79.350  solver fallback: NewtonLineSearch

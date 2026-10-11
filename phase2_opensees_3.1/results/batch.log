@@ -171,3 +171,8 @@
 [10:13:53] DONE nlth/B-D2D4_GM1_sf1.00 completed 1246.0  (1246s)
 [10:18:51] DONE nlth/A-D2D4_GM1_sf3.00 numerical 1048.4  (1049s)
 [10:27:03] DONE nlth/A-D3D4_GM1_sf0.50 completed 1418.7  (1419s)
+[10:37:24] DONE nlth/B-D2D4_GM1_sf1.50 completed 1409.1  (1409s)
+[10:44:00] DONE nlth/A-D2D3_GM1_sf3.75 numerical 1883.6  (1884s)
+[10:52:28] DONE nlth/A-D3D4_GM1_sf1.00 completed 1523.5  (1524s)
+[11:02:01] DONE nlth/A-D2D4_GM1_sf3.00_dt0.01 numerical 2587.9  (2588s)
+[11:03:34] DONE nlth/B-D2D4_GM1_sf2.00 completed 1569.0  (1569s)
