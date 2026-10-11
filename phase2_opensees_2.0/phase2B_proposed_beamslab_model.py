@@ -23,10 +23,10 @@ What this file adds to the shared building (sao/building_common.py)
 Beams.  Each span along a column line is a 500 x 800 T-beam (slab flange, ACI cracked
 stiffness 0.35 EIg) with plastic hinges at both ends (ASCE 41-17 Table 10-7: plastic rotation
 0.025 before strength loss, 20 % residual).  Top / bottom steel comes from the design pass.
-Beams frame directly into the column nodes (moment connections, no punching).  Where a beam
-meets the 250 mm core wall at right angles it can transfer only 25 % of its moment capacity
-(out-of-plane wall bending), but its full shear - this is the path along which load can be
-redistributed between the core and the columns.
+Beams frame directly into the column nodes (rigid moment connections, no punching).  Since
+version 2.0 the beams that meet the core walls are also full moment connections with their
+whole hinge capacity (earlier versions limited them to 25 % for out-of-plane wall bending);
+this is the path along which load can be redistributed between the core and the columns.
 
 Deficiency variants - identical to the as-built model so both see the same conditions
 ------------------------------------------------------------------------------------
