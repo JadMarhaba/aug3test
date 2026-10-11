@@ -44,3 +44,34 @@
   t=  24.62  cb_yield           L9-CB2 {'rot': 0.00091}
   t=  24.62  cb_yield           L11-CB3 {'rot': 0.00093}
   progress t=  30.0s  max corner drift so far=0.0017  wall clock=251s
+  progress t=  40.0s  max corner drift so far=0.0017  wall clock=338s
+  t=  46.25  cb_yield           L14-CB1 {'rot': 0.00094}
+  t=  46.37  cb_yield           L15-CB1 {'rot': 0.00095}
+  t=  46.37  cb_yield           L16-CB1 {'rot': 0.00091}
+  progress t=  50.0s  max corner drift so far=0.0017  wall clock=427s
+  t=  56.62  cb_yield           L2-CB2 {'rot': 0.00095}
+  t=  58.75  cb_yield           L12-CB3 {'rot': 0.00095}
+  progress t=  60.0s  max corner drift so far=0.0017  wall clock=512s
+  t=  60.12  cb_yield           L10-CB2 {'rot': 0.00094}
+  t=  60.25  cb_yield           L11-CB2 {'rot': 0.00094}
+  t=  60.25  cb_yield           L12-CB2 {'rot': 0.00093}
+  t=  60.25  cb_yield           L13-CB2 {'rot': 0.00092}
+  t=  60.37  cb_yield           L14-CB2 {'rot': 0.00091}
+  progress t=  70.0s  max corner drift so far=0.0017  wall clock=602s
+  progress t=  80.0s  max corner drift so far=0.0017  wall clock=686s
+  t=  84.13  cb_yield           L13-CB3 {'rot': 0.00092}
+  t=  84.13  cb_yield           L14-CB3 {'rot': 0.00091}
+  t=  84.25  cb_yield           L15-CB3 {'rot': 0.00091}
+  t=  85.00  cb_yield           L16-CB0 {'rot': 0.00091}
+  t=  86.63  cb_yield           L17-CB0 {'rot': 0.001}
+  t=  86.63  cb_yield           L17-CB1 {'rot': 0.00106}
+  t=  86.63  cb_yield           L18-CB1 {'rot': 0.00102}
+  t=  86.63  cb_yield           L19-CB1 {'rot': 0.00099}
+  t=  86.75  cb_yield           L18-CB0 {'rot': 0.00115}
+  t=  86.75  cb_yield           L19-CB0 {'rot': 0.00106}
+  t=  86.75  cb_yield           L20-CB1 {'rot': 0.00106}
+  t=  86.75  cb_yield           L21-CB1 {'rot': 0.001}
+  progress t=  90.0s  max corner drift so far=0.0020  wall clock=774s
+  progress t= 100.0s  max corner drift so far=0.0020  wall clock=859s
+  progress t= 110.0s  max corner drift so far=0.0020  wall clock=943s
+  progress t= 120.0s  max corner drift so far=0.0020  wall clock=1025s
