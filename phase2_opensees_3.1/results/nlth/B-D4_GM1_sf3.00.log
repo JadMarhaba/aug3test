@@ -132,3 +132,72 @@
   t= 50.525  solver fallback: Newton
   t=  55.62  cb_yield           L29-CB2 {'rot': 0.00076}
   t=  55.75  cb_yield           L30-CB3 {'rot': 0.00076}
+  t=  59.25  cb_yield           L31-CB3 {'rot': 0.00078}
+  progress t=  60.0s  max corner drift so far=0.0112  wall clock=734s
+  progress t=  70.0s  max corner drift so far=0.0112  wall clock=859s
+  t=  72.50  cb_yield           L32-CB3 {'rot': 0.00076}
+  t=  77.50  cb_failure         L5-CB2 {'rot': 0.02546}
+  t=  77.50  cb_failure         L6-CB2 {'rot': 0.02557}
+  t=  77.50  cb_failure         L7-CB2 {'rot': 0.02501}
+  t=  77.63  cb_failure         L4-CB2 {'rot': 0.02495}
+  t=  77.63  cb_failure         L8-CB2 {'rot': 0.02667}
+  t=  77.63  cb_failure         L9-CB2 {'rot': 0.02609}
+  t=  77.63  cb_failure         L10-CB2 {'rot': 0.02533}
+  t=  77.75  cb_failure         L11-CB2 {'rot': 0.02703}
+  t=  77.75  cb_failure         L12-CB2 {'rot': 0.02657}
+  t=  77.75  cb_failure         L13-CB2 {'rot': 0.02591}
+  t=  77.75  cb_failure         L14-CB2 {'rot': 0.025}
+  t=  77.88  cb_failure         L15-CB2 {'rot': 0.02482}
+  t=  78.00  cb_yield           L33-CB2 {'rot': 0.00139}
+  t=  78.00  cb_yield           L33-CB3 {'rot': 0.00088}
+  progress t=  80.0s  max corner drift so far=0.0147  wall clock=983s
+  t=  80.25  cb_yield           L33-CB0 {'rot': 0.00122}
+  progress t=  90.0s  max corner drift so far=0.0147  wall clock=1107s
+  t=  97.63  cb_failure         L7-CB3 {'rot': 0.02496}
+  t=  97.63  cb_failure         L8-CB3 {'rot': 0.02508}
+  t=  97.75  cb_failure         L4-CB3 {'rot': 0.02474}
+  t=  97.75  cb_failure         L5-CB0 {'rot': 0.02655}
+  t=  97.75  cb_failure         L5-CB1 {'rot': 0.02483}
+  t=  97.75  cb_failure         L5-CB3 {'rot': 0.02713}
+  t=  97.75  cb_failure         L6-CB0 {'rot': 0.02757}
+  t=  97.75  cb_failure         L6-CB1 {'rot': 0.02599}
+  t=  97.75  cb_failure         L6-CB3 {'rot': 0.02852}
+  t=  97.75  cb_failure         L7-CB0 {'rot': 0.02791}
+  t=  97.75  cb_failure         L7-CB1 {'rot': 0.02653}
+  t=  97.75  cb_failure         L8-CB0 {'rot': 0.02776}
+  t=  97.75  cb_failure         L8-CB1 {'rot': 0.02659}
+  t=  97.75  cb_failure         L9-CB0 {'rot': 0.02726}
+  t=  97.75  cb_failure         L9-CB1 {'rot': 0.02628}
+  t=  97.75  cb_failure         L9-CB3 {'rot': 0.02918}
+  t=  97.75  cb_failure         L10-CB0 {'rot': 0.02652}
+  t=  97.75  cb_failure         L10-CB1 {'rot': 0.02564}
+  t=  97.75  cb_failure         L10-CB3 {'rot': 0.0286}
+  t=  97.75  cb_failure         L11-CB0 {'rot': 0.02556}
+  t=  97.75  cb_failure         L11-CB3 {'rot': 0.02767}
+  t=  97.75  cb_failure         L12-CB3 {'rot': 0.02647}
+  t=  97.75  cb_failure         L13-CB3 {'rot': 0.02482}
+  t=  97.88  cb_failure         L3-CB2 {'rot': 0.02473}
+  t=  97.88  cb_failure         L4-CB0 {'rot': 0.02709}
+  t=  97.88  cb_failure         L4-CB1 {'rot': 0.02647}
+  t=  97.88  cb_failure         L11-CB1 {'rot': 0.03113}
+  t=  97.88  cb_failure         L12-CB0 {'rot': 0.02927}
+  t=  97.88  cb_failure         L12-CB1 {'rot': 0.02999}
+  t=  97.88  cb_failure         L13-CB0 {'rot': 0.02768}
+  t=  97.88  cb_failure         L13-CB1 {'rot': 0.02827}
+  t=  97.88  cb_failure         L14-CB0 {'rot': 0.02564}
+  t=  97.88  cb_failure         L14-CB1 {'rot': 0.02622}
+  t=  97.88  cb_failure         L14-CB3 {'rot': 0.02782}
+  t=  97.88  cb_failure         L15-CB3 {'rot': 0.0252}
+  t=  98.00  cb_failure         L3-CB0 {'rot': 0.02528}
+  t=  98.00  cb_failure         L3-CB1 {'rot': 0.02518}
+  t=  98.00  cb_failure         L3-CB3 {'rot': 0.02578}
+  t=  98.00  cb_failure         L15-CB0 {'rot': 0.02679}
+  t=  98.00  cb_failure         L15-CB1 {'rot': 0.02764}
+  t=  98.00  cb_failure         L16-CB2 {'rot': 0.0248}
+  t=  98.00  cb_failure         L16-CB3 {'rot': 0.02491}
+  t=  98.13  cb_failure         L16-CB0 {'rot': 0.02528}
+  t=  98.13  cb_failure         L16-CB1 {'rot': 0.0259}
+  t=  98.38  cb_failure         L2-CB2 {'rot': 0.02508}
+  progress t= 100.0s  max corner drift so far=0.0147  wall clock=1234s
+  progress t= 110.0s  max corner drift so far=0.0147  wall clock=1352s
+  progress t= 120.0s  max corner drift so far=0.0147  wall clock=1463s
