@@ -246,3 +246,4 @@
   progress t= 100.0s  max corner drift so far=0.0165  wall clock=1423s
   progress t= 110.0s  max corner drift so far=0.0165  wall clock=1554s
   t=110.850  solver fallback: Newton
+  progress t= 120.0s  max corner drift so far=0.0165  wall clock=1685s
