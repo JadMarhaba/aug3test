@@ -127,3 +127,4 @@
   t= 58.730  solver fallback: Newton
   t=  59.55  cb_yield           L30-CB3 {'rot': 0.00103}
   progress t=  60.0s  max corner drift so far=0.0121  wall clock=1403s
+  progress t=  70.0s  max corner drift so far=0.0121  wall clock=1638s

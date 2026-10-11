@@ -91,3 +91,6 @@
   t=  21.25  cb_yield           L22-CB3 {'rot': 0.00085}
   t=  22.62  cb_yield           L18-CB2 {'rot': 0.0009}
   t=  22.62  cb_yield           L19-CB2 {'rot': 0.00079}
+  t=  23.25  cb_yield           L20-CB2 {'rot': 0.00079}
+  t=  24.12  cb_yield           L23-CB3 {'rot': 0.00083}
+  t=  24.25  cb_yield           L24-CB3 {'rot': 0.00088}
