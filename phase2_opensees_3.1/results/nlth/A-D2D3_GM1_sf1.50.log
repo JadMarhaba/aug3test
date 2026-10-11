@@ -159,3 +159,4 @@
   t=  95.63  cb_failure         L5-CB2 {'rot': 0.01472}
   progress t= 100.0s  max corner drift so far=0.0063  wall clock=1437s
   progress t= 110.0s  max corner drift so far=0.0063  wall clock=1573s
+  progress t= 120.0s  max corner drift so far=0.0063  wall clock=1703s
