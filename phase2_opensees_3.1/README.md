@@ -1,5 +1,7 @@
 # Phase 2 (version 3.1) – v3.0 with deeper coupling over the core openings
 
+**Results: [`REPORT_phase2_findings_v3.1.md`](REPORT_phase2_findings_v3.1.md)** (full batch complete).
+
 v3.1 is version 3.0 (`../phase2_opensees_3.0`) with one change: **the link (coupling) beams over the four core openings are 1.70 m deep instead of 0.50 m.** The depth is the storey height (4.09 m) minus a lift-door opening of about 2.4 m. Everything else is as in v3.0, and identical in both models apart from the beams:
 
 * 250 mm slab, PT flat slab (as-built) and non-PT RC beam-slab;
