@@ -245,3 +245,28 @@
   t=  49.85  cb_failure         L28-CB1 {'rot': 0.01602}
   t=  49.95  cb_failure         L29-CB2 {'rot': 0.01526}
   progress t=  50.0s  max corner drift so far=0.0202  wall clock=1533s
+  progress t=  60.0s  max corner drift so far=0.0202  wall clock=1846s
+  t=  60.05  cb_failure         L29-CB3 {'rot': 0.01496}
+  t=  60.20  cb_failure         L29-CB0 {'rot': 0.01511}
+  t=  60.20  cb_failure         L29-CB1 {'rot': 0.01499}
+  progress t=  70.0s  max corner drift so far=0.0202  wall clock=2157s
+  t=  73.00  cb_failure         L30-CB3 {'rot': 0.01498}
+  t=  73.20  cb_failure         L30-CB2 {'rot': 0.01483}
+  t=  73.90  cb_failure         L31-CB3 {'rot': 0.01499}
+  t=  78.20  cb_failure         L30-CB1 {'rot': 0.01538}
+  t=  78.25  cb_failure         L31-CB1 {'rot': 0.01943}
+  t=  78.25  cb_failure         L32-CB1 {'rot': 0.01888}
+  t=  78.25  cb_failure         L33-CB1 {'rot': 0.01745}
+  t=  78.30  cb_failure         L30-CB0 {'rot': 0.01587}
+  t=  78.35  cb_failure         L31-CB0 {'rot': 0.0174}
+  t=  78.35  cb_failure         L32-CB0 {'rot': 0.01627}
+  t=  78.35  cb_failure         L33-CB0 {'rot': 0.01589}
+  t=  78.40  cb_failure         L32-CB3 {'rot': 0.01863}
+  t=  78.40  cb_failure         L33-CB3 {'rot': 0.01721}
+  t=  78.50  cb_failure         L31-CB2 {'rot': 0.01718}
+  t=  78.50  cb_failure         L32-CB2 {'rot': 0.01602}
+  t=  78.50  cb_failure         L33-CB2 {'rot': 0.01561}
+  t=  79.60  cb_failure         L1-CB3 {'rot': 0.01502}
+  t=  79.80  cb_failure         L1-CB2 {'rot': 0.01503}
+  progress t=  80.0s  max corner drift so far=0.0202  wall clock=2478s
+  progress t=  90.0s  max corner drift so far=0.0206  wall clock=2822s
