@@ -271,3 +271,5 @@
   progress t=  90.0s  max corner drift so far=0.0204  wall clock=1534s
   t= 94.825  solver fallback: NewtonLineSearch
   progress t= 100.0s  max corner drift so far=0.0204  wall clock=1744s
+  progress t= 110.0s  max corner drift so far=0.0204  wall clock=1910s
+  progress t= 120.0s  max corner drift so far=0.0204  wall clock=2067s

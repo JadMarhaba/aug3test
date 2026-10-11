@@ -197,3 +197,4 @@
   t=  99.00  cb_failure         L16-CB1 {'rot': 0.02506}
   progress t= 100.0s  max corner drift so far=0.0182  wall clock=1423s
   progress t= 110.0s  max corner drift so far=0.0182  wall clock=1582s
+  progress t= 120.0s  max corner drift so far=0.0182  wall clock=1723s
