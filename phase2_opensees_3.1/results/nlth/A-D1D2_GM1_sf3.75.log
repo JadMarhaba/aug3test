@@ -273,3 +273,57 @@
   t=  32.87  cb_failure         L33-CB2 {'rot': 0.0186}
   t=  32.87  cb_failure         L33-CB3 {'rot': 0.01707}
   progress t=  40.0s  max corner drift so far=0.0285  wall clock=820s
+  t=  45.50  punching           L18-col4 {'drift': np.float64(0.0255), 'vg_vc': 0.291, 'conn': 'column'}
+  t= 45.725  solver fallback: NewtonLineSearch
+  t=  45.75  punching           L17-col4 {'drift': np.float64(0.0258), 'vg_vc': 0.286, 'conn': 'column'}
+  t=  46.00  punching           L16-col4 {'drift': np.float64(0.0259), 'vg_vc': 0.285, 'conn': 'column'}
+  t=  46.12  punching           L13-col4 {'drift': np.float64(0.0258), 'vg_vc': 0.286, 'conn': 'column'}
+  t=  46.12  punching           L14-col4 {'drift': np.float64(0.0259), 'vg_vc': 0.285, 'conn': 'column'}
+  t=  46.12  punching           L15-col4 {'drift': np.float64(0.0259), 'vg_vc': 0.286, 'conn': 'column'}
+  progress t=  50.0s  max corner drift so far=0.0285  wall clock=1080s
+  progress t=  60.0s  max corner drift so far=0.0285  wall clock=1316s
+  t=  68.67  punching           L29-col4 {'drift': np.float64(0.0197), 'vg_vc': 0.408, 'conn': 'column'}
+  progress t=  70.0s  max corner drift so far=0.0285  wall clock=1551s
+  t=  75.90  punching           L15-col10 {'drift': np.float64(0.0238), 'vg_vc': 0.324, 'conn': 'column'}
+  t=  75.95  punching           L16-col10 {'drift': np.float64(0.0238), 'vg_vc': 0.324, 'conn': 'column'}
+  t=  75.98  punching           L13-col13 {'drift': np.float64(0.0239), 'vg_vc': 0.323, 'conn': 'column'}
+  t=  75.98  punching           L14-col10 {'drift': np.float64(0.0239), 'vg_vc': 0.322, 'conn': 'column'}
+  t=  75.98  punching           L14-col13 {'drift': np.float64(0.0239), 'vg_vc': 0.323, 'conn': 'column'}
+  t=  75.98  punching           L15-col13 {'drift': np.float64(0.0239), 'vg_vc': 0.322, 'conn': 'column'}
+  t=  76.00  punching           L13-col10 {'drift': np.float64(0.0238), 'vg_vc': 0.327, 'conn': 'column'}
+  t=  76.00  punching           L14-col11 {'drift': np.float64(0.0239), 'vg_vc': 0.327, 'conn': 'column'}
+  t=  76.00  punching           L16-col13 {'drift': np.float64(0.0239), 'vg_vc': 0.36, 'conn': 'column'}
+  t=  76.00  punching           L17-col13 {'drift': np.float64(0.0235), 'vg_vc': 0.348, 'conn': 'column'}
+  t=  76.00  punching           L18-col13 {'drift': np.float64(0.0228), 'vg_vc': 0.344, 'conn': 'column'}
+  t=  76.03  punching           L15-col14 {'drift': np.float64(0.0241), 'vg_vc': 0.319, 'conn': 'column'}
+  t=  76.13  punching           L14-col12 {'drift': np.float64(0.0239), 'vg_vc': 0.345, 'conn': 'column'}
+  t=  76.13  punching           L14-col14 {'drift': np.float64(0.0242), 'vg_vc': 0.326, 'conn': 'column'}
+  t=  76.13  punching           L15-col15 {'drift': np.float64(0.0242), 'vg_vc': 0.364, 'conn': 'column'}
+  t= 76.175  solver fallback: ModifiedNewton
+  t=  76.25  punching           L14-col15 {'drift': np.float64(0.0242), 'vg_vc': 0.383, 'conn': 'column'}
+  t=  76.25  punching           L14-col16 {'drift': np.float64(0.0248), 'vg_vc': 0.305, 'conn': 'column'}
+  t=  76.25  punching           L15-col16 {'drift': np.float64(0.0249), 'vg_vc': 0.307, 'conn': 'column'}
+  t=  76.25  punching           L16-col16 {'drift': np.float64(0.0249), 'vg_vc': 0.303, 'conn': 'column'}
+  t=  76.28  punching           L17-col16 {'drift': np.float64(0.0248), 'vg_vc': 0.304, 'conn': 'column'}
+  t=  76.35  punching           L18-col16 {'drift': np.float64(0.0249), 'vg_vc': 0.303, 'conn': 'column'}
+  t=  76.38  punching           L21-col13 {'drift': np.float64(0.0226), 'vg_vc': 0.362, 'conn': 'column'}
+  t=  76.38  punching           L21-col16 {'drift': np.float64(0.0238), 'vg_vc': 0.326, 'conn': 'column'}
+  t=  76.43  punching           L19-col13 {'drift': np.float64(0.0237), 'vg_vc': 0.325, 'conn': 'column'}
+  t=  76.43  punching           L22-col13 {'drift': np.float64(0.022), 'vg_vc': 0.361, 'conn': 'column'}
+  t=  76.43  punching           L29-col13 {'drift': np.float64(0.0145), 'vg_vc': 0.511, 'conn': 'column'}
+  t=  76.45  punching           L19-col16 {'drift': np.float64(0.0251), 'vg_vc': 0.3, 'conn': 'column'}
+  t=  76.45  punching           L20-col13 {'drift': np.float64(0.0234), 'vg_vc': 0.332, 'conn': 'column'}
+  t= 76.450  solver fallback: 4 sub-steps
+  t=  76.48  punching           L22-col16 {'drift': np.float64(0.0238), 'vg_vc': 0.323, 'conn': 'column'}
+  t=  76.50  punching           L13-col16 {'drift': np.float64(0.0246), 'vg_vc': 0.319, 'conn': 'column'}
+  t=  76.50  punching           L16-col14 {'drift': np.float64(0.0242), 'vg_vc': 0.33, 'conn': 'column'}
+  t=  76.50  punching           L17-col14 {'drift': np.float64(0.0241), 'vg_vc': 0.339, 'conn': 'column'}
+  t=  76.50  punching           L19-col17 {'drift': np.float64(0.0251), 'vg_vc': 0.332, 'conn': 'column'}
+  t=  76.50  punching           L20-col14 {'drift': np.float64(0.0234), 'vg_vc': 0.348, 'conn': 'column'}
+  t=  76.50  punching           L20-col16 {'drift': np.float64(0.025), 'vg_vc': 0.303, 'conn': 'column'}
+  t=  76.50  punching           L30-col13 {'drift': np.float64(0.0143), 'vg_vc': 0.519, 'conn': 'column'}
+  t=  76.50  punching           L31-col13 {'drift': np.float64(0.0134), 'vg_vc': 0.554, 'conn': 'column'}
+  t=  76.50  punching           L32-col13 {'drift': np.float64(0.0128), 'vg_vc': 0.575, 'conn': 'column'}
+  t= 76.500  solver fallback: NewtonLineSearch
+  t=  76.53  punching           L33-col13 {'drift': np.float64(0.0129), 'vg_vc': 0.547, 'conn': 'column'}
+  t= 76.525  solver fallback: 4 sub-steps
