@@ -266,3 +266,27 @@
   t=  32.65  cb_failure         L32-CB2 {'rot': 0.02099}
   t=  32.65  cb_failure         L33-CB2 {'rot': 0.02077}
   progress t=  40.0s  max corner drift so far=0.0255  wall clock=1283s
+  progress t=  50.0s  max corner drift so far=0.0255  wall clock=1633s
+  progress t=  60.0s  max corner drift so far=0.0255  wall clock=1976s
+  progress t=  70.0s  max corner drift so far=0.0255  wall clock=2321s
+  t=  76.51  punching           L29-col13 {'drift': np.float64(0.017), 'vg_vc': 0.462, 'conn': 'column'}
+  t= 76.510  solver fallback: Newton
+  t=  76.55  punching           L29-col16 {'drift': np.float64(0.0195), 'vg_vc': 0.433, 'conn': 'column'}
+  t=  76.55  punching           L30-col13 {'drift': np.float64(0.0164), 'vg_vc': 0.491, 'conn': 'column'}
+  t=  76.60  punching           L29-col17 {'drift': np.float64(0.0194), 'vg_vc': 0.418, 'conn': 'column'}
+  t=  76.60  punching           L30-col14 {'drift': np.float64(0.0162), 'vg_vc': 0.496, 'conn': 'column'}
+  t=  76.65  punching           L30-col15 {'drift': np.float64(0.0158), 'vg_vc': 0.526, 'conn': 'column'}
+  t=  76.65  punching           L30-col16 {'drift': np.float64(0.019), 'vg_vc': 0.424, 'conn': 'column'}
+  t=  76.70  punching           L30-col17 {'drift': np.float64(0.0187), 'vg_vc': 0.469, 'conn': 'column'}
+  t=  76.75  punching           L29-col14 {'drift': np.float64(0.0174), 'vg_vc': 0.456, 'conn': 'column'}
+  t=  76.75  punching           L30-col18 {'drift': np.float64(0.0182), 'vg_vc': 0.502, 'conn': 'column'}
+  t=  76.80  punching           L29-col15 {'drift': np.float64(0.0168), 'vg_vc': 0.541, 'conn': 'column'}
+  t=  76.85  punching           L29-col18 {'drift': np.float64(0.0191), 'vg_vc': 0.45, 'conn': 'column'}
+  progress t=  80.0s  max corner drift so far=0.0257  wall clock=2677s
+  t=  82.88  punching           L31-col13 {'drift': np.float64(0.0172), 'vg_vc': 0.458, 'conn': 'column'}
+  t=  82.90  punching           L31-col14 {'drift': np.float64(0.0172), 'vg_vc': 0.462, 'conn': 'column'}
+  t=  82.90  punching           L32-col10 {'drift': np.float64(0.0158), 'vg_vc': 0.605, 'conn': 'column'}
+  t=  82.90  punching           L32-col13 {'drift': np.float64(0.017), 'vg_vc': 0.56, 'conn': 'column'}
+  t=  82.90  punching           L32-col16 {'drift': np.float64(0.0182), 'vg_vc': 0.46, 'conn': 'column'}
+  t=  82.90  punching           L33-col13 {'drift': np.float64(0.0167), 'vg_vc': 0.495, 'conn': 'column'}
+  t= 82.900  solver fallback: Newton
