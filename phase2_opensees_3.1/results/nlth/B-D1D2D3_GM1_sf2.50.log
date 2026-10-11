@@ -1,0 +1,9 @@
+  t=   5.00  cb_yield           L4-CB1 {'rot': 0.00085}
+  t=   5.00  cb_yield           L5-CB0 {'rot': 0.00085}
+  t=   5.00  cb_yield           L5-CB1 {'rot': 0.00086}
+  t=   7.88  cb_yield           L2-CB3 {'rot': 0.00093}
+  t=   7.88  cb_yield           L3-CB2 {'rot': 0.00085}
+  t=   7.88  cb_yield           L3-CB3 {'rot': 0.00096}
+  t=   7.88  cb_yield           L4-CB3 {'rot': 0.00096}
+  t=   7.88  cb_yield           L5-CB3 {'rot': 0.00091}
+  t=   7.88  cb_yield           L6-CB3 {'rot': 0.00086}
