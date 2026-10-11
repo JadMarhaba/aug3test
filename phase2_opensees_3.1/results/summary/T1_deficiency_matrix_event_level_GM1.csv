@@ -1,5 +1,33 @@
 variant,framing,group,D1,D2,D3,D4,outcome,t_collapse_s,max_drift_corner,max_drift_cm,roof_rotation_rad,link_beams_failed,wall_shear_failures,wall_axial_failures,punching_failures,column_failures,t_first_link_beam_fail,t_first_wall_shear,first_wall_shear,t_first_wall_axial,first_wall_axial,t_first_punch,worst_wall_pier,worst_wall_shear_DCR
 A-REF,As-built flat slab (2A),reference,0,0,0,0,survived,,0.0035,0.0020,0.00520,0,0,0,0,0,,,,,,,5-F,0.60
+A-D1,As-built flat slab (2A),individual,1,0,0,0,survived,,0.0033,0.0024,0.00550,0,0,0,0,0,,,,,,,5-F,0.63
+A-D2,As-built flat slab (2A),individual,0,1,0,0,survived,,0.0034,0.0019,0.00561,0,0,0,0,0,,,,,,,5-F,0.55
+A-D3,As-built flat slab (2A),individual,0,0,1,0,survived,,0.0035,0.0022,0.00521,0,0,0,0,0,,,,,,,4-F,0.63
+A-D4,As-built flat slab (2A),individual,0,0,0,1,survived,,0.0032,0.0018,0.00472,0,0,0,0,0,,,,,,,2-R,0.78
+A-D1D2,As-built flat slab (2A),pair,1,1,0,0,survived,,0.0034,0.0023,0.00551,0,0,0,0,0,,,,,,,5-F,0.63
+A-D1D3,As-built flat slab (2A),pair,1,0,1,0,survived,,0.0035,0.0025,0.00525,0,0,0,0,0,,,,,,,4-F,0.67
+A-D1D4,As-built flat slab (2A),pair,1,0,0,1,survived,,0.0033,0.0024,0.00538,0,0,0,0,0,,,,,,,16-F,0.79
+A-D2D3,As-built flat slab (2A),pair,0,1,1,0,survived,,0.0034,0.0021,0.00544,0,0,0,0,0,,,,,,,5-F,0.64
+A-D2D4,As-built flat slab (2A),pair,0,1,0,1,survived,,0.0032,0.0017,0.00539,0,0,0,0,0,,,,,,,9-F,0.73
+A-D3D4,As-built flat slab (2A),pair,0,0,1,1,survived,,0.0033,0.0020,0.00589,0,0,0,0,0,,,,,,,9-F,0.78
+A-D1D2D3,As-built flat slab (2A),triple,1,1,1,0,survived,,0.0035,0.0025,0.00536,0,0,0,0,0,,,,,,,4-F,0.66
+A-D1D2D4,As-built flat slab (2A),triple,1,1,0,1,survived,,0.0033,0.0023,0.00553,0,0,0,0,0,,,,,,,9-F,0.78
+A-D1D3D4,As-built flat slab (2A),triple,1,0,1,1,survived,,0.0034,0.0025,0.00612,0,0,0,0,0,,,,,,,14-R,0.79
+A-D2D3D4,As-built flat slab (2A),triple,0,1,1,1,survived,,0.0032,0.0020,0.00617,0,0,0,0,0,,,,,,,9-F,0.79
 A-D1D2D3D4,As-built flat slab (2A),all four,1,1,1,1,survived,,0.0034,0.0024,0.00607,0,0,0,0,0,,,,,,,10-F,0.77
 B-REF,Proposed beam-slab (2B),reference,0,0,0,0,survived,,0.0033,0.0017,0.00512,0,0,0,0,0,,,,,,,2-F,0.62
+B-D1,Proposed beam-slab (2B),individual,1,0,0,0,survived,,0.0035,0.0020,0.00595,0,0,0,0,0,,,,,,,2-F,0.61
+B-D2,Proposed beam-slab (2B),individual,0,1,0,0,survived,,0.0032,0.0018,0.00524,0,0,0,0,0,,,,,,,2-F,0.61
+B-D3,Proposed beam-slab (2B),individual,0,0,1,0,survived,,0.0034,0.0019,0.00542,0,0,0,0,0,,,,,,,3-F,0.62
+B-D4,Proposed beam-slab (2B),individual,0,0,0,1,survived,,0.0030,0.0016,0.00515,0,0,0,0,0,,,,,,,9-F,0.81
+B-D1D2,Proposed beam-slab (2B),pair,1,1,0,0,survived,,0.0034,0.0020,0.00592,0,0,0,0,0,,,,,,,4-F,0.61
+B-D1D3,Proposed beam-slab (2B),pair,1,0,1,0,survived,,0.0034,0.0022,0.00584,0,0,0,0,0,,,,,,,4-R,0.65
+B-D1D4,Proposed beam-slab (2B),pair,1,0,0,1,survived,,0.0032,0.0019,0.00541,0,0,0,0,0,,,,,,,9-F,0.83
+B-D2D3,Proposed beam-slab (2B),pair,0,1,1,0,survived,,0.0033,0.0019,0.00546,0,0,0,0,0,,,,,,,2-R,0.61
+B-D2D4,Proposed beam-slab (2B),pair,0,1,0,1,survived,,0.0030,0.0016,0.00516,0,0,0,0,0,,,,,,,10-F,0.74
+B-D3D4,Proposed beam-slab (2B),pair,0,0,1,1,survived,,0.0031,0.0018,0.00523,0,0,0,0,0,,,,,,,9-F,0.86
+B-D1D2D3,Proposed beam-slab (2B),triple,1,1,1,0,survived,,0.0034,0.0022,0.00595,0,0,0,0,0,,,,,,,4-R,0.65
+B-D1D2D4,Proposed beam-slab (2B),triple,1,1,0,1,survived,,0.0032,0.0019,0.00542,0,0,0,0,0,,,,,,,9-F,0.78
+B-D1D3D4,Proposed beam-slab (2B),triple,1,0,1,1,survived,,0.0032,0.0022,0.00569,0,0,0,0,0,,,,,,,10-F,0.83
+B-D2D3D4,Proposed beam-slab (2B),triple,0,1,1,1,survived,,0.0030,0.0018,0.00510,0,0,0,0,0,,,,,,,10-F,0.81
 B-D1D2D3D4,Proposed beam-slab (2B),all four,1,1,1,1,survived,,0.0032,0.0022,0.00597,0,0,0,0,0,,,,,,,9-F,0.81

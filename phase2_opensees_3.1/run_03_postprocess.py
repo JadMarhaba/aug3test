@@ -50,6 +50,15 @@ def supersede(nl):
     return out
 
 
+def is_collapse(r):
+    """Same rule as the collapse search (sao/ida.py Hunt.known): collapse, or non-convergence
+    after a failure; a run that also stops for numerical reasons when repeated at dt = 0.01 s
+    counts as collapse."""
+    from sao.ida import classify, COLLAPSED
+    st = classify(r)
+    return st in COLLAPSED or (st in ("numerical", "crashed") and abs(r["job"].get("dt", 0.025) - 0.01) < 1e-9)
+
+
 def variants(config):
     return [v.name for v in C.all_deficiency_variants(config)]
 
@@ -88,9 +97,10 @@ def nlth_summary(r):
     dcr = r.get("pier_dcr", {})
     worst = max(dcr.items(), key=lambda kv: max(kv[1][0], kv[1][1])) if dcr else ("-", [0, 0, 0])
     status = r.get("status")
+    collapsed = is_collapse(r)
     if status == "collapse":
         outcome = f"COLLAPSE ({col.get('mode')})"
-    elif status == "nonconverged":
+    elif collapsed:
         outcome = "NON-CONVERGED (instability)"
     else:
         outcome = "survived"
@@ -98,7 +108,7 @@ def nlth_summary(r):
     if r.get("final_core") and r.get("gravity_core"):
         lost_core = 1 - r["final_core"][0] / max(r["gravity_core"][0], 1)
     return dict(
-        status=status, outcome=outcome, collapse_mode=col.get("mode", ""), t_collapse=col.get("t", ""),
+        status=status, collapsed=collapsed, outcome=outcome, collapse_mode=col.get("mode", ""), t_collapse=col.get("t", ""),
         t_end=r.get("t_end"), max_drift_corner=max(env.get("drift_corner", [0])),
         max_drift_cm=max(env.get("drift_cm", [0])), roof_rot=(env.get("roof") or [0, 0, 0])[2],
         n_cb_fail=cnt.get("cb_failure", 0), n_wall_shear=cnt.get("wall_shear_failure", 0),
@@ -237,8 +247,8 @@ def fig_matrix(summ):
             if not s:
                 continue
             d = s["max_drift_corner"] * 100
-            col = "#e34948" if s["status"] in ("collapse", "nonconverged") else COLOR[cfg]
-            mk = "X" if s["status"] in ("collapse", "nonconverged") else "o"
+            col = "#e34948" if s["collapsed"] else COLOR[cfg]
+            mk = "X" if s["collapsed"] else "o"
             ax.scatter(min(d, 10), i + (j - 0.5) * 0.3, s=60, color=col, marker=mk, edgecolor=P.SURFACE, lw=1.5,
                        zorder=3)
     ax.set_yticks(range(len(names)))
@@ -337,7 +347,7 @@ def ida(nl):
                 if key.startswith(name + "_GM1_sf"):
                     sf = r["job"]["sf"]
                     s = nlth_summary(r)
-                    coll = s["status"] in ("collapse", "nonconverged")
+                    coll = s["collapsed"]
                     pts.append((sf, s["max_drift_corner"], coll))
             if not pts:
                 continue
@@ -608,7 +618,7 @@ def main():
     fig_matrix(summ)
     for cfg in "AB":
         for nm, met in (("log_drift", lambda s: np.log(min(max(s["max_drift_corner"], 1e-4), 0.1))),
-                        ("collapse", lambda s: float(s["status"] in ("collapse", "nonconverged")))):
+                        ("collapse", lambda s: float(s["collapsed"]))):
             eff = factorial(summ, met, cfg)
             if eff:
                 write_csv(f"T5_factorial_effects_{cfg}_{nm}.csv", ["effect", "value"],
