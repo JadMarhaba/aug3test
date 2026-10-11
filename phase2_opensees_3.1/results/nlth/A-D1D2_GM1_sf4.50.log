@@ -276,3 +276,4 @@
   t= 62.100  solver fallback: ModifiedNewton
   t= 64.725  solver fallback: ModifiedNewton
   progress t=  70.0s  max corner drift so far=0.0237  wall clock=1473s
+  t=  78.18  wall_axial_failure S1-F {'gamma': 0.00121, 'eps': -0.00735, 'cause': 'crushing'}
