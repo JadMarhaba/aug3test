@@ -196,3 +196,21 @@
   t=  59.75  cb_failure         L18-CB1 {'rot': 0.02807}
   t=  59.75  cb_failure         L18-CB3 {'rot': 0.02827}
   t=  59.75  cb_failure         L19-CB2 {'rot': 0.02571}
+  t=  59.87  cb_failure         L19-CB0 {'rot': 0.03073}
+  t=  60.00  cb_failure         L19-CB1 {'rot': 0.02577}
+  t=  60.00  cb_failure         L19-CB3 {'rot': 0.02604}
+  progress t=  60.0s  max corner drift so far=0.0156  wall clock=968s
+  t=  66.37  cb_failure         L20-CB2 {'rot': 0.0251}
+  progress t=  70.0s  max corner drift so far=0.0156  wall clock=1153s
+  t=  77.88  cb_failure         L20-CB0 {'rot': 0.02513}
+  t=  78.00  cb_failure         L20-CB1 {'rot': 0.02542}
+  t=  78.13  cb_failure         L20-CB3 {'rot': 0.02782}
+  t=  78.13  cb_failure         L21-CB0 {'rot': 0.02527}
+  t=  78.25  cb_failure         L21-CB2 {'rot': 0.02898}
+  t=  78.38  cb_failure         L21-CB3 {'rot': 0.02569}
+  t=  78.50  cb_failure         L22-CB2 {'rot': 0.02629}
+  t=  78.75  wall_flexure_strength_loss S2-M {'rot_x': 0.00023, 'rot_y': 0.00583}
+  t=  79.38  cb_failure         L22-CB3 {'rot': 0.02654}
+  t=  79.50  cb_yield           L33-CB2 {'rot': 0.00115}
+  t=  79.63  cb_yield           L32-CB1 {'rot': 0.00107}
+  t=  79.63  cb_yield           L33-CB1 {'rot': 0.00099}
