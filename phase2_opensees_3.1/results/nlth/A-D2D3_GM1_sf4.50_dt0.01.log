@@ -316,3 +316,18 @@
   t=  23.70  cb_failure         L31-CB3 {'rot': 0.01578}
   t=  23.70  cb_failure         L32-CB3 {'rot': 0.01527}
   t=  23.70  cb_failure         L33-CB3 {'rot': 0.0151}
+  t=  23.90  cb_failure         L26-CB2 {'rot': 0.01534}
+  t=  27.00  cb_failure         L27-CB2 {'rot': 0.01717}
+  t=  27.00  cb_failure         L28-CB2 {'rot': 0.01879}
+  t=  28.05  punching           L19-col3 {'drift': np.float64(0.0258), 'vg_vc': 0.285, 'conn': 'column'}
+  progress t=  30.0s  max corner drift so far=0.0295  wall clock=1129s
+  progress t=  40.0s  max corner drift so far=0.0295  wall clock=1470s
+  t=  46.65  punching           L18-col2 {'drift': np.float64(0.0251), 'vg_vc': 0.298, 'conn': 'column'}
+  t=  46.80  punching           L22-col2 {'drift': np.float64(0.0232), 'vg_vc': 0.337, 'conn': 'column'}
+  progress t=  50.0s  max corner drift so far=0.0295  wall clock=1804s
+  t=  51.65  wall_flexure_strength_loss S33-R {'rot_x': 0.0, 'rot_y': 0.01518}
+  progress t=  60.0s  max corner drift so far=0.0295  wall clock=2152s
+  t= 60.150  solver fallback: ModifiedNewton
+  t=  68.70  wall_axial_failure S33-R {'rot_x': 0.0, 'b_x': 0.02, 'rot_y': 0.02028, 'b_y': 0.02, 'cause': 'flexure-compression (ASCE 41 b)'}
+  t= 69.420  solver fallback: NewtonLineSearch
+  progress t=  70.0s  max corner drift so far=0.0295  wall clock=2563s
