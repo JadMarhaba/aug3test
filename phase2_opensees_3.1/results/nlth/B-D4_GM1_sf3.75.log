@@ -35,3 +35,15 @@
   t=   6.75  cb_yield           L12-CB1 {'rot': 0.0007}
   t=   6.75  cb_yield           L13-CB1 {'rot': 0.0007}
   t=   6.75  cb_yield           L14-CB1 {'rot': 0.00069}
+  t=   7.25  cb_yield           L18-CB3 {'rot': 0.00087}
+  t=   7.25  cb_yield           L19-CB3 {'rot': 0.0009}
+  t=   7.25  cb_yield           L20-CB3 {'rot': 0.00092}
+  t=   7.25  cb_yield           L21-CB3 {'rot': 0.00093}
+  t=   7.25  cb_yield           L22-CB3 {'rot': 0.00091}
+  t=   7.25  cb_yield           L23-CB3 {'rot': 0.00087}
+  t=   7.25  cb_yield           L24-CB3 {'rot': 0.00082}
+  t=   7.25  cb_yield           L25-CB3 {'rot': 0.00077}
+  t=   7.38  cb_yield           L17-CB2 {'rot': 0.00076}
+  t=   7.38  cb_yield           L18-CB2 {'rot': 0.00077}
+  t=   7.38  cb_yield           L19-CB2 {'rot': 0.00076}
+  t=   7.38  cb_yield           L20-CB2 {'rot': 0.00074}
